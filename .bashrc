@@ -117,4 +117,6 @@ export PATH="$PATH:~/.vscode-server/data/User/globalStorage/ziglang.vscode-zig/z
 export PATH="$PATH:~/.vscode-server/data/User/globalStorage/ziglang.vscode-zig/zls_install"
 
 alias bat=batcat
+
+# Readme https://wiki.archlinux.org/title/Dotfiles Section1
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

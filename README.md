@@ -2,6 +2,8 @@
 
 ## Installation
 
+### Void Linux
+
 On freshly installed void linux run this commands:
 
 - Ensure that you've cloned dotfiles:

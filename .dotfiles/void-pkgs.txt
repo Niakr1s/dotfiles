@@ -32,3 +32,4 @@ zsh
 zsh-completions
 gvim-huge
 nodejs
+openjdk

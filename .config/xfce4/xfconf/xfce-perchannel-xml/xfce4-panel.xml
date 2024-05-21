@@ -15,6 +15,8 @@
         <value type="int" value="1"/>
         <value type="int" value="20"/>
         <value type="int" value="15"/>
+        <value type="int" value="22"/>
+        <value type="int" value="23"/>
         <value type="int" value="9"/>
         <value type="int" value="19"/>
         <value type="int" value="21"/>
@@ -135,5 +137,47 @@
       <property name="mount-open-volumes" type="bool" value="true"/>
     </property>
     <property name="plugin-21" type="string" value="xfce4-verve-plugin"/>
+    <property name="plugin-22" type="string" value="weather">
+      <property name="location" type="empty">
+        <property name="name" type="string" value="Чебоксары, городской округ Чебоксары"/>
+        <property name="latitude" type="string" value="56.130719"/>
+        <property name="longitude" type="string" value="47.244960"/>
+      </property>
+      <property name="msl" type="int" value="125"/>
+      <property name="timezone" type="string" value="Europe/Moscow"/>
+      <property name="offset" type="string" value="+03:00"/>
+      <property name="cache-max-age" type="int" value="172800"/>
+      <property name="power-saving" type="bool" value="true"/>
+      <property name="units" type="empty">
+        <property name="temperature" type="int" value="0"/>
+        <property name="pressure" type="int" value="3"/>
+        <property name="windspeed" type="int" value="0"/>
+        <property name="precipitation" type="int" value="0"/>
+        <property name="altitude" type="int" value="0"/>
+        <property name="apparent-temperature" type="int" value="0"/>
+      </property>
+      <property name="round" type="bool" value="true"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="tooltip-style" type="int" value="0"/>
+      <property name="forecast" type="empty">
+        <property name="layout" type="int" value="1"/>
+        <property name="days" type="int" value="5"/>
+      </property>
+      <property name="theme-dir" type="string" value="/usr/share/xfce4/weather/icons/liquid-dark"/>
+      <property name="scrollbox" type="empty">
+        <property name="show" type="bool" value="true"/>
+        <property name="animate" type="bool" value="true"/>
+        <property name="lines" type="int" value="1"/>
+        <property name="font" type="string" value="Fira Code weight=450 10"/>
+        <property name="color" type="string" value="rgba(0,0,0,0)"/>
+        <property name="use-color" type="bool" value="false"/>
+      </property>
+      <property name="labels" type="empty">
+        <property name="label0" type="int" value="11"/>
+      </property>
+    </property>
+    <property name="plugin-23" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
   </property>
 </channel>

@@ -50,3 +50,4 @@ zathura-djvu
 ImageMagick
 atool
 catimg
+direnv

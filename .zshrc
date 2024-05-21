@@ -74,6 +74,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     copybuffer
+    direnv
 )
 
 source $ZSH/oh-my-zsh.sh

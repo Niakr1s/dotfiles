@@ -2,13 +2,19 @@
 
 ## Installation
 
-On freshly installed system run this commands:
+On freshly installed void linux run this commands:
+
+- Ensure that you've cloned dotfiles:
 
 ```sh
 sudo xbps-install yadm
 yadm clone https://github.com/niakr1s/dotfiles
 yadm checkout ~
-chmod +x ~/.dotfiles/void-fresh-install.sh
+```
+
+- Run install script:
+
+```sh
 ~/.dotfiles/void-fresh-install.sh
 ```
 

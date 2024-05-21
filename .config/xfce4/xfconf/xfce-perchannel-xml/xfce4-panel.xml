@@ -17,6 +17,7 @@
         <value type="int" value="15"/>
         <value type="int" value="9"/>
         <value type="int" value="19"/>
+        <value type="int" value="21"/>
         <value type="int" value="16"/>
         <value type="int" value="2"/>
         <value type="int" value="3"/>
@@ -133,5 +134,6 @@
       <property name="show-button-type" type="int" value="0"/>
       <property name="mount-open-volumes" type="bool" value="true"/>
     </property>
+    <property name="plugin-21" type="string" value="xfce4-verve-plugin"/>
   </property>
 </channel>

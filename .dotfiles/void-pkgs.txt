@@ -38,3 +38,4 @@ xcolor
 xtools
 xfce4-sensors-plugin
 xfce4-places-plugin
+xfce4-verve-plugin

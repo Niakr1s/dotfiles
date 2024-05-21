@@ -2,6 +2,7 @@ arc-icon-theme
 arc-theme
 cgdb
 clang
+clang-tools-extra17
 cmake
 curl
 dejavu-fonts-ttf
@@ -33,3 +34,5 @@ zsh-completions
 gvim-huge
 nodejs
 openjdk
+xcolor
+xtools

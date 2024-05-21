@@ -3,7 +3,7 @@
 ## Installation
 
 First of all you should clone this repo using `yadm` dotfile manager.
-You can achieve this with `.dotfiles/clone.sh` script.
+You can achieve this with [clone.sh](.dotfiles/clone.sh) script.
 
 It can be run without actually saving it:
 
@@ -15,13 +15,13 @@ It can be run without actually saving it:
 
 There are several scripts used for fresh void linux installation:
 
-1. `.dotfiles/void-fresh-install.sh`:
+1. [void-fresh-install.sh](.dotfiles/void-fresh-install.sh):
 Installs configuration files at freshly installed void linux.
 You should clone this repository first.
 Consider using `.dotfiles/clone.sh` script.
 
-1. `.dotfiles/void-configure-fonts.sh`:
+1. [void-configure-fonts.sh](.dotfiles/void-configure-fonts.sh):
 Fixes font hinting defaults in fresh void linux installation.
 
-1. `.dotfiles/void-install-portproton.sh`:
+1. [void-install-portproton](.dotfiles/void-install-portproton.sh):
 Installs portproton with all dependencies.

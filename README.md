@@ -4,25 +4,20 @@
 
 ### Void Linux
 
-#### Fresh install
+There are several scripts used for fresh void linux installation:
 
-- Ensure that you've cloned dotfiles:
+1. `.dotfiles/clone.sh`:
+Clones this repository with `yadm` dotfile manager.
+Can be run using following command without actually saving it:
+`wget https://github.com/Niakr1s/dotfiles/raw/main/.dotfiles/clone.sh -O- | bash`
 
-```sh
-sudo xbps-install yadm
-yadm clone https://github.com/niakr1s/dotfiles
-yadm checkout ~
-```
+1. `.dotfiles/void-fresh-install.sh`:
+Installs configuration files at freshly installed void linux.
+You should clone this repository first.
+Consider using `.dotfiles/clone.sh` script.
 
-- Run install script:
+1. `.dotfiles/void-configure-fonts.sh`:
+Fixes font hinting defaults in fresh void linux installation.
 
-```sh
-~/.dotfiles/void-fresh-install.sh
-```
-
-#### Additional scripts
-
-- `.dotfiles/void-configure-fonts.sh`: Fixes font hinting defaults in fresh
-void linux installation.
-
-- `.dotfiles/void-install-portproton.sh`: Installs portproton with all dependencies.
+1. `.dotfiles/void-install-portproton.sh`:
+Installs portproton with all dependencies.

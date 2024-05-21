@@ -2,6 +2,16 @@
 
 repo=https://github.com/Niakr1s/dotfiles
 
+confirm_exit_if_no()
+{
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) break;;
+            No ) exit;;
+        esac
+    done
+}
+
 echo
 echo "Repository: $repo."
 echo
@@ -16,12 +26,7 @@ echo "yadm checkout ~"
 echo
 
 echo "Do you wish to continue?"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) break;;
-        No ) exit;;
-    esac
-done
+confirm_exit_if_no
 echo
 
 echo "Updating system..."

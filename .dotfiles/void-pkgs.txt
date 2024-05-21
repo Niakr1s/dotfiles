@@ -27,7 +27,6 @@ vscode
 w3m
 w3m-img
 wget
-xpdf
 xsel
 yadm
 zsh
@@ -44,3 +43,7 @@ xfce4-weather-plugin
 bat
 mdcat
 inotify-tools
+zathura
+zathura-pdf-poppler
+zathura-cb
+zathura-djvu

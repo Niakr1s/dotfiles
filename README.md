@@ -4,7 +4,7 @@
 
 ### Void Linux
 
-On freshly installed void linux run this commands:
+#### Fresh install
 
 - Ensure that you've cloned dotfiles:
 
@@ -20,3 +20,9 @@ yadm checkout ~
 ~/.dotfiles/void-fresh-install.sh
 ```
 
+#### Additional scripts
+
+- `.dotfiles/void-configure-fonts.sh`: Fixes font hinting defaults in fresh
+void linux installation.
+
+- `.dotfiles/void-install-portproton.sh`: Installs portproton with all dependencies.

@@ -21,6 +21,8 @@
         <value type="int" value="8"/>
         <value type="int" value="10"/>
         <value type="int" value="11"/>
+        <value type="int" value="9"/>
+        <value type="int" value="15"/>
         <value type="int" value="12"/>
         <value type="int" value="13"/>
         <value type="int" value="14"/>
@@ -106,6 +108,11 @@
       <property name="ask-confirmation" type="bool" value="false"/>
       <property name="button-title" type="uint" value="3"/>
       <property name="custom-title" type="string" value="X"/>
+    </property>
+    <property name="plugin-9" type="string" value="xfce4-sensors-plugin"/>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="false"/>
     </property>
   </property>
 </channel>

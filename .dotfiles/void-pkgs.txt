@@ -36,3 +36,4 @@ nodejs
 openjdk
 xcolor
 xtools
+xfce4-sensors-plugin

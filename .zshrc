@@ -103,3 +103,18 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Display the size of files at depth 1 in current location in human-readable form
+(( $+commands[dud] )) || alias dud='du -d 1 -h'
+# Display the size of files in current location in human-readable form
+(( $+commands[duf] )) || alias duf='du -sh .*'
+
+# Find a directory with the given name
+(( $+commands[fd] )) || alias fd='find . -type d -name'
+# Find a file with a given name
+(( $+commands[ff] )) || alias ff='find . -type f -name'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+

@@ -42,3 +42,4 @@ xfce4-verve-plugin
 xfce4-weather-plugin
 bat
 mdcat
+inotify-tools

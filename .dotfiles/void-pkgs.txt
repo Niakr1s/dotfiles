@@ -47,3 +47,5 @@ zathura
 zathura-pdf-poppler
 zathura-cb
 zathura-djvu
+ImageMagick
+atool

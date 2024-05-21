@@ -36,7 +36,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-menu" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/copy" "<Primary>c")
 (gtk_accel_path "<Actions>/ThunarStandardView/properties" "")
-(gtk_accel_path "<Actions>/ThunarStandardView/back" "")
+(gtk_accel_path "<Actions>/ThunarStandardView/back" "BackSpace")
 ; (gtk_accel_path "<Actions>/ThunarWindow/sendto-menu" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-by-mtime" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/open-location" "")

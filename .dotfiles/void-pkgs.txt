@@ -49,3 +49,4 @@ zathura-cb
 zathura-djvu
 ImageMagick
 atool
+catimg

@@ -89,7 +89,7 @@
       </property>
       <property name="ask-confirmation" type="bool" value="false"/>
       <property name="button-title" type="uint" value="3"/>
-      <property name="custom-title" type="string" value=""/>
+      <property name="custom-title" type="string" value="X"/>
     </property>
   </property>
 </channel>

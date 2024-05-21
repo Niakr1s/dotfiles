@@ -12,6 +12,7 @@ echo
 echo "Warning: Before running this script, ensure you've run this commands:"
 echo "sudo xbps-install yadm"
 echo "yadm clone $repo"
+echo "yadm checkout ~"
 echo
 
 echo "Do you wish to continue?"

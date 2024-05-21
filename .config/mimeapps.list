@@ -1,0 +1,6 @@
+[Added Associations]
+application/xml=gvim-huge.desktop;
+application/octet-stream=gvim-huge.desktop;
+
+[Default Applications]
+application/octet-stream=gvim-huge.desktop

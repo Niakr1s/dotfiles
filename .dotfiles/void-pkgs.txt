@@ -25,6 +25,7 @@ setxkbmap
 udiskie
 vscode
 w3m
+w3m-img
 wget
 xpdf
 xsel

@@ -37,3 +37,4 @@ openjdk
 xcolor
 xtools
 xfce4-sensors-plugin
+xfce4-places-plugin

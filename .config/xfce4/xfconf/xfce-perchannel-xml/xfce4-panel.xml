@@ -67,7 +67,12 @@
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-12" type="string" value="clock"/>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="digital-time-format" type="string" value="%T"/>
+      <property name="mode" type="uint" value="2"/>
+      <property name="digital-date-font" type="string" value="Fira Code weight=450 8"/>
+      <property name="digital-time-font" type="string" value="Fira Code weight=450 9"/>
+    </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>

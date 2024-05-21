@@ -31,3 +31,4 @@ yadm
 zsh
 zsh-completions
 gvim-huge
+nodejs

@@ -54,3 +54,4 @@ direnv
 unzip
 fd
 fzf
+rsync

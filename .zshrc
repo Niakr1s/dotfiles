@@ -81,6 +81,7 @@ plugins=(
     fd
     fzf
     man
+    timer
 )
 
 source $ZSH/oh-my-zsh.sh

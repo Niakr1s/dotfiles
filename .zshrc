@@ -77,6 +77,7 @@ plugins=(
     direnv
     emoji
     extract
+    fancy-ctrl-z
 )
 
 source $ZSH/oh-my-zsh.sh

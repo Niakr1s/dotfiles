@@ -188,7 +188,7 @@ map <leader>bd :bd<cr>
 map <leader>ba :bufdo bd<cr>
 
 " Show buffer list
-map <leader>bl :buffers<cr>
+" map <leader>bl :buffers<cr> " Remapped it in fzf section
 
 " Next buffer
 map <leader>l :bnext<cr>
@@ -279,6 +279,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -394,4 +395,6 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \ }
 
-map <leader>z :FZF<cr>
+map <leader>zf :Files<cr>
+map <leader>zg :GFiles<cr>
+map <leader>zb :Buffers<cr>

@@ -75,6 +75,7 @@ plugins=(
     git
     copybuffer
     direnv
+    emoji
 )
 
 source $ZSH/oh-my-zsh.sh

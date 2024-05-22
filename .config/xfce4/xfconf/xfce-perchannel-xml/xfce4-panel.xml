@@ -185,7 +185,7 @@
     <property name="plugin-27" type="string" value="separator"/>
     <property name="plugin-28" type="string" value="places">
       <property name="show-button-type" type="int" value="2"/>
-      <property name="mount-open-volumes" type="bool" value="true"/>
+      <property name="mount-open-volumes" type="bool" value="false"/>
     </property>
     <property name="plugin-29" type="string" value="separator"/>
   </property>

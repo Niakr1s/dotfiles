@@ -83,6 +83,7 @@ plugins=(
     man
     timer
     vi-mode
+    wd
 )
 
 source $ZSH/oh-my-zsh.sh

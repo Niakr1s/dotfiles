@@ -76,6 +76,7 @@ plugins=(
     copybuffer
     direnv
     emoji
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -51,3 +51,4 @@ ImageMagick
 atool
 catimg
 direnv
+unzip

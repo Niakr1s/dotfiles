@@ -44,13 +44,13 @@ sudo chown $USER:$USER /mnt/d
 
 Flags description:
 
-- defaults: defaults (see `man mount`)
-- uid: set owner user to `id -u` output
-- gid: set owner group to `id -g` output
-- umask: set to 077 if we want to be the only owner of a mounted volume
+- defaults: see `man mount`
+- uid: see `id -u`
+- gid: see `id -g`
+- umask: 077 = no access for other users
 - utf8: for filename resolving
-- 2: used for priority of fschk, should be set to 2 for non-root partition
 - ro: read only for volume with windows
+- 2: used for priority of fschk, should be set to 2 for non-root partition
 
 ```fstab
 UUID="c_disk_uuid" /mnt/c ntfs defaults,uid=1000,gid=1000,umask=077,utf8,ro 0 2

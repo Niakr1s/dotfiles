@@ -84,6 +84,7 @@ plugins=(
     timer
     vi-mode
     wd
+    web-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,3 +130,4 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias ddg!='ducky'

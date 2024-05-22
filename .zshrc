@@ -82,6 +82,7 @@ plugins=(
     fzf
     man
     timer
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

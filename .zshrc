@@ -80,6 +80,7 @@ plugins=(
     fancy-ctrl-z
     fd
     fzf
+    man
 )
 
 source $ZSH/oh-my-zsh.sh

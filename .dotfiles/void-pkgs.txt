@@ -56,3 +56,4 @@ fd
 fzf
 rsync
 tree
+ntfs-3g

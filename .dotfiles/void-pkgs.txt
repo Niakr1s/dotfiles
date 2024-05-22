@@ -52,3 +52,5 @@ atool
 catimg
 direnv
 unzip
+fd
+fzf

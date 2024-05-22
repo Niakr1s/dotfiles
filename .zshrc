@@ -78,6 +78,8 @@ plugins=(
     emoji
     extract
     fancy-ctrl-z
+    fd
+    fzf
 )
 
 source $ZSH/oh-my-zsh.sh

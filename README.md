@@ -67,7 +67,7 @@ in combination with a file containing excluded directories
 Usage example:
 
 ```bash
-sudo restic --exclude-file=/home/nea/.dotfiles/backup_exclude_dirs.txt -r /mnt/backup backup / 
+sudo restic --one-file-system --exclude-caches --exclude-file=/home/nea/.dotfiles/backup_exclude_dirs.txt -r /mnt/backup backup / 
 ```
 
 ### Backuping to a file

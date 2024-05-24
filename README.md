@@ -59,6 +59,17 @@ UUID="d_disk_uuid" /mnt/d ntfs defaults,uid=1000,gid=1000,umask=077,utf8    0 2
 
 ## Backup
 
+There is a script [backup-system](.dotfiles/backup-system.sh) that handles the system backup.
+It uses `rsync` under the hood. It backups the whole root system with some sane filtering.
+Backups are made incrementally. Backup directory will be in full sync with root directory.
+It means that if you delete a file since last backup, it will be removed in backup directory as well.
+
+Example usage:
+
+```bash
+sudo backup-system -o /mnt/backup/
+```
+
 ### Backuping to a file
 
 Imagine you have a ntfs drive mounted at /mnt/d.

@@ -16,6 +16,7 @@ usage()
     echo -e "Flags:"
     echo -e "\t-b <path/to/backup/directory>: sets backup directory (required)"
     echo -e "\t-l <path/to/logfile>: set log file locaton"
+    echo -e "\t-r: restore from backup"
     echo -e "\t-d: turn on dry run"
     echo -e "\t-y: answer yes to all prompts"
 }
@@ -34,8 +35,9 @@ backup_dir=""
 dry_run=""
 logfile="/tmp/backup-system.log"
 yes=""
+restore="false"
 
-while getopts 'b:l:dy' flag; do
+while getopts 'b:l:dyr' flag; do
   case "${flag}" in
     b) backup_dir="${OPTARG}"
        if [[ $backup_dir != */ ]]
@@ -50,6 +52,8 @@ while getopts 'b:l:dy' flag; do
        ;;
     y) yes="true"
        ;;
+    r) restore="true"
+       ;;
     *) usage
        exit 1 
        ;;
@@ -63,16 +67,41 @@ then
     exit 1
 fi
 
+if [[ $restore == "false" ]]
+then
+    from="/"
+    to=$backup_dir
+else
+    from=$backup_dir
+    to="/"
+fi
+
 echo "Provided arguments:"
-echo -e "\tBackup directory: $backup_dir"
-echo -e "\tLog file path: $logfile"
-echo -e "\tDry run: $dry_run"
+echo -e "\tBackup directory: '$backup_dir'"
+echo -e "\tLog file path: '$logfile'"
+echo -e "\tDry run: '$dry_run'"
+echo -e "\tRestore: $restore"
+echo
 
-from="/"
+if [[ $restore == "true" ]]
+then
+    action="RESTORE"
+else
+    action="BACKUP"
+fi
 
+if [[ $restore == "true" ]]
+then
+    echo "WARNING: You are in RESTORE mode. It's not supposet to be run from running system."
+    echo "You probably want to boot from live cd and chroot into the system."
+    echo "ATTENTION: restore is not fully tested yet."
+    echo
+fi
+
+echo "Going to $action from '$from' to '$to'"
 if [[ $yes == "" ]]
 then
-    yes_or_abort "Do you want to start backup?"
+    yes_or_abort "Do you want to continue?"
 fi
 
 rsync -aAXHv --delete $dry_run --exclude={\

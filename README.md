@@ -70,6 +70,12 @@ Example usage:
 sudo backup-system -b /mnt/backup/
 ```
 
+You can restore backup with this script too:
+
+```bash
+sudo backup-system -b /mnt/backup/ -r
+```
+
 ### Backuping to a file
 
 Imagine you have a ntfs drive mounted at `/mnt/d`.

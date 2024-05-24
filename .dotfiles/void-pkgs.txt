@@ -57,3 +57,4 @@ fzf
 rsync
 tree
 ntfs-3g
+xfce4-xkb-plugin

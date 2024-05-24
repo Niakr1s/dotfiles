@@ -24,8 +24,8 @@ function yes_or_abort {
     while true; do
         read -p "$* [y/n]: " yn
         case $yn in
-            [Yy]*) ;;  
-            [Nn]*) echo "Aborted" ; exit  1 ;;
+            [Yy]*) return ;;  
+            [Nn]*) echo "Aborted" ; exit 1 ;;
         esac
     done
 }

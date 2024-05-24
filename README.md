@@ -67,7 +67,7 @@ It means that if you delete a file since last backup, it will be removed in back
 Example usage:
 
 ```bash
-sudo backup-system -o /mnt/backup/
+sudo backup-system -b /mnt/backup/
 ```
 
 ### Backuping to a file

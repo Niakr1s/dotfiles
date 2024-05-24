@@ -31,7 +31,7 @@ xsel
 yadm
 zsh
 zsh-completions
-gvim-huge
+vim-huge
 nodejs
 openjdk
 xcolor

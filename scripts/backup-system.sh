@@ -69,6 +69,6 @@ then
     yes_or_abort "Do you want to start backup?"
 fi
 
-rsync -aAXHv --delete --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*','/media/*','lost+found','/home/**/.cache','$backup_dir',} / $dry_run $output_dir 2>&1 | tee $logfile
+rsync -aAXHv --delete --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/**/*','/media/*','lost+found','/home/**/.cache','$backup_dir',} / $dry_run $output_dir 2>&1 | tee $logfile
 
 echo "All done. Log file: $logfile"

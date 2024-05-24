@@ -62,7 +62,7 @@ UUID="d_disk_uuid" /mnt/d ntfs defaults,uid=1000,gid=1000,umask=077,utf8    0 2
 I am using `restic` backup solution to backup full system
 in combination with a file containing excluded directories
 (devices, mount points, cache, ...):
-[`backup_exclude_dirs`](.dotfiles/backup_exclude_dirs).
+[`backup_exclude_dirs.txt`](.dotfiles/backup_exclude_dirs.txt).
 
 Usage example:
 

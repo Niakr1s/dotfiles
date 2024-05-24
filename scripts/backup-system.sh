@@ -38,6 +38,10 @@ yes=""
 while getopts 'b:l:dy' flag; do
   case "${flag}" in
     b) backup_dir="${OPTARG}"
+       if [[ $backup_dir != */ ]]
+       then
+           backup_dir+="/"
+       fi
        mkdir -p $backup_dir
        ;;
     l) logfile="${OPTARG}" 

@@ -105,15 +105,15 @@ then
 fi
 
 rsync -aAXHv --delete $dry_run --exclude={\
-'/dev/*',\
-'/proc/*',\
-'/sys/*',\
-'/tmp/*',\
-'/run/*',\
-'/mnt/**/*',\
-'/media/*',\
+'dev/*',\
+'proc/*',\
+'sys/*',\
+'tmp/*',\
+'run/*',\
+'mnt/**/*',\
+'media/*',\
 'lost+found',\
-'/home/**/.cache',\
+'home/**/.cache',\
 '$backup_dir',\
 } / $backup_dir 2>&1 | tee $logfile
 

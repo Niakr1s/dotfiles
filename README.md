@@ -59,21 +59,15 @@ UUID="d_disk_uuid" /mnt/d ntfs defaults,uid=1000,gid=1000,umask=077,utf8    0 2
 
 ## Backup
 
-There is a script [backup-system](scripts/backup-system.sh) that handles the system backup.
-It uses `rsync` under the hood. It backups the whole root system with some sane filtering.
-Backups are made incrementally. Backup directory will be in full sync with root directory.
-It means that if you delete a file since last backup, it will be removed in backup directory as well.
+I am using `restic` backup solution to backup full system
+in combination with a file containing excluded directories
+(devices, mount points, cache, ...):
+[`backup_exclude_dirs`](.dotfiles/backup_exclude_dirs).
 
-Example usage:
-
-```bash
-sudo backup-system -b /mnt/backup/
-```
-
-You can restore backup with this script too:
+Usage example:
 
 ```bash
-sudo backup-system -b /mnt/backup/ -r
+sudo restic --exclude-file=/home/nea/.dotfiles/backup_exclude_dirs.txt -r /mnt/backup backup / 
 ```
 
 ### Backuping to a file

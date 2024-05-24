@@ -1,0 +1,17 @@
+/lost+found
+/tmp/*
+
+/dev/*
+/proc/*
+/sys/*
+/run/*
+/var/cache/*
+
+/media/*
+/mnt/**/*
+
+/home/**/.cache/*
+/home/**/.var/app/ru.linux_gaming.PortProton/data/tmp/*
+/home/**/.var/app/ru.linux_gaming.PortProton/cache/*
+/home/**/.config/coc/*
+/home/**/.npm/*

@@ -179,3 +179,5 @@ _fzf_comprun() {
     *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
   esac
 }
+
+unsetopt share_history

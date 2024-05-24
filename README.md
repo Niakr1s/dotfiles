@@ -56,3 +56,32 @@ Flags description:
 UUID="c_disk_uuid" /mnt/c ntfs defaults,uid=1000,gid=1000,umask=077,utf8,ro 0 2
 UUID="d_disk_uuid" /mnt/d ntfs defaults,uid=1000,gid=1000,umask=077,utf8    0 2
 ```
+
+## Backup
+
+### Backuping to a file
+
+Imagine you have a ntfs drive mounted at /mnt/d.
+There are problems with permissions and other stuff when you try to backup ext4 to ntfs.
+Therefore, we will backup system to a file.
+
+First, create a blank non-sparce file (in this example it will be 30GB) and format it in ext4:
+
+```bash
+dd if=/dev/zero of=backup.img bs=1G count=30
+mkfs.ext4 backup.img
+```
+
+Then, mount it:
+
+```bash
+mount backup.img /mnt/backup
+```
+
+After doing this, you can backup at `/mnt/backup`!
+
+If needed, you can resize this file:
+
+```bash
+resize2fs backup.img 40G
+```

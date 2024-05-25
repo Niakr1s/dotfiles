@@ -182,6 +182,6 @@ _fzf_comprun() {
 
 unsetopt share_history
 
-alias xbi='sudo xbps-install'
-alias xbr='sudo xbps-remove'
-alias xbq='xbps-query'
+# alias xbi='sudo xbps-install'
+# alias xbr='sudo xbps-remove'
+# alias xbq='xbps-query'

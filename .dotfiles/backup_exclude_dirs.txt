@@ -16,3 +16,4 @@
 /home/**/.config/coc/*
 /home/**/.npm/*
 /home/**/Downloads/*
+/home/**/VM/*

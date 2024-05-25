@@ -15,3 +15,4 @@
 /home/**/.var/app/ru.linux_gaming.PortProton/cache/*
 /home/**/.config/coc/*
 /home/**/.npm/*
+/home/**/Downloads/*

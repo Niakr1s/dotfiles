@@ -1,7 +1,8 @@
 ImageMagick-7.1.1.29_1
-alsa-pipewire-1.0.5_1
+alsa-pipewire-1.0.6_1
 arc-icon-theme-20161122_1
 arc-theme-20221218_1
+aria2-1.37.0_1
 atool-0.39.0_6
 base-system-0.114_2
 bat-0.24.0_2
@@ -44,6 +45,7 @@ htop-3.3.0_1
 icoutils-0.32.3_1
 inotify-tools-3.20.11.0_1
 kitty-0.34.1_1
+libvirt-10.0.0_1
 lightdm-1.32.0_5
 lightdm-gtk3-greeter-2.0.9_1
 lvm2-2.03.23_1
@@ -59,7 +61,8 @@ ntfs-3g-2022.10.3_1
 octoxbps-0.3.3_1
 openjdk-8u999_1
 orca-46.0_1
-pipewire-1.0.5_1
+pipewire-1.0.6_1
+qemu-8.2.1_1
 ranger-1.9.3_5
 restic-0.16.4_1
 rofi-1.7.5_1
@@ -71,6 +74,7 @@ udiskie-2.5.2_1
 udisks2-2.10.1_1
 unzip-6.0_15
 vim-huge-9.1.0407_1
+virt-manager-4.1.0_3
 void-docs-browse-2024.03.14_1
 void-live-audio-0.1.1_1
 void-repo-multilib-6_4

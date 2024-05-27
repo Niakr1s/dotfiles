@@ -188,3 +188,6 @@ unsetopt share_history
 # alias xbq='xbps-query'
 
 alias zyp="sudo zypper"
+
+# Turn on spell correction for commands
+setopt correct

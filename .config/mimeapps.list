@@ -2,6 +2,26 @@
 application/xml=gvim-huge.desktop;
 application/octet-stream=gvim-huge.desktop;
 image/jpeg=org.xfce.ristretto.desktop;
+x-scheme-handler/http=userapp-Firefox-QK7BO2.desktop;
+x-scheme-handler/https=userapp-Firefox-QK7BO2.desktop;
+x-scheme-handler/chrome=userapp-Firefox-QK7BO2.desktop;
+text/html=userapp-Firefox-QK7BO2.desktop;
+application/x-extension-htm=userapp-Firefox-QK7BO2.desktop;
+application/x-extension-html=userapp-Firefox-QK7BO2.desktop;
+application/x-extension-shtml=userapp-Firefox-QK7BO2.desktop;
+application/xhtml+xml=userapp-Firefox-QK7BO2.desktop;
+application/x-extension-xhtml=userapp-Firefox-QK7BO2.desktop;
+application/x-extension-xht=userapp-Firefox-QK7BO2.desktop;
 
 [Default Applications]
 application/octet-stream=gvim-huge.desktop
+x-scheme-handler/http=userapp-Firefox-QK7BO2.desktop
+x-scheme-handler/https=userapp-Firefox-QK7BO2.desktop
+x-scheme-handler/chrome=userapp-Firefox-QK7BO2.desktop
+text/html=userapp-Firefox-QK7BO2.desktop
+application/x-extension-htm=userapp-Firefox-QK7BO2.desktop
+application/x-extension-html=userapp-Firefox-QK7BO2.desktop
+application/x-extension-shtml=userapp-Firefox-QK7BO2.desktop
+application/xhtml+xml=userapp-Firefox-QK7BO2.desktop
+application/x-extension-xhtml=userapp-Firefox-QK7BO2.desktop
+application/x-extension-xht=userapp-Firefox-QK7BO2.desktop

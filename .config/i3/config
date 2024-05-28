@@ -109,6 +109,7 @@ for_window [title="Volume Control"] floating enable
 for_window [title="Thunar"] floating enable
 for_window [title="^nmtui*"] floating enable
 for_window [class="[Nn]m-connection-editor"] floating enable
+for_window [class="[Vv]irt-manager"] floating enable
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal

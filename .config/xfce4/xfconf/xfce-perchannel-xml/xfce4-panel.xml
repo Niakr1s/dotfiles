@@ -86,7 +86,8 @@
       <property name="small" type="bool" value="true"/>
       <property name="show-tooltips" type="bool" value="true"/>
       <property name="show-button-title" type="bool" value="true"/>
-      <property name="button-icon" type="string" value="xfce4-button-opensuse-16"/>
+      <property name="button-icon" type="string" value="desktop-environment-xfce"/>
+      <property name="show-menu-icons" type="bool" value="true"/>
     </property>
     <property name="plugin-5" type="string" value="separator">
       <property name="expand" type="empty"/>

@@ -42,8 +42,8 @@ exec --no-startup-id nitrogen --restore
 
 # --- Monitors ---
 
-set $LEFT_MON HDMI-A-0
-set $RIGHT_MON HDMI-A-1
+set $LEFT_MON HDMI-1
+set $RIGHT_MON HDMI-2
 
 # Sets left hdmi monitor as primary
 exec --no-startup-id xrandr --output $LEFT_MON --primary

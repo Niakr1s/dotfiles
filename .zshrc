@@ -188,11 +188,11 @@ _fzf_comprun() {
 
 unsetopt share_history
 
-# alias xbi='sudo xbps-install'
-# alias xbr='sudo xbps-remove'
-# alias xbq='xbps-query'
+alias xbi='sudo xbps-install'
+alias xbr='sudo xbps-remove'
+alias xbq='xbps-query'
 
-alias zyp="sudo zypper"
+# alias zyp="sudo zypper"
 
 # Turn on spell correction for commands
 setopt correct

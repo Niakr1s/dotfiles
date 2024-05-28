@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # Font
-font pango:Droid Sans 9
+font pango:Noto Sans 8
 
 # Compiz manager
 exec --no-startup-id picom -b

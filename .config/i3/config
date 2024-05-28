@@ -12,20 +12,22 @@
 set $mod Mod4
 
 # Font
-font pango:Droid Sans 9
+# font pango:Droid Sans 9
+# font pango:Fira Code 9
+font pango:Noto Sans 8
 
 # Compiz manager
 exec --no-startup-id picom -b
 
 # Add russian keyboard
-exec --no-startup-id setxkbmap us,ru -option grp:caps_toggle 
-# exec --no-startup-id setxkbmap us,ru -option grp:win_space_toggle 
+# exec --no-startup-id setxkbmap us,ru -option grp:caps_toggle 
+exec --no-startup-id setxkbmap us,ru -option grp:win_space_toggle 
 
 
 # --- System Tray ---
 # 
 # Keyboard layout
-# exec --no-startup-id fbxkb
+exec --no-startup-id fbxkb
 # Udiskie
 exec --no-startup-id udiskie -At
 # NetworkManager
@@ -35,7 +37,7 @@ exec --no-startup-id pasystray
 
 
 # Pipewire should be placed after pasystray
-# exec --no-startup-id pipewire
+exec --no-startup-id pipewire
 
 # Wallpapers
 exec --no-startup-id nitrogen --restore
@@ -118,7 +120,8 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-bindcode $mod+40 exec "rofi -show combi -modes combi -combi-modes window,drun,run"
+# bindcode $mod+40 exec "rofi -show combi -modes combi -combi-modes window,drun,run"
+bindsym $mod+r exec "rofi -show combi -modes combi -combi-modes window,drun,run"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -190,9 +193,11 @@ set $ws0 "0"
 # glue 0 workspace to right monitor
 workspace $ws0 output $RIGHT_MON
 
+# use 'xprop' to get window class
+
 # glue firefox to 0 workspace
-assign [class="^Firefox-esr$"] $ws0
-assign [class="^firefox$"] $ws0
+assign [class="^[Ff]irefox-esr$"] $ws0
+assign [class="^[Ff]irefox$"] $ws0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -227,6 +232,8 @@ bindsym $mod+Shift+r restart
 
 
 bindsym $mod+Shift+Escape exec "xfce4-taskmanager", mode "default"
+# bindsym $mod+Print exec "xfce4-screenshooter", mode "default"
+bindsym $mod+Shift+S exec "maim -s /tmp/$(date +%s).png | xsel", mode "default"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -253,7 +260,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+d mode "resize"
 
 # Shutdown, reboot, lockscreen
 

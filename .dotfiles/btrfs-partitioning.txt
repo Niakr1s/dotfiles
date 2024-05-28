@@ -1,0 +1,76 @@
+# fstab
+
+# boot
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /boot/grub2/x86_64-efi  btrfs  subvol=/@/boot/grub2/x86_64-efi             0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /boot/grub2/i386-pc     btrfs  subvol=/@/boot/grub2/i386-pc                0  0
+
+# 80GB drive (root)
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /                       btrfs  defaults,compress=zstd                      0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /.snapshots             btrfs  subvol=/@/.snapshots,compress=zstd          0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /var                    btrfs  subvol=/@/var,compress=zstd                 0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /usr/local              btrfs  subvol=/@/usr/local,compress=zstd           0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /srv                    btrfs  subvol=/@/srv,compress=zstd                 0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /root                   btrfs  subvol=/@/root,compress=zstd                0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /opt                    btrfs  subvol=/@/opt,compress=zstd                 0  0
+UUID=f4f83c00-161d-4ec1-888f-ae03376308af  /home                   btrfs  subvol=/@/home,compress=zstd                0  0
+
+# lsblk
+
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda      8:0    1 465.8G  0 disk 
+├─sda1   8:1    1 149.4G  0 part 
+└─sda2   8:2    1 316.3G  0 part 
+sdb      8:16   1 931.5G  0 disk 
+└─sdb2   8:18   1 930.5G  0 part 
+sdc      8:32   1  74.5G  0 disk 
+├─sdc1   8:33   1     8M  0 part 
+└─sdc2   8:34   1  74.5G  0 part /root
+                                 /var
+                                 /home
+                                 /srv
+                                 /boot/grub2/i386-pc
+                                 /opt
+                                 /usr/local
+                                 /boot/grub2/x86_64-efi
+                                 /.snapshots
+                                 /
+
+# btrfs list /
+
+ID 256 gen 30 top level 5 path @
+ID 257 gen 3023 top level 256 path @/var
+ID 258 gen 2871 top level 256 path @/usr/local
+ID 259 gen 2177 top level 256 path @/srv
+ID 260 gen 2933 top level 256 path @/root
+ID 261 gen 1943 top level 256 path @/opt
+ID 262 gen 3023 top level 256 path @/home
+ID 263 gen 2177 top level 256 path @/boot/grub2/x86_64-efi
+ID 264 gen 1200 top level 256 path @/boot/grub2/i386-pc
+ID 265 gen 3002 top level 256 path @/.snapshots
+ID 266 gen 3019 top level 265 path @/.snapshots/1/snapshot
+ID 268 gen 1337 top level 265 path @/.snapshots/2/snapshot
+ID 287 gen 3002 top level 262 path @/home/.snapshots
+ID 289 gen 1490 top level 287 path @/home/.snapshots/1/snapshot
+ID 293 gen 1508 top level 287 path @/home/.snapshots/2/snapshot
+ID 300 gen 1645 top level 287 path @/home/.snapshots/3/snapshot
+ID 301 gen 1653 top level 265 path @/.snapshots/30/snapshot
+ID 302 gen 1656 top level 265 path @/.snapshots/31/snapshot
+ID 303 gen 2177 top level 257 path @/var/lib/machines
+ID 304 gen 1839 top level 265 path @/.snapshots/32/snapshot
+ID 305 gen 1843 top level 265 path @/.snapshots/33/snapshot
+ID 306 gen 1859 top level 287 path @/home/.snapshots/4/snapshot
+ID 307 gen 1977 top level 265 path @/.snapshots/34/snapshot
+ID 308 gen 1980 top level 287 path @/home/.snapshots/5/snapshot
+ID 309 gen 1987 top level 265 path @/.snapshots/35/snapshot
+ID 310 gen 2099 top level 287 path @/home/.snapshots/6/snapshot
+ID 311 gen 2217 top level 287 path @/home/.snapshots/7/snapshot
+ID 312 gen 2250 top level 265 path @/.snapshots/36/snapshot
+ID 313 gen 2255 top level 265 path @/.snapshots/37/snapshot
+ID 314 gen 2338 top level 287 path @/home/.snapshots/8/snapshot
+ID 315 gen 2458 top level 287 path @/home/.snapshots/9/snapshot
+ID 316 gen 2515 top level 265 path @/.snapshots/38/snapshot
+ID 317 gen 2522 top level 265 path @/.snapshots/39/snapshot
+ID 318 gen 2579 top level 287 path @/home/.snapshots/10/snapshot
+ID 319 gen 2693 top level 287 path @/home/.snapshots/11/snapshot
+ID 320 gen 2805 top level 287 path @/home/.snapshots/12/snapshot
+ID 321 gen 2962 top level 287 path @/home/.snapshots/13/snapshot

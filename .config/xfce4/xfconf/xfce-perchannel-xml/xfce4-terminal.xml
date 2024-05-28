@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-terminal" version="1.0">
-  <property name="font-name" type="string" value="Fira Code 9"/>
-  <property name="font-use-system" type="bool" value="false"/>
+  <property name="font-name" type="string" value="Hack 9"/>
+  <property name="font-use-system" type="bool" value="true"/>
   <property name="misc-toolbar-default" type="bool" value="false"/>
   <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_TRANSPARENT"/>
   <property name="background-darkness" type="double" value="0.80000000000000004"/>

@@ -14,6 +14,9 @@ set $mod Mod4
 # Font
 font pango:Noto Sans 8
 
+# Disks
+exec --no-startup-id udiskie-mount -a &
+
 # Compiz manager
 exec --no-startup-id picom -b
 

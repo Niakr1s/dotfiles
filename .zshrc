@@ -196,3 +196,7 @@ alias zyp="sudo zypper"
 
 # Turn on spell correction for commands
 setopt correct
+
+cht() {
+    cht.sh "$@" | less
+}

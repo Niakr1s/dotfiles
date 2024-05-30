@@ -53,10 +53,10 @@ exec --no-startup-id xrandr --output $LEFT_MON --primary
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Right monitor: ON (o), OFF (f)
+set $mode_display Display mode: (1) monitor, (2) monitors
 mode "$mode_display" {
-    bindsym o exec --no-startup-id xrandr --output $RIGHT_MON --auto --right-of $LEFT_MON, mode "default"
-    bindsym f exec --no-startup-id xrandr --output $RIGHT_MON --auto --off, mode "default"
+    bindsym 1 exec --no-startup-id xrandr --output $RIGHT_MON --auto --off, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output $RIGHT_MON --auto --right-of $LEFT_MON, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

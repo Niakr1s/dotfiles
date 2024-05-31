@@ -24,8 +24,11 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 # separator_block_width=15
 # markup=none
 
-[music]
+[mediaplayer]
 interval=3
+
+# [music]
+# interval=3
 
 [disk]
 label=/ 

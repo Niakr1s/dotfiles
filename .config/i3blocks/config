@@ -1,20 +1,62 @@
-# i3blocks configuration file
+# List of valid properties:
 #
-# The i3blocks man page describes the usage of the binary,
-# and its website describes the configuration:
-#
-#     https://vivien.github.io/i3blocks
-
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
 
 # Global properties
-separator=true
-separator_block_width=15
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME
+# separator_block_width=15
+# markup=none
 
 [music]
-command=~/.config/i3blocks/scripts/now_playing.sh
-interval=1
-align=center
+interval=3
+
+[disk]
+label=/ 
+DIR=/
+#ALERT_LOW=10
+interval=30
+
+[memory]
+label=RAM 
+#instance=swap
+interval=30
+
+[temperature]
+label=C 
+interval=10
+SENSOR_CHIP="coretemp-isa-0000"
+#T_WARN=70
+#T_CRIT=90
+separator=false
+
+[temperature]
+label=G 
+interval=10
+SENSOR_CHIP="amdgpu-pci-0100"
+
+[iface]
+IFACE=enp5s1
+color=#00FF00
+interval=10
+#ADDRESS_FAMILY=inet6?
 
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%a %Y-%m-%d %H:%M:%S'
 interval=1

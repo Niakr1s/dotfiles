@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+artist=$(playerctl metadata artist)
+
+if [[ artist != "" ]]
+then
+    title=$(playerctl metadata title)
+    echo "$artist - $title"
+fi

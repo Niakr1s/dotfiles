@@ -102,6 +102,7 @@ for_window [window_role="toolbox"] floating enable
 for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+for_window [class="Yad"] floating enable
 
 # You can also use title rules and regular expressions: 
 for_window [title="Preferences$"] floating enable
@@ -282,7 +283,8 @@ bindsym $mod+Pause mode "$mode_system"
 # finds out, if available)
 bar {
         # status_command i3status
-        status_command i3blocks
+        # status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
+        status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
         tray_output primary
         # i3bar_command i3bar --transparency
 }

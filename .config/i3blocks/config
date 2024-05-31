@@ -1,0 +1,20 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[music]
+command=~/.config/i3blocks/scripts/now_playing.sh
+interval=1
+align=center
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1

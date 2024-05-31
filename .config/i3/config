@@ -281,9 +281,10 @@ bindsym $mod+Pause mode "$mode_system"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        # status_command i3status
+        status_command i3blocks
         tray_output primary
-        i3bar_command i3bar --transparency
+        # i3bar_command i3bar --transparency
 }
 
 # Color shemes for windows 
@@ -298,3 +299,8 @@ set $in-text    #969696
 # client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
 # client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
 # client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor 
+
+# Music controls
+bindsym $mod+Ctrl+z exec playerctl previous
+bindsym $mod+Ctrl+x exec playerctl play-pause
+bindsym $mod+Ctrl+c exec playerctl next

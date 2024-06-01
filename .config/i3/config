@@ -306,3 +306,6 @@ set $in-text    #969696
 bindsym $mod+Ctrl+z exec playerctl previous
 bindsym $mod+Ctrl+x exec playerctl play-pause
 bindsym $mod+Ctrl+c exec playerctl next
+
+# Screenshots
+bindsym Print exec ~/.local/bin/screenshot.sh

@@ -52,7 +52,7 @@ schedule2 = watch_directory,5,5,load.start=~/.rtorrent/watch/*.torrent
 
 # Close torrents when disk-space is low.
 #
-#schedule2 = low_diskspace,5,60,close_low_diskspace=100M
+schedule2 = low_diskspace,5,60,close_low_diskspace=100M
 
 # The IP address reported to the tracker.
 #

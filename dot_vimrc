@@ -191,6 +191,9 @@ vnoremap <leader>s :AIEdit summarize<CR>
 " Open AI Chat buffer
 nnoremap <leader>c :AIChat<CR>
 
+" F2: Toggle line numbers (switches between number and no number)
+nnoremap <F2> :set number! relativenumber!<CR>
+
 " GUI Switcher (SWITCHES TO SUBLIME, SWITCH EXECUTIBLE FOR DIFFERENT GUI EDITOR)
 command! GUI write | execute '!code --wait ' . shellescape(expand('%:p'))
 

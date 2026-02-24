@@ -100,6 +100,9 @@ Plug 'madox2/vim-ai'
 Plug 'ap/vim-css-color'
 Plug 'c9rgreen/vim-colors-modus'
 
+"Chezmoi
+Plug 'Lilja/vim-chezmoi'
+
 call plug#end()
 
 " =============================================================================================
@@ -156,6 +159,9 @@ let g:NERDTreeWinSize = 40
 " Side-bar QoL
 let g:NERDTreeQuitOnOpen = 1
 let g:tagbar_autoclose   = 0
+
+" Chezmoi setup
+let g:chezmoi = 'enabled'
 
 " =============================================================================================
 " General Keybindings

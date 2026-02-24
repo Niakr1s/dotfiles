@@ -1,0 +1,8 @@
+system:
+  disable_runtime: true
+  env:
+    PROTON_ENABLE_HDR: '1'
+    PROTON_ENABLE_WAYLAND: '1'
+wine:
+  custom_wine_path: /opt/wine-cachyos/bin/wine
+  version: proton-cachyos-slr

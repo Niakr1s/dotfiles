@@ -3,21 +3,21 @@
   "position": "top",
 
   "modules-left": [
-    "hyprland/language",
     "hyprland/workspaces"
   ],
 
   "modules-center": [
-    "clock",
     "custom/music"
   ],
 
   "modules-right": [
-    "pulseaudio",
     "network",
     "cpu",
     "memory",
-    "tray"
+    "tray",
+    "pulseaudio",
+    "clock",
+    "hyprland/language"
   ],
 
   "hyprland/language": {
@@ -90,8 +90,9 @@
   },
 
   "pulseaudio": {
-    "format": "{icon} {volume:2}%",
-    "format-muted": " 00%",
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "scroll-step": 5,
     "format-icons": {
       "default": [""]
     },

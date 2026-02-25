@@ -40,6 +40,7 @@ button {
   border: 0px solid transparent;
 }
 
+#language,
 #tray,
 #backlight,
 #clock,
@@ -55,18 +56,18 @@ button {
 #custom-docker {
   background-color: #101010;
   padding: 0.5rem 1rem;
-  margin: 5px 0;
+  margin: 2px 0;
 }
 
 #clock {
   color: #8caaee;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 #custom-weather {
   color: #8caaee;
   margin-left: 0.5rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 #battery {
@@ -91,8 +92,8 @@ button {
 }
 
 #pulseaudio {
-  color: #ea999c;
-  border-radius: 5px 0px 0px 5px;
+  /* color: #ea999c; */
+  /* border-radius: 5px 0px 0px 5px; */
 }
 
 #custom-docker {
@@ -113,7 +114,7 @@ button {
 
 #custom-power {
   margin-right: 1rem;
-  border-radius: 0px 5px 5px 0px;
+  /* border-radius: 0px 5px 5px 0px; */
   color: #e78284;
 }
 

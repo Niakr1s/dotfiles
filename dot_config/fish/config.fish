@@ -12,3 +12,4 @@ alias vim "nvim"
 export EDITOR=nvim
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --ignore .git"
+export v2rayn_proxy="127.0.0.1:10808"

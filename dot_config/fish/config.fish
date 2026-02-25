@@ -8,4 +8,5 @@ end
 
 fish_add_path ~/.local/bin
 
+alias vim "nvim"
 export EDITOR=vim

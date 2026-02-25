@@ -10,6 +10,7 @@ fish_add_path ~/.local/bin
 
 alias vim "nvim"
 export EDITOR=nvim
+alias vimdiff "nvim -d"
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --ignore .git"
 export v2rayn_proxy="127.0.0.1:10808"

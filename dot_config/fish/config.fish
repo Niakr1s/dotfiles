@@ -11,3 +11,4 @@ fish_add_path ~/.local/bin
 alias vim "nvim"
 alias vimdiff "nvim -d"
 alias logout "hyprctl dispatch exit"
+alias cz "chezmoi"

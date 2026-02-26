@@ -79,6 +79,7 @@ hwinfo
 hyprland
 hyprpaper
 hyprpolkitagent
+hyprshot
 inetutils
 intel-ucode
 iptables-nft

@@ -76,7 +76,9 @@ gvim
 hdparm
 hwdetect
 hwinfo
+hypridle
 hyprland
+hyprlock
 hyprpaper
 hyprpolkitagent
 hyprshot

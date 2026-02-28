@@ -18,8 +18,7 @@
     "tray",
     "pulseaudio",
     "hyprland/language",
-    "clock",
-    "custom/power"
+    "clock"
   ],
 
   "disk": {

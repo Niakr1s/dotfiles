@@ -43,11 +43,13 @@ code
 cpupower
 cryptsetup
 ctags
+dconf-editor
 device-mapper
 diffutils
 dmidecode
 dmraid
 dnsmasq
+docker
 dosfstools
 duf
 dunst
@@ -65,6 +67,7 @@ firefox
 fsarchiver
 fuzzel
 gamescope
+gimp
 git
 github-cli
 glances
@@ -125,6 +128,9 @@ mpv
 mtools
 nano
 nano-syntax-highlighting
+nemo
+nemo-compare
+nemo-fileroller
 neovim-git
 netctl
 networkmanager
@@ -143,6 +149,8 @@ nvidia-utils
 nwg-displays
 nwg-look
 octopi
+ollama
+ollama-cuda
 opencl-nvidia
 openssh
 opusfile
@@ -185,11 +193,13 @@ sg3_utils
 smartmontools
 snapper
 sof-firmware
+sqlitebrowser
 stow
 sudo
 sxiv
 sysfsutils
 texinfo
+tree
 ttf-bitstream-vera
 ttf-dejavu
 ttf-jetbrains-mono-nerd
@@ -203,8 +213,10 @@ unzip
 upower
 usb_modeswitch
 usbutils
+uv
 uwsm
 v2rayn-bin
+veracrypt
 vk-hdr-layer-kwin6-git
 vlc-plugins-all
 vulkan-icd-loader

@@ -1,0 +1,15 @@
+clients:
+  - type: openai-compatible
+    name: ollama
+    api_base: http://localhost:11434/v1
+    models:
+      - name: qwen3:14b
+        max_input_tokens: 200000
+        supports_reasoning: true
+
+      - name: qwen3-embedding:8b
+        type: embedding
+        default_chunk_size: 1500
+        max_batch_size: 100
+        max_input_tokens: 200000
+        max_tokens_per_chunk: 2000

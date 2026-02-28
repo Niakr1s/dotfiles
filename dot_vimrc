@@ -41,7 +41,7 @@ set clipboard=unnamedplus     " Use system clipboard
 set hidden                    " Allow switching buffers without saving
 set mouse=a                   " Enable mouse support
 set autoread
-set conceallevel=0
+autocmd VimEnter * set conceallevel=0 " fix concelalevel
 
 set background=dark
 " Use truecolor if available
@@ -570,43 +570,43 @@ cnoreabbrev <expr> wq
 " =============================================================================================
 
 " Persistent View block with guarded function
-augroup AutoView
-  autocmd!
-  autocmd BufWinLeave * call <SID>AutoViewSave()
-  autocmd BufWinEnter * call <SID>AutoViewLoad()
-augroup END
+" augroup AutoView
+  " autocmd!
+  " autocmd BufWinLeave * call <SID>AutoViewSave()
+  " autocmd BufWinEnter * call <SID>AutoViewLoad()
+" augroup END
 
-function! s:AutoViewSave() abort
-  if exists('g:smart_quitting') | return | endif
-  if &buftype ==# '' | silent! mkview | endif
-endfunction
+" function! s:AutoViewSave() abort
+  " if exists('g:smart_quitting') | return | endif
+  " if &buftype ==# '' | silent! mkview | endif
+" endfunction
 
-function! s:AutoViewLoad() abort
-  if exists('g:smart_quitting') | return | endif
-  if &buftype ==# '' | silent! loadview | endif
-endfunction
+" function! s:AutoViewLoad() abort
+  " if exists('g:smart_quitting') | return | endif
+  " if &buftype ==# '' | silent! loadview | endif
+" endfunction
 
 " Auto-save session on exit *if* we started with no files
-augroup AutoSession
-  autocmd!
-  autocmd VimLeavePre * if argc() == 0 | silent! mksession! ~/.vim/session.vim | endif
-augroup END
+" augroup AutoSession
+  " autocmd!
+  " autocmd VimLeavePre * if argc() == 0 | silent! mksession! ~/.vim/session.vim | endif
+" augroup END
 
 " Auto-load session on start *only* if no files were given
-if argc() == 0 && filereadable(expand('~/.vim/session.vim'))
-  silent! source ~/.vim/session.vim
-endif
+" if argc() == 0 && filereadable(expand('~/.vim/session.vim'))
+"   silent! source ~/.vim/session.vim
+" endif
 
 " Persistent undo
-set undofile
-if !isdirectory($HOME.'/.vim/undo') | call mkdir($HOME.'/.vim/undo', 'p') | endif
-set undodir=~/.vim/undo
+" set undofile
+" if !isdirectory($HOME.'/.vim/undo') | call mkdir($HOME.'/.vim/undo', 'p') | endif
+" set undodir=~/.vim/undo
 
 " Ensure autopairs initializes whenever a real buffer becomes active
-augroup AutoPairsInitShim
-  autocmd!
-  autocmd BufEnter,FileType,InsertEnter * if exists('*AutoPairsTryInit') | call AutoPairsTryInit() | endif
-augroup END
+" augroup AutoPairsInitShim
+  " autocmd!
+  " autocmd BufEnter,FileType,InsertEnter * if exists('*AutoPairsTryInit') | call AutoPairsTryInit() | endif
+" augroup END
 
 " =============================================================================================
 " Quit Guard to Ignore Layout Events (Allows smart :q and smart :wq to function properly)
@@ -634,3 +634,5 @@ function! s:_sqg_on() abort
   " auto-restore after a short delay (if Vim didn't exit)
   call timer_start(250, {-> execute('let &eventignore=get(t:, "_sqg_ei", "") | silent! unlet t:_sqg_ei | silent! unlet g:smart_quitting')})
 endfunction
+
+set concealcursor=

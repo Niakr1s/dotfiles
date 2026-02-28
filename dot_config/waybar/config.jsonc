@@ -51,7 +51,8 @@
     "interval": 3,
     "tooltip": false,
     "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
-    "on-click": "playerctl play-pause"
+    "on-click": "playerctl play-pause",
+    "max-length": 64
   },
 
   "clock": {

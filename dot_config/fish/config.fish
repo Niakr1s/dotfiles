@@ -11,7 +11,8 @@ end
 alias logout "hyprctl dispatch exit"
 alias cz "chezmoi"
 alias pkglist_size "pacman -Qi | grep -E '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB"
-alias qwen "ollama run qwen3:14b"
+alias oqwen "ollama run qwen3:14b"
+alias ostop "ollama ps | awk 'NR>1 {print \$1}' | xargs -I {} ollama stop {}"
 
 
 # CORE

@@ -10,6 +10,7 @@ end
 
 alias logout "hyprctl dispatch exit"
 alias cz "chezmoi"
+alias pkglist_size "pacman -Qi | grep -E '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB"
 
 
 # CORE

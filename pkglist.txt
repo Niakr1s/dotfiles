@@ -1,4 +1,5 @@
 accountsservice
+aichat
 alacritty
 alsa-firmware
 alsa-plugins

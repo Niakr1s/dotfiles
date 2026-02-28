@@ -14,11 +14,18 @@
     "network",
     "cpu",
     "memory",
+    "disk",
     "tray",
     "pulseaudio",
     "clock",
     "hyprland/language"
   ],
+
+  "disk": {
+    "interval": 30,
+    "format": " {specific_used:0.1f}/{specific_total:0.1f}G",
+    "unit": "GB"
+  },
 
   "hyprland/language": {
     "format": "{short}"

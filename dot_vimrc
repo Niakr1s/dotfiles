@@ -41,6 +41,7 @@ set clipboard=unnamedplus     " Use system clipboard
 set hidden                    " Allow switching buffers without saving
 set mouse=a                   " Enable mouse support
 set autoread
+set conceallevel=0
 
 set background=dark
 " Use truecolor if available

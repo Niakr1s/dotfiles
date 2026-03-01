@@ -27,7 +27,7 @@ syntax on                     " Enable syntax highlighting
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 set number                    " Show absolute line numbers
-set relativenumber            " Show relative numbers (great for motions)
+" set relativenumber            " Show relative numbers (great for motions)
 set cursorline                " Highlight current line
 set showmatch                 " Highlight matching bracket
 set ignorecase smartcase      " Case-insensitive search unless uppercase used

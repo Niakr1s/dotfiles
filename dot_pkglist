@@ -45,6 +45,7 @@ cliphist
 cmake
 cmus
 code
+cpio
 cpupower
 cryptsetup
 ctags
@@ -149,6 +150,7 @@ mangohud
 mdadm
 meld
 mesa-utils
+meson
 mkinitcpio
 modemmanager
 mpv
@@ -165,6 +167,7 @@ networkmanager
 networkmanager-openvpn
 nfs-utils
 nilfs-utils
+ninja
 niri
 nmap
 noctalia-shell

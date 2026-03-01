@@ -1,0 +1,23 @@
+{
+    "Books": {
+        "save_path": ""
+    },
+    "Games": {
+        "save_path": ""
+    },
+    "Soft": {
+        "save_path": ""
+    },
+    "Video": {
+        "save_path": ""
+    },
+    "Video/Anime": {
+        "save_path": ""
+    },
+    "Video/Movies": {
+        "save_path": ""
+    },
+    "Video/Series": {
+        "save_path": ""
+    }
+}

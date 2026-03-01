@@ -29,6 +29,7 @@ cachyos-plymouth-bootanimation
 cachyos-rate-mirrors
 cachyos-settings
 cachyos-snapper-support
+cachyos-themes-sddm
 cachyos-v3-mirrorlist
 cachyos-v4-mirrorlist
 cachyos-wallpapers
@@ -39,6 +40,7 @@ catppuccin-gtk-theme-mocha
 catppuccin-qt5ct-git
 chezmoi
 chwd
+cliphist
 cmus
 code
 cpupower
@@ -77,6 +79,7 @@ gst-plugin-pipewire
 gst-plugins-bad
 gst-plugins-ugly
 gvim
+handbrake
 hdparm
 hwdetect
 hwinfo
@@ -113,6 +116,7 @@ linux-cachyos-lts-nvidia-open
 linux-cachyos-nvidia-open
 linux-firmware
 logrotate
+losslesscut-bin
 lsb-release
 lsscsi
 lutris
@@ -138,6 +142,8 @@ networkmanager
 networkmanager-openvpn
 nfs-utils
 nilfs-utils
+niri
+noctalia-shell
 nodejs
 noto-fonts
 noto-fonts-cjk
@@ -149,6 +155,7 @@ nvidia-settings
 nvidia-utils
 nwg-displays
 nwg-look
+obs-studio
 octopi
 ollama
 ollama-cuda
@@ -200,9 +207,11 @@ sudo
 sxiv
 sysfsutils
 texinfo
+tmux
 tree
 ttf-bitstream-vera
 ttf-dejavu
+ttf-hack-nerd
 ttf-jetbrains-mono-nerd
 ttf-liberation
 ttf-meslo-nerd
@@ -230,6 +239,7 @@ wireless-regdb
 wireplumber
 wl-clipboard
 wlogout
+wlsunset
 wpa_supplicant
 xdg-desktop-portal-hyprland
 xdg-user-dirs
@@ -238,3 +248,4 @@ xl2tpd
 xorg-xwayland
 yazi
 yt-dlp
+zellij

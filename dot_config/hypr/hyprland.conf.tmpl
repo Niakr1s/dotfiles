@@ -61,6 +61,7 @@ $terminal = kitty
 $fileManager = nemo
 $menu = fuzzel
 $browser = firefox
+$editor = vim
 
 # Hyprshot variables
 $HYPRSHOT_DIR = ~/Pictures/.screenshots
@@ -92,6 +93,15 @@ env = HYPRCURSOR_SIZE,24
 env = QT_QPA_PLATFORMTHEME,qt6ct
 env = MON,$MON
 env = MON1,$MON1
+
+env = v2rayn_proxy,"127.0.0.1:10808"
+env = http_proxy,"http://$v2rayn_proxy"
+env = https_proxy,"http://$v2rayn_proxy"
+env = no_proxy,"localhost,127.0.0.1"
+
+env = EDITOR,$editor
+env = TERMINAL,$terminal
+env = TERM,$terminal
 
 
 ###################

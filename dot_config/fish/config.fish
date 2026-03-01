@@ -5,13 +5,6 @@ function fish_greeting
     # smth smth
 end
 
-# CORE
-
-set EDITOR vim
-set TERMINAL kitty
-set TERM kitty
-
-
 # FZF
 
 set FZF_DEFAULT_COMMAND "fd --type f --hidden --exclude .git --exclude dosdevices --exclude drive_c"
@@ -30,14 +23,6 @@ set FZF_CTRL_R_OPTS "
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target,dosdevices,drive_c
   --preview 'tree -C {}'"
-
-
-# PROXY
-
-set v2rayn_proxy "127.0.0.1:10808"
-set http_proxy "http://$v2rayn_proxy"
-set https_proxy "http://$v2rayn_proxy"
-set no_proxy "localhost,127.0.0.1"
 
 
 # ALIASES

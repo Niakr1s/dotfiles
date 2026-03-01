@@ -79,8 +79,8 @@ $HYPRSHOT_DIR = ~/Pictures/.screenshots
 # exec-once = qs -c noctalia-shell & hyprpaper
 exec-once = waybar & hyprpaper & hypridle
 exec-once = [workspace 10 silent] $browser
-exec-once = [workspace name:= silent] /opt/v2rayn-bin/v2rayN
 exec-once = [workspace name:- silent] qbittorrent
+exec-once = [workspace name:= silent] /opt/v2rayn-bin/v2rayN
 exec-once = [workspace 1] $terminal
 
 #############################
@@ -231,7 +231,6 @@ workspace = 1, default:true, monitor:$MON
 
 workspace = name:-, defaultName:-
 workspace = name:=, defaultName:=
-workspace = name:\\, defaultName:\\
 
 # See https://wiki.hypr.land/Configuring/Dwindle-Layout/ for more
 dwindle {
@@ -329,7 +328,6 @@ bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
 bind = $mainMod, minus, workspace, name:-
 bind = $mainMod, equal, workspace, name:=
-bind = $mainMod, backslash, workspace, name:\\
 
 # Move active window to a workspace with mainMod + SHIFT + [0-9]
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -344,7 +342,6 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 bind = $mainMod SHIFT, minus, movetoworkspace, name:-
 bind = $mainMod SHIFT, equal, movetoworkspace, name:=
-bind = $mainMod SHIFT, backslash, movetoworkspace, name:\\
 
 # Move workspace to monitor
 bind = $mainMod SHIFT, bracketleft, movecurrentworkspacetomonitor, l

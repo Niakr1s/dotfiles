@@ -196,6 +196,7 @@ papirus-folders-catppuccin-git
 paru
 pavucontrol
 perl
+perl-image-exiftool
 pipewire-alsa
 pipewire-pulse
 pkgfile
@@ -217,6 +218,7 @@ python-pipx
 python-pynvim
 python-pyqt5
 python-reportlab
+python-tqdm
 qbittorrent
 qt6ct
 qutebrowser

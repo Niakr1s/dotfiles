@@ -2,22 +2,18 @@
   font-family: JetbrainsMono Nerd Font;
   font-size: 14px;
   min-height: 0;
-  padding-right: 2px;
-  padding-left: 2px;
-  padding-bottom: 0px;
 }
 
 #waybar {
   background: transparent;
   color: #c6d0f5;
-  margin: 2px 2px;
+  margin: 0px;
 }
 
 #workspaces {
-  border-radius: 5px;
-  margin: 5px;
-  background: #101010;
-  margin-left: 2px;
+  background-color: rgba(10, 10, 10, 0.8);
+  padding: 2px;
+  margin: 2px;
 }
 
 #workspaces button {
@@ -29,6 +25,7 @@
 #workspaces button.active {
   color: #99d1db;
   border-radius: 5px;
+  padding: 0.4rem;
 }
 
 button {
@@ -55,20 +52,18 @@ button {
 #custom-weather,
 #custom-uptime,
 #custom-docker {
-  background-color: #101010;
+  background-color: rgba(10, 10, 10, 0.8);
   padding: 0.5rem 1rem;
-  margin: 2px 0;
+  margin: 2px 2px;
 }
 
 #clock {
   color: #8caaee;
-  /* border-radius: 5px; */
 }
 
 #custom-weather {
   color: #8caaee;
   margin-left: 0.5rem;
-  /* border-radius: 5px; */
 }
 
 #battery {
@@ -94,7 +89,6 @@ button {
 
 #pulseaudio {
   /* color: #ea999c; */
-  /* border-radius: 5px 0px 0px 5px; */
 }
 
 #custom-docker {
@@ -115,7 +109,6 @@ button {
 
 #custom-power {
   margin-right: 1rem;
-  /* border-radius: 0px 5px 5px 0px; */
   color: #e78284;
 }
 

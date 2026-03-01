@@ -89,6 +89,7 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 hyprshot
+imsprog
 inetutils
 intel-ucode
 iptables-nft
@@ -143,6 +144,7 @@ networkmanager-openvpn
 nfs-utils
 nilfs-utils
 niri
+nmap
 noctalia-shell
 nodejs
 noto-fonts

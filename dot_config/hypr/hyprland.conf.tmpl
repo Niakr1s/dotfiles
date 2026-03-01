@@ -12,10 +12,16 @@
 
 # Be sure to update these two lines
 
+
+# See https://wiki.hypr.land/Configuring/Monitors/
+
+# DESKTOP MONITORS
+
+{{- if eq .chezmoi.hostname "desktop" }}
+
 $MON = DP-2
 $MON1 = HDMI-A-1
 
-# See https://wiki.hypr.land/Configuring/Monitors/
 monitorv2 {
   output = $MON
   mode = 2560x1440@165
@@ -31,6 +37,20 @@ monitorv2 {
   position = 2560x300
   scale = 1
 }
+
+{{- else if eq .chezmoi.hostname "laptop" }}
+
+$MON = eDP-1
+$MON1 = $MON
+
+monitorv2 {
+  output = $MON
+  mode = 1920x1080@60
+  position = 0x0
+  scale = 1
+}
+
+{{- end }}
 
 ###################
 ### MY VARIABLES ###

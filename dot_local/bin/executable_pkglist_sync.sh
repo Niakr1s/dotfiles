@@ -38,7 +38,7 @@ if [ -n "$TO_INSTALL" ]; then
     echo "The following packages will be INSTALLED:"
     echo "$TO_INSTALL"
     if confirm "Proceed with installation?"; then
-        echo "$TO_INSTALL" | xargs -r paru -S --needed --noconfirm --skipreview
+        echo "$TO_INSTALL" | xargs -r paru -S --needed --noconfirm --skipreview --asexplicit
     else
         echo "Installation skipped."
     fi

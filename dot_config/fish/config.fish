@@ -5,6 +5,10 @@ function fish_greeting
     # smth smth
 end
 
+# ENV
+
+set v2rayn_proxy "127.0.0.1:10808"
+
 # FZF
 
 set FZF_DEFAULT_COMMAND "fd --type f --hidden --exclude .git --exclude dosdevices --exclude drive_c"
@@ -33,3 +37,4 @@ alias pkglist_size "pacman -Qi | grep -E '^(Name|Installed)' | cut -f2 -d':' | p
 alias oqwen "ollama run qwen3:14b"
 alias ostop "ollama ps | awk 'NR>1 {print \$1}' | xargs -I {} ollama stop {}"
 alias yt "yt-dlp --proxy $https_proxy"
+alias with_proxy "http_proxy=$v2rayn_proxy https_proxy=$v2rayn_proxy no_proxy=\"localhost,127.0.0.1\""

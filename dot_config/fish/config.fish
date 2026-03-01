@@ -5,16 +5,6 @@ function fish_greeting
     # smth smth
 end
 
-
-# ALIASES
-
-alias logout "hyprctl dispatch exit"
-alias cz "chezmoi"
-alias pkglist_size "pacman -Qi | grep -E '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB"
-alias oqwen "ollama run qwen3:14b"
-alias ostop "ollama ps | awk 'NR>1 {print \$1}' | xargs -I {} ollama stop {}"
-
-
 # CORE
 
 set EDITOR vim
@@ -48,3 +38,13 @@ set v2rayn_proxy "127.0.0.1:10808"
 set http_proxy "http://$v2rayn_proxy"
 set https_proxy "http://$v2rayn_proxy"
 set no_proxy "localhost,127.0.0.1"
+
+
+# ALIASES
+
+alias logout "hyprctl dispatch exit"
+alias cz "chezmoi"
+alias pkglist_size "pacman -Qi | grep -E '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB"
+alias oqwen "ollama run qwen3:14b"
+alias ostop "ollama ps | awk 'NR>1 {print \$1}' | xargs -I {} ollama stop {}"
+alias yt "yt-dlp --proxy $https_proxy"

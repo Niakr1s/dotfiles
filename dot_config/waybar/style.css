@@ -13,7 +13,7 @@
 #workspaces {
   background-color: rgba(10, 10, 10, 0.8);
   padding: 2px;
-  margin: 2px;
+  margin: 1px;
 }
 
 #workspaces button {
@@ -54,7 +54,7 @@ button {
 #custom-docker {
   background-color: rgba(10, 10, 10, 0.8);
   padding: 0.5rem 1rem;
-  margin: 2px 2px;
+  margin: 1px 1px;
 }
 
 #clock {

@@ -71,6 +71,7 @@ fastfetch
 ffmpegthumbnailer
 firefox
 foomatic-db
+foomatic-db-engine
 foomatic-db-gutenprint-ppds
 foomatic-db-nonfree
 foomatic-db-nonfree-ppds
@@ -113,6 +114,7 @@ jfsutils
 kanshi
 kitty
 less
+lib32-mesa
 lib32-nvidia-utils
 lib32-opencl-mesa
 lib32-opencl-nvidia

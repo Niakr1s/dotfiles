@@ -2,6 +2,11 @@
 
 PKGLIST="$1"
 
+if [[ $# -eq 0 ]]; then
+    echo "provide package list (can be obtained via paru -Qqe)"
+    exit 1
+fi
+
 # Create a backup of current installed packages
 paru -Qqe > "$PKGLIST.bak"
 

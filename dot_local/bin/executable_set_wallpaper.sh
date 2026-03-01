@@ -14,4 +14,4 @@ wallpaper {
 }
 EOF
 
-killall -SIGUSR2 hyprpaper
+hyprctl hyprpaper wallpaper ",$WALLPAPER,"

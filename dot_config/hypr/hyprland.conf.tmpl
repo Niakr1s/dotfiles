@@ -141,7 +141,7 @@ general {
     # Please see https://wiki.hypr.land/Configuring/Tearing/ before you turn this on
     allow_tearing = false
 
-    layout = dwindle
+    layout = scrolling # dwindle
 }
 
 # https://wiki.hypr.land/Configuring/Variables/#decoration
@@ -241,6 +241,37 @@ dwindle {
 # See https://wiki.hypr.land/Configuring/Master-Layout/ for more
 master {
     new_status = master
+}
+
+# See https://wiki.hypr.land/Configuring/Scrolling-Layout/ for more
+scrolling {
+  # fullscreen_on_one_column: bool. default: true
+  # - when enabled, a single column on a workspace will always span the entire screen.
+  # fullscreen_on_one_column = true
+
+  # column_width: float. default: 0.5
+  # - the default width of a column, [0.1 - 1.0].
+  column_width = 0.667
+
+  # focus_fit_method: int. default: 0
+  # - when a column is focused, what method should be used to bring it into view. 0 = center, 1 = fit
+  focus_fit_method = 1
+
+  # follow_focus: bool. default: true
+  # - when a window is focused, should the layout move to bring it into view automatically
+  # follow_focus = true
+
+  # follow_min_visible: float. default: 0.4
+  # - when a window is focused, require that at least a given fraction of it is visible for focus to follow. hard input (e.g. binds, clicks) will always follow. [0.0 - 1.0]
+  follow_min_visible = 1.0
+
+  # explicit_column_widths: str. default: 0.333, 0.5, 0.667, 1.0
+  # - a comma-separated list of preconfigured widths for colresize +conf/-conf
+  explicit_column_widths = 0.334, 0.5, 0.667, 1.0
+
+  # direction: str. default: "right"
+  # - direction in which new windows appear and the layout scrolls. left/right/down/up
+  # direction = "right"
 }
 
 # https://wiki.hypr.land/Configuring/Variables/#misc
@@ -382,6 +413,31 @@ bindl = , XF86AudioNext, exec, playerctl next
 bindl = , XF86AudioPause, exec, playerctl play-pause
 bindl = , XF86AudioPlay, exec, playerctl play-pause
 bindl = , XF86AudioPrev, exec, playerctl previous
+
+# Set binds for resizing the active window.
+binde = $mainMod, right, resizeactive, 20 0
+binde = $mainMod, left, resizeactive, -20 0
+binde = $mainMod, up, resizeactive, 0 -20
+binde = $mainMod, down, resizeactive, 0 20
+
+# For scrolling layout
+# --- Move Scrolling Layout --
+# bind = $mainMod, comma,      layoutmsg, move -col
+# bind = $mainMod, period,     layoutmsg, move +col
+# bind = $mainMod, mouse_down, layoutmsg, move -col
+# bind = $mainMod, mouse_up,   layoutmsg, move +col
+
+# --- Resize Scrolling Layout --
+bind = $mainMod SHIFT, comma,      layoutmsg, colresize -conf
+bind = $mainMod SHIFT, period,     layoutmsg, colresize +conf
+# bind = $mainMod SHIFT, mouse_up,   layoutmsg, colresize -conf
+# bind = $mainMod SHIFT, mouse_down, layoutmsg, colresize +conf
+
+# --- Swap Scrolling Layout --
+bind = $mainMod, comma,      layoutmsg, swapcol l
+bind = $mainMod, period,     layoutmsg, swapcol r
+# bind = $mainMod ALT, mouse_down, layoutmsg, swapcol l
+# bind = $mainMod ALT, mouse_up,   layoutmsg, swapcol r
 
 ##############################
 ### WINDOWS AND WORKSPACES ###

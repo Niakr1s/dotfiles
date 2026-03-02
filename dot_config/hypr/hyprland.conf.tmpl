@@ -328,7 +328,8 @@ $ipc = qs -c noctalia-shell ipc call
 
 # Example binds, see https://wiki.hypr.land/Configuring/Binds/ for more
 bind = $mainMod, q, exec, $terminal
-bind = $mainMod shift, q, killactive,
+# bind = $mainMod shift, q, killactive,
+bind = $mainMod, w, killactive,
 bind = $mainMod alt, l, exec, wlogout
 # bind = $mainMod alt, l, exec, $ipc sessionMenu toggle
 # bind = $mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit

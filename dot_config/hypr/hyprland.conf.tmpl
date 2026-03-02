@@ -261,6 +261,9 @@ input {
     kb_model =
     kb_options = grp:win_space_toggle
     kb_rules =
+{{- if eq .chezmoi.hostname "desktop" }}
+    numlock_by_default = true
+{{- end }}
 
     follow_mouse = 1
 

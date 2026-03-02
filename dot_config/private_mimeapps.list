@@ -1,7 +1,9 @@
 [Default Applications]
 video/webm=mpv.desktop
 video/mp4=mpv.desktop
+text/plain=gvim.desktop
 
 [Added Associations]
 video/webm=mpv.desktop;
 video/mp4=mpv.desktop;
+text/plain=vim.desktop;

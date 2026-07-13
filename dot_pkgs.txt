@@ -218,9 +218,11 @@ python3 # Python 3
 pip # python package manager
 rust # Rust
 zig # Zig compiler
+zls # Zig language server
 lua # Lua interpreter
 java-21-openjdk # Java Development Kit (JDK) 21 LTS
 kotlin # Kotlin compiler & runtime
+dotnet # C#
 
 # --- Functional & Systems Programming ---
 ghc # Glasgow Haskell Compiler

@@ -5,8 +5,6 @@ zsh
 chezmoi
 yazi
 alacritty
-tldr
-eza
 
 ### ========== SYSTEM UTILITIES ==========
 ### System Monitoring & Diagnostics
@@ -58,6 +56,34 @@ csvkit # CSV file querying and conversion
 sqlite3 # Lightweight database engine
 sqlitebrowser # SQLite GUI
 lazysql # Simple database GUI
+csvkit # CSV utilities
+
+### Text & Search Utilities
+ripgrep # (rg) Fast recursive grep
+ripgrep-all # (rga) Search in PDFs, ZIPs, images, etc.
+fd # Simple, fast find alternative
+fzf # Fuzzy finder
+grex # Generate regex from examples
+
+### ========== TERMINAL ENHANCEMENTS ==========
+### Shell Replacements & Improvements
+eza # Modern ls replacement (exa fork)
+zoxide # Smarter cd command
+bat # (not in list - cat with syntax highlighting)
+
+### Shell Utilities
+tree # Directory listing as tree
+cheat # Cheatsheets for commands
+tldr # Cheatsheets for commands
+ddgr # DuckDuckGo from terminal
+
+### Fun utilites
+fastfetch # System info
+cmatrix # matrix in terminal
+fortune # Random quotes
+cowsay # ASCII art cows
+lolcat # Rainbow text coloring
+
 
 wl-clipboard
 

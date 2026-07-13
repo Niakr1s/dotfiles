@@ -1,0 +1,5 @@
+# Created by newuser for 5.9
+
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi

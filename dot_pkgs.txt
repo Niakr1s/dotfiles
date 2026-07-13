@@ -1,0 +1,31 @@
+### Essentials
+
+$ sudo chsh --shell /usr/bin/zsh nea
+zsh
+git
+chezmoi
+yazi
+alacritty
+tldr
+eza
+
+neovim
+wl-clipboard
+
+### Backup
+borg # deduplication backups
+fuse # fuse version 2
+python3-module-llfuse # for borg 
+
+### Internet
+throne # vpn client
+
+### Niri
+# Installation
+$ systemctl --user enable dms
+$ systemctl --user add-wants niri.service dms
+niri 
+dms-shell
+xwayland-satellite
+qt6-dbus
+wayland-protocols

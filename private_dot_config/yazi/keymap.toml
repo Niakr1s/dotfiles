@@ -17,3 +17,9 @@ desc = "Open in Neovim"
 on = "I"
 run = 'shell "sudo nvim $@" --block'
 desc = "Open in Neovim with sudo"
+
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "unix"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"

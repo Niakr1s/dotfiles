@@ -1,0 +1,43 @@
+[general]
+import = ["~/.config/alacritty/dank-theme.toml"]
+
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = false
+opacity = 0.90
+
+[font]
+size = 10.0
+
+[font.normal]
+# family = "Hack Nerd Font Mono"
+family = "Noto Sans Mono"
+# family = "FiraCode Mono"
+# family = "JetBrainsMono Nerd Font"
+
+# [font.bold]
+# family = "JetBrainsMono Nerd Font"
+#
+# [font.italic]
+# family = "JetBrainsMono Nerd Font"
+#
+# [font.bold_italic]
+# family = "JetBrainsMono Nerd Font"
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[env]
+TERM = "xterm-256color"
+
+[keyboard]
+bindings = [
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "-", mods = "Control", action = "ReceiveChar" },
+  { key = "=", mods = "Control", action = "ReceiveChar" },
+]
+
+[mouse]
+bindings = [{ mouse = "Right", action = "Copy" }]

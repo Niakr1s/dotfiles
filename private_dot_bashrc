@@ -6,6 +6,8 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+export PATH="$PATH:$HOME/bin"
+
 export EDITOR="nvim"
 export VISUAL="nvim"
 

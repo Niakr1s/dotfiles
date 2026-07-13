@@ -29,3 +29,38 @@ dms-shell
 xwayland-satellite
 qt6-dbus
 wayland-protocols
+
+### Programming languages
+# --- Language Toolchains & Compilers (original) ---
+gcc # GNU C/C++ compiler
+clang # clang
+llvm # llvm
+golang # Go language
+node # Node.js
+python3 # Python 3
+rust # Rust
+zig # Zig compiler
+lua # Lua interpreter
+java-21-openjdk # Java Development Kit (JDK) 21 LTS
+kotlin # Kotlin compiler & runtime
+
+# --- Functional & Systems Programming ---
+ghc # Glasgow Haskell Compiler
+elixir # Elixir language (runs on Erlang VM)
+erlang # Erlang VM and runtime
+
+# --- Web & Scripting (more) ---
+ruby # Ruby interpreter
+php # PHP interpreter (latest stable)
+perl # Perl 5 interpreter
+
+# --- Build Tooling Additions (extended) ---
+cmake # Cross-platform build system
+ninja-build # Small build system
+maven # Build automation tool for Java
+gradle # Another popular Java build tool
+meson # High‑performance build system
+just # Command runner (like make but simpler)
+
+# --- Package Managers & Version Managers (extra) ---
+uv

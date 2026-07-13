@@ -30,6 +30,8 @@ vim.opt.copyindent = true   -- Copy the structure of the existing lines indent w
 -- Plugins
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/mason-org/mason.nvim",
+  "https://github.com/mason-org/mason-lspconfig.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/nvim-telescope/telescope.nvim",
@@ -41,7 +43,7 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/olimorris/codecompanion.nvim",
-  "http://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/christoomey/vim-tmux-navigator",
 
@@ -199,44 +201,44 @@ vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { noremap = true })
 
 -- [[ Lsp ]]
 
--- Python
-vim.lsp.enable("ruff")
--- Ruby
-vim.lsp.enable("ruby_lsp")
--- Bash
-vim.lsp.enable("bashls")
--- Rust
-vim.lsp.enable("rust_analyzer")
--- Go (Golang)
-vim.lsp.enable("gopls")
--- C / C++
-vim.lsp.enable("clangd")
--- C#
-vim.lsp.enable("csharp_ls")
--- Nix
-vim.lsp.enable("nil_ls")
--- Lua
-vim.lsp.enable("lua_ls")
--- JSON
-vim.lsp.enable("jsonls")
--- HTML
-vim.lsp.enable("html")
--- CSS
-vim.lsp.enable("cssls")
--- TypeScript / JavaScript
-vim.lsp.enable("vtsls")
--- Java
-vim.lsp.enable("jdtls")
--- Zig
-vim.lsp.enable("zls")
--- YAML
-vim.lsp.enable("yamlls")
--- Markdown
-vim.lsp.enable("marksman")
--- PHP
-vim.lsp.enable("phpactor")
--- Crystal
-vim.lsp.enable("crystalline")
+-- -- Python
+-- vim.lsp.enable("ruff")
+-- -- Ruby
+-- vim.lsp.enable("ruby_lsp")
+-- -- Bash
+-- vim.lsp.enable("bashls")
+-- -- Rust
+-- vim.lsp.enable("rust_analyzer")
+-- -- Go (Golang)
+-- vim.lsp.enable("gopls")
+-- -- C / C++
+-- vim.lsp.enable("clangd")
+-- -- C#
+-- -- vim.lsp.enable("csharp_ls")
+-- -- Nix
+-- -- vim.lsp.enable("nil_ls")
+-- -- Lua
+-- vim.lsp.enable("lua_ls")
+-- -- JSON
+-- vim.lsp.enable("jsonls")
+-- -- HTML
+-- vim.lsp.enable("html")
+-- -- CSS
+-- vim.lsp.enable("cssls")
+-- -- TypeScript / JavaScript
+-- vim.lsp.enable("vtsls")
+-- -- Java
+-- vim.lsp.enable("jdtls")
+-- -- Zig
+-- vim.lsp.enable("zls")
+-- -- YAML
+-- vim.lsp.enable("yamlls")
+-- -- Markdown
+-- vim.lsp.enable("marksman")
+-- -- PHP
+-- vim.lsp.enable("phpactor")
+-- -- Crystal
+-- vim.lsp.enable("crystalline")
 
 -- [[ Lsp hotkeys ]]
 --
@@ -272,6 +274,59 @@ vim.api.nvim_create_user_command("Format", format, { desc = "Format current buff
 -- [[ Surround
 require("nvim-surround").setup()
 
+require("mason").setup()
+require("mason-lspconfig").setup {
+  automatic_enable = true,    -- Automatically enable LSP for matching filetypes
+  ensure_installed = {
+    "bashls",                 -- Bash language server for shell scripts
+
+    "ruff",                   -- Fast Python linter and formatter (replaces flake8, isort, etc.)
+    "pyright",                -- Python type checker and language server (static type checking)
+
+    "ts_ls",                  -- TypeScript/JavaScript language server (tsserver)
+    "vtsls",                  -- Alternative TypeScript language server with more features (Volta)
+    "eslint",                 -- ESLint language server for JavaScript/TypeScript
+
+    "rust_analyzer",          -- Rust language server with full IDE features
+    "gopls",                  -- Go language server from the Go team
+    "clangd",                 -- C/C++ language server with clang tooling
+    "omnisharp",              -- C# language server for .NET development (typo: should be "omnisharp")
+    "jdtls",                  -- Eclipse JDT Language Server for Java
+    "kotlin_language_server", -- Kotlin language server
+    "phpactor",               -- PHP language server with refactoring tools
+    "crystalline",            -- Crystal language server
+
+    "jsonls",                 -- JSON language server with schema support
+    "html",                   -- HTML language server
+    "cssls",                  -- CSS language server
+    "yamlls",                 -- YAML language server with schema support
+    "marksman",               -- Markdown language server for writing documentation
+    "dockerls",               -- Dockerfile language server
+    "taplo",                  -- TOML language server (for Cargo.toml, pyproject.toml, etc.)
+    "lemminx",                -- XML language server
+    "sqlls",                  -- SQL language server
+
+    -- "lua_ls", -- Lua language server with Neovim plugin support
+    -- "terraformls",   -- Terraform language server
+    -- "ansiblels",     -- Ansible language server
+    -- "helm_ls",       -- Helm language server for Kubernetes
+    -- "argocd_ls",     -- ArgoCD language server
+    -- "swiftfs",       -- Swift language server
+    -- "perlpls",       -- Perl language server
+    -- "r_language_server", -- R language server
+    -- "svelte",        -- Svelte language server for Svelte frameworks
+    -- "vue",           -- Vue language server (Volar)
+    -- "graphql",       -- GraphQL language server
+    -- "prismals",      -- Prisma ORM language server
+    -- "tailwindcss",   -- Tailwind CSS language server
+    -- "emmet_ls",      -- Emmet language server for HTML/CSS abbreviations
+    -- "sourcery",      -- Python code refactoring assistant
+
+    -- "zls", -- Zig language server
+  },
+}
+vim.lsp.enable("zls") -- enable this to use system zls instead of mason
+
 -- [[ Treesitter
 -- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.wo[0][0].foldmethod = "expr"
@@ -280,7 +335,11 @@ require("nvim-treesitter").setup({
   highlight = { enable = true },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
-  indent = { enable = true }
+  indent = { enable = true },
+
+  ensure_installed = "all",
+  sync_install = false,
+  auto_install = true,
 })
 
 vim.opt.foldmethod = "expr"
@@ -407,7 +466,7 @@ require("blink.cmp").setup {
     enabled = true,
   },
 }
-build = function() require('blink.cmp').build():pwait() end 
+build = function() require('blink.cmp').build():pwait() end
 
 -- [[ Gitsigns
 require('gitsigns').setup {

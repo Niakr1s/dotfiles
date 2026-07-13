@@ -1,0 +1,22 @@
+{
+  "dankActions": {
+    "enabled": true,
+    "variants": [
+      {
+        "icon": "keyboard",
+        "displayText": "",
+        "displayCommand": "",
+        "clickCommand": "pkill -SIGRTMIN wvkbd-deskintl",
+        "middleClickCommand": "",
+        "rightClickCommand": "",
+        "updateInterval": 0,
+        "showIcon": true,
+        "showText": true,
+        "visibilityCommand": "pgrep wvkbd-deskintl",
+        "visibilityInterval": 10,
+        "id": "variant_1783664649338",
+        "name": "keyboard"
+      }
+    ]
+  }
+}

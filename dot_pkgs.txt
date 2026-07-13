@@ -84,6 +84,80 @@ fortune # Random quotes
 cowsay # ASCII art cows
 lolcat # Rainbow text coloring
 
+### ========== MULTIMEDIA & GRAPHICS ==========
+### Video/Audio Processing
+ffmpeg-full-custom # Complete video/audio conversion (your custom build)
+yt-dlp # YouTube/downloader (supports 1000+ sites)
+mediainfo # Display media file metadata
+audacity # Audio editing
+gpu-screen-recorder-gtk # GPU-accelerated screen recording GUI
+kdenlive # Video editing
+tageditor # Audio tags editor
+
+### Image Processing & Viewing
+gimp # Professional image editor
+inkscape # Vector graphics editor
+ImageMagick # Command-line image manipulation
+gthumb # Image viewer/organizer
+chafa # Image-to-text converter for terminal
+ueberzugpp # Terminal image rendering library
+jp2a # convert image to ASCII art
+satty # Modern Screenshot Annotation
+
+### E-book Readers
+foliate # EPUB, PDF, Mobi, CBZ reader (GTK)
+
+### ========== HARDWARE & PERIPHERALS ==========
+### Touchscreen/Input
+lisgd # Touchscreen gesture daemon
+libinput # Input device handling
+wev # Show pressed keys/events (Wayland)
+wvkbd # onscreen keyboard
+
+### System Tools
+cryptsetup # LUKS disk encryption
+veracrypt # Cross-platform disk encryption
+age # Simple modern encryption
+sops # Secrets management (encrypted YAML/JSON)
+gnupg # GPG encryption
+rhash # Hash calculation utility
+
+### Audio
+alsa-tools # ALSA utilities (speaker-test, etc.)
+playerctl # Media player controls (play/pause/next)
+
+### ========== NETWORK & INTERNET ==========
+### Browsers & Viewers
+lynx # Terminal web browser
+elinks # Advanced terminal browser
+kiwix-desktop # Offline Wikipedia reader
+
+### Network Tools
+qbittorrent # Torrent client
+curl # HTTP/FTP client
+wget # Download utility
+speedtest-cli # Internet speed test
+
+### Messaging
+telegram-desktop # Messaging app
+
+### Remote Access & Connectivity
+remmina # Remote Desktop client (supports RDP, VNC, etc)
+
+### VPN
+throne # Nekobox fork
+
+### ========== UTILITIES & PRODUCTIVITY ==========
+### Security
+keepassxc # Passwords
+
+### Document Processing
+poppler # PDF utilities (pdftotext)
+pandoc # (not in list - document conversion)
+
+### Renaming Tools
+bulky # GUI bulk rename tool
+
 
 wl-clipboard
 
@@ -91,9 +165,6 @@ wl-clipboard
 borg # deduplication backups
 fuse # fuse version 2
 python3-module-llfuse # for borg 
-
-### Internet
-throne # vpn client
 
 ### Niri
 # Installation

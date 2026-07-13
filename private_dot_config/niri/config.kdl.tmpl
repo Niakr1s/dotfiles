@@ -653,8 +653,7 @@ gestures {
     }
 }
 
-include "./desktop.kdl"
-// include optional=true "./laptop.kdl"
+include "./{{- .chezmoi.hostname -}}.kdl"
 
 include "dms/binds.kdl"
 include "dms/colors.kdl"

@@ -159,15 +159,41 @@ pandoc # (not in list - document conversion)
 bulky # GUI bulk rename tool
 
 
-wl-clipboard
+### Archiving (Ordered by format support)
+zip # zip archiver
+unzip # ZIP format
+p7zip # 7-Zip archiver
+lz4 # fast archiver
+unrar # RAR format (proprietary)
+unar # Universal extractor (rar, 7z, zip, etc.)
 
 ### Backup
 borg # deduplication backups
 fuse # fuse version 2
 python3-module-llfuse # for borg 
 
+### Office & Calculation
+librecad # 2D CAD (AutoCAD alternative)
+libreoffice # Office
+
+### Documentation
+zeal # Offline API documentation browser
+
+### ========== MONITORING & STRESS ==========
+stress-ng # System stress testing
+s-tui # Stress test UI
+
+### ========== UNCATEGORIZED / SPECIALIZED ==========
+hyperfine # Benchmark command-line tools
+zenity # GTK dialog boxes for scripts
+yad # Yet Another Dialog (GTK/Qt)
+dconf-editor # GSettings configuration editor
+libnotify # Desktop notifications
+wl-clipboard # Wayland clipboard utilities
+perl-Image-ExifTool # application for reading, writing and editing meta information in a wide variety of files.
+perl-File-MimeInfo # mimeopen
+
 ### Niri
-# Installation
 $ systemctl --user enable dms
 $ systemctl --user add-wants niri.service dms
 niri 

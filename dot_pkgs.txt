@@ -43,7 +43,10 @@ watchexec # Execute commands when files change
 file # Get file info
 
 ### ========== TEXT EDITORS ===============
+### Neovim
 neovim
+python3-module-neovim
+tree-sitter-cli
 
 ### Version Control
 git # Distributed version control system
@@ -209,8 +212,10 @@ clang # clang
 llvm # llvm
 golang # Go language
 node # Node.js
+npm # node package manager
 deno # Node.js alternative
 python3 # Python 3
+pip # python package manager
 rust # Rust
 zig # Zig compiler
 lua # Lua interpreter

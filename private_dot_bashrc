@@ -37,6 +37,7 @@ alias vim="nvim"
 
 alias myip="curl ipinfo.io"
 
+alias zp="sudo zypper"
 alias zpi="sudo zypper install"
 alias zpr="sudo zypper remove -u"
 alias zps="zypper search"

@@ -332,10 +332,10 @@
   "lastAppliedIconTheme": "",
   "cursorSettings": {
     "theme": "System Default",
-    "size": 24,
+    "size": 20,
     "niri": {
-      "hideWhenTyping": false,
-      "hideAfterInactiveMs": 0
+      "hideWhenTyping": true,
+      "hideAfterInactiveMs": 5000
     },
     "hyprland": {
       "hideOnKeyPress": false,

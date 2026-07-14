@@ -37,6 +37,10 @@ alias vim="nvim"
 
 alias myip="curl ipinfo.io"
 
+alias zpi="sudo zypper install"
+alias zpr="sudo zypper remove -u"
+alias zps="zypper search"
+
 # Chezmoi
 alias cz="chezmoi"
 alias cza="chezmoi apply"

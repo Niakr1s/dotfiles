@@ -103,9 +103,12 @@ luksMountUmount "fabfb454-6de2-412d-8bc7-b56a849c77c7" "hdd24"
 # Download and add a desktop entry
 # Usage: appimage-install app <url>
 appimage-install() {
-  APPNAME=$1
-  APPURL=$2
+  local APPNAME=$1
+  local APPURL=$2
+  local APPDIR=$HOME/Applications
 
-  wget -O ~/appimage/$APPNAME "$APPURL"
-  appimage-desktop-entry.sh ~/appimage/$APPNAME
+  mkdir -p $APPDIR
+  wget -O $APPDIR/$APPNAME "$APPURL"
+  chmod +x $APPDIR/$APPNAME
+  appimage-desktop-entry.sh $APPDIR/$APPNAME
 }

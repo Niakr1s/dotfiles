@@ -115,5 +115,5 @@ appimage-install() {
   mkdir -p $APPDIR
   wget -O $APPDIR/$APPNAME "$APPURL"
   chmod +x $APPDIR/$APPNAME
-  appimage-desktop-entry.sh $APPDIR/$APPNAME
+  appimage-desktop-entry $APPDIR/$APPNAME
 }

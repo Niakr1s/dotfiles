@@ -23,14 +23,6 @@ custom = [
   { run = "nautilus --select %s1", desc = "nautilus", for = "linux", orphan = true },
 ]
 
-[[plugin.prepend_previewers]]
-mime = "image/*"
-run = "noop"
-
-[[plugin.prepend_previewers]]
-mime = "video/*"
-run = "noop"
-
 [[opener.bulk-rename]]
 run   = "nvim %s"
 block = true

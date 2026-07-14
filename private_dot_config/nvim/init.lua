@@ -32,6 +32,7 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
+  "https://github.com/stevearc/conform.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/nvim-telescope/telescope.nvim",
@@ -81,14 +82,12 @@ function save()
 end
 
 function format()
-  vim.lsp.buf.format({ async = true, lsp_fallback = true })
+  require("conform").format()
+  -- vim.lsp.buf.format({ async = true, lsp_fallback = true })
 end
 
 function format_and_save()
-  vim.lsp.buf.format({
-    async = false,
-    lsp_fallback = true,
-  })
+  require("conform").format()
   save()
 end
 
@@ -264,7 +263,6 @@ require("mason-lspconfig").setup {
     "taplo",                  -- TOML language server (for Cargo.toml, pyproject.toml, etc.)
     "lemminx",                -- XML language server
     "sqlls",                  -- SQL language server
-    "kdlfmt",                 -- KDL language server
 
     -- "lua_ls", -- Lua language server with Neovim plugin support
     -- "terraformls",   -- Terraform language server
@@ -286,6 +284,131 @@ require("mason-lspconfig").setup {
   },
 }
 vim.lsp.enable("zls") -- enable this to use system zls instead of mason
+
+require("conform").setup({
+  formatters_by_ft = {
+    -- Lua
+    lua = { "stylua" },
+
+    -- Python: run multiple formatters sequentially
+    python = { "ruff_format", "ruff_fix", "isort", "black" },
+    -- Alternative: use autopep8 or yapf instead of black [citation:2][citation:5]
+    -- python = { "isort", "autopep8" },
+
+    -- JavaScript/TypeScript: try prettierd first, fallback to prettier
+    javascript = { "prettierd", "prettier" },
+    typescript = { "prettierd", "prettier" },
+    javascriptreact = { "prettierd", "prettier" },
+    typescriptreact = { "prettierd", "prettier" },
+
+    -- Web frontend
+    html = { "prettierd", "prettier" },
+    css = { "prettierd", "prettier" },
+    scss = { "prettierd", "prettier" },
+    json = { "prettierd", "prettier" },
+    yaml = { "prettierd", "prettier" },
+    markdown = { "prettierd", "prettier" },
+
+    -- Go
+    go = { "gofumpt", "goimports-reviser", "gci" },
+    -- Alternative: gofmt, goimports [citation:2]
+    -- go = { "gofmt", "goimports" },
+
+    -- Rust
+    rust = { "rustfmt" },
+
+    -- C/C++
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+    -- Alternative: uncrustify [citation:5]
+
+    -- Java
+    java = { "google-java-format" },
+    -- Alternative: ktfmt for Kotlin, ktlint [citation:2]
+
+    -- Ruby
+    ruby = { "htmlbeautifier" }, -- for ERB/HTML with Ruby
+    erb = { "erb_format" },
+
+    -- PHP
+    php = { "mago_format" },
+    -- Alternative: easy-coding-standard [citation:2]
+    blade = { "blade-formatter" },
+
+    -- C#
+    cs = { "csharpier" },
+
+    -- Dart
+    dart = { "dart_format", "dcm_format" },
+
+    -- Shell scripts
+    sh = { "beautysh" },
+    bash = { "beautysh" },
+    zsh = { "beautysh" },
+
+    -- Nix
+    nix = { "alejandra" },
+
+    -- Zig
+    zig = { "zigfmt" } or { "zon" } or { "zigenv" },
+
+    -- Swift
+    swift = { "swiftformat" },
+
+    -- Haskell
+    haskell = { "fourmolu" }, -- or "hindent", "ormolu"
+
+    -- Erlang
+    erlang = { "erlfmt" }, -- or "efmt" [citation:2]
+
+    -- Elixir
+    elixir = { "mix" }, -- format with mix format
+
+    -- Vue / Svelte (work with prettier via plugin)
+    vue = { "prettierd", "prettier" },
+    svelte = { "prettierd", "prettier" },
+
+    -- SQL
+    sql = { "sqlfluff" },
+
+    -- Dockerfile
+    dockerfile = { "dockerfmt" }, -- or "dockfmt" [citation:2]
+
+    -- CMake
+    cmake = { "gersemi" }, -- or "cmake_format" [citation:2]
+
+    -- XML / SVG
+    xml = { "xmlformat" },
+
+    -- TOML
+    toml = { "taplo" },
+
+    -- YAML
+    yaml = { "yamlfmt" },
+
+    -- JSON
+    json = { "fixjson" }, -- or "jq" [citation:2]
+
+    -- Protocol Buffers
+    proto = { "buf" },
+
+    -- Markdown with table of contents
+    markdown = { "prettierd", "prettier", "markdown-toc" },
+
+    -- Misc / config files
+    just = { "just" },
+    dune = { "format-dune-file" },
+    hcl = { "hcl" },
+    tf = { "terraform" }, -- Terraform
+    cue = { "cue_fmt" },
+    kdl = { "kdlfmt" },
+
+    -- Use a sub-list to run only the first available formatter
+    -- '*' is a special key that runs for all filetypes not listed
+    ["*"] = { "prettierd", "prettier" },
+    -- '_' runs for filetypes that have no other formatters configured [citation:7]
+  },
+})
 
 -- [[ Treesitter
 -- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"

@@ -47,6 +47,7 @@ vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/christoomey/vim-tmux-navigator",
+  "https://github.com/xvzc/chezmoi.nvim",
 
   -- Themes
   "https://github.com/folke/tokyonight.nvim",
@@ -499,6 +500,58 @@ vim.keymap.set({ "n", "x", "o" }, "[{", function()
   end
 end, { desc = "Goto prev end of block" })
 
+require("chezmoi").setup {
+  edit = {
+    watch = false,
+    force = false,
+    ignore_patterns = {
+      "run_onchange_.*",
+      "run_once_.*", 
+      "%.chezmoiignore",
+      "%.chezmoitemplate",
+      -- Add custom patterns here
+    },
+  },
+  events = {
+    on_open = {
+      notification = {
+        enable = true,
+        msg = "Opened a chezmoi-managed file",
+        opts = {},
+      },
+    },
+    on_watch = {
+      notification = {
+        enable = true,
+        msg = "This file will be automatically applied",
+        opts = {},
+      },
+    },
+    on_apply = {
+      notification = {
+        enable = true,
+        msg = "Successfully applied",
+        opts = {},
+      },
+    },
+  },
+  telescope = {
+    select = { "<CR>" },
+  },
+}
+
+-- The below configuration wll allow you to automatically apply changes on files under chezmoi source path.
+--  e.g. ~/.local/share/chezmoi/*
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { os.getenv("HOME") .. "/.local/share/chezmoi/*" },
+    callback = function(ev)
+        local bufnr = ev.buf
+        local edit_watch = function()
+            require("chezmoi.commands.__edit").watch(bufnr)
+        end
+        vim.schedule(edit_watch)
+    end,
+})
 
 -- [[ Yazi
 vim.keymap.set("n", "<leader>-", function()

@@ -199,47 +199,6 @@ vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 -- Ctrl+Space to manually trigger omnifunc completion
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { noremap = true })
 
--- [[ Lsp ]]
-
--- -- Python
--- vim.lsp.enable("ruff")
--- -- Ruby
--- vim.lsp.enable("ruby_lsp")
--- -- Bash
--- vim.lsp.enable("bashls")
--- -- Rust
--- vim.lsp.enable("rust_analyzer")
--- -- Go (Golang)
--- vim.lsp.enable("gopls")
--- -- C / C++
--- vim.lsp.enable("clangd")
--- -- C#
--- -- vim.lsp.enable("csharp_ls")
--- -- Nix
--- -- vim.lsp.enable("nil_ls")
--- -- Lua
--- vim.lsp.enable("lua_ls")
--- -- JSON
--- vim.lsp.enable("jsonls")
--- -- HTML
--- vim.lsp.enable("html")
--- -- CSS
--- vim.lsp.enable("cssls")
--- -- TypeScript / JavaScript
--- vim.lsp.enable("vtsls")
--- -- Java
--- vim.lsp.enable("jdtls")
--- -- Zig
--- vim.lsp.enable("zls")
--- -- YAML
--- vim.lsp.enable("yamlls")
--- -- Markdown
--- vim.lsp.enable("marksman")
--- -- PHP
--- vim.lsp.enable("phpactor")
--- -- Crystal
--- vim.lsp.enable("crystalline")
-
 -- [[ Lsp hotkeys ]]
 --
 -- GLOBAL DEFAULTS:
@@ -305,6 +264,7 @@ require("mason-lspconfig").setup {
     "taplo",                  -- TOML language server (for Cargo.toml, pyproject.toml, etc.)
     "lemminx",                -- XML language server
     "sqlls",                  -- SQL language server
+    "kdlfmt",                 -- KDL language server
 
     -- "lua_ls", -- Lua language server with Neovim plugin support
     -- "terraformls",   -- Terraform language server

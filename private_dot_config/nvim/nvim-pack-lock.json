@@ -8,6 +8,10 @@
       "rev": "5876dd95deeb70aadbe9f1c0b7117a135061cdac",
       "src": "https://github.com/saghen/blink.lib"
     },
+    "chezmoi.nvim": {
+      "rev": "4167bbec76f693f481a5243f1be521ff0ccf1a6d",
+      "src": "https://github.com/xvzc/chezmoi.nvim"
+    },
     "codecompanion.nvim": {
       "rev": "e8f386361f649960ec1414f59f0815836c94713d",
       "src": "https://github.com/olimorris/codecompanion.nvim"

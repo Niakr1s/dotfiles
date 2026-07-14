@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Dependencies:
+#   noctalia-shell
+#   wlopm
+
+HOSTNAME=$(hostname)
+
+# Determine lock timeout based on hostname
+if [ "$HOSTNAME" = "laptop" ]; then
+    LOCK_TIMEOUT=300
+else
+    LOCK_TIMEOUT=600
+fi
+
+# Display off timeout (20 seconds after lock)
+DISPLAY_OFF_TIMEOUT=20
+
+# Define commands
+LOCK_CMD="noctalia-shell ipc call sessionMenu lockAndSuspend"
+DISPLAY_CMD="wlopm"
+
+# Calculate the display off after lock timeout
+DISPLAY_OFF_AFTER_LOCK=$((LOCK_TIMEOUT + DISPLAY_OFF_TIMEOUT))
+
+# Execute swayidle with all timeouts
+exec swayidle -w \
+    timeout "$LOCK_TIMEOUT" "$LOCK_CMD" resume "$DISPLAY_CMD --on '*' &" \
+    timeout "$DISPLAY_OFF_AFTER_LOCK" "$DISPLAY_CMD --off '*'" resume "$DISPLAY_CMD --on '*'" \
+    timeout "$DISPLAY_OFF_TIMEOUT" "pgrep gtklock && { $LOCK_CMD && $DISPLAY_CMD --off '*'; }" resume "$DISPLAY_CMD --on '*'"

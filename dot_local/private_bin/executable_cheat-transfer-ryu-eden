@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+IN_DIR="$HOME/.config/Ryujinx/mods/contents"
+OUT_DIR="$HOME/.local/share/eden/load"
+
+usage() {
+  cat << EOF
+This program is for Nintendo Switch cheats. It transforms atmosphere mods to yuzu format.
+By default it gets cheats from Ryujinx cheats directory and transfers them to Eden emulator cheats directory.
+You can override this with <indir> and <outdir>.
+
+  Usage:
+    $0 <gameid> <buildid>
+    $0 -i <indir> -o <outdir> <gameid> <buildid>
+    $0 -h
+
+  where:
+    <gameid> is a game id
+    <buildid> is a game's patch id (because cheats arenot compatible between versions)
+    <indir> is atmosphere mods dir (default: $IN_DIR)
+    <outdir> is output dir (default: $OUT_DIR)
+EOF
+}
+
+# Converts gameid and buildid to input filename
+to_in_cheat_filename() {
+  local gameid="$1"
+  local buildid="$2"
+
+  echo "$IN_DIR/$gameid/cheats/$buildid.txt"
+}
+
+to_out_cheat_filename() {
+  local gameid="$1"
+  local buildid="$2"
+  local cheatname="$3"
+
+  echo "$OUT_DIR/$gameid/$cheatname/cheats/$buildid.txt"
+}
+
+check_file() {
+  local file="$1"
+  if [[ ! -f "$file" ]]; then
+    echo "$file not exist, exiting..."
+    exit 1;
+  fi
+}
+
+# Cleans directory
+clean_dir() {
+  local dir="${OUT_DIR:?}/$gameid"
+  rm -rf "$dir"
+  mkdir -p "$dir"
+}
+
+# Transfers cheats from input to output directory
+transfer_cheats() {
+  local gameid="$1"
+  local buildid="$2"
+
+  local file
+  file=$(to_in_cheat_filename "$gameid" "$buildid")
+
+  local cheat_filename # current cheat filename
+
+  while IFS= read -r line; do
+    if [[ "$line" =~ ^\[ ]]; then
+      echo "found cheat: $line"
+      cheat_filename=$(to_out_cheat_filename "$gameid" "$buildid" "$line")
+      mkdir -p "${cheat_filename%/*}"
+      echo "$line" >> "$cheat_filename"
+    elif [[ -z "$line" ]]; then
+      unset cheat_filename
+    else
+      echo "$line" >> "$cheat_filename"
+    fi
+  done < "$file"
+}
+
+
+# -------- MAIN --------------
+
+declare -g gameid
+declare -g buildid
+
+if [[ $# -eq 0 ]]; then 
+  usage
+fi
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -i)
+      IN_DIR="$2"
+      shift 2
+      ;;
+    -o)
+      OUT_DIR="$2"
+      shift 2
+      ;;
+    -h)
+      usage
+      shift
+      ;;
+    *) 
+      gameid="$1"
+      buildid="$2"
+      shift 2
+      if [[ ! $# -eq 0 ]]; then 
+        echo "incorrect number of arguments"
+        usage
+        exit 1;
+      fi
+      ;;
+  esac
+done
+
+in_cheat_filename=$(to_in_cheat_filename "$gameid" "$buildid")
+out_cheats_dir="${OUT_DIR:?}/$gameid"
+
+echo "checking input cheat file: $in_cheat_filename"
+check_file "$in_cheat_filename"
+
+echo "cleaning output cheat directory: $out_cheats_dir"
+clean_dir "$out_cheats_dir"
+
+echo "exporting input cheats to output directory..."
+transfer_cheats "$gameid" "$buildid"

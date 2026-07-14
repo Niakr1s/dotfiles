@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Provide needed monitor via MONITOR env variable
+
+if [[ $(niri msg --json outputs | jq --arg mon "$MONITOR" '.[$mon].current_mode == null') == "true" ]]; then
+  # then enable it
+  niri msg output "$MONITOR" on
+else
+  # or if it's on, turn it off
+  niri msg output "$MONITOR" off
+fi

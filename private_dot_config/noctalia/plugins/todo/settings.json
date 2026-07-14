@@ -1,0 +1,83 @@
+{
+  "todos": [
+    {
+      "id": 1783578476872,
+      "text": "Agent 007",
+      "completed": false,
+      "createdAt": "2026-07-09T06:27:56.872Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1782142515538,
+      "text": "FF XIII",
+      "completed": false,
+      "createdAt": "2026-06-22T15:35:15.538Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1781680343876,
+      "text": "Danganronpa 2",
+      "completed": false,
+      "createdAt": "2026-06-17T07:12:23.876Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1781680701102,
+      "text": "Indiana Jones",
+      "completed": true,
+      "createdAt": "2026-06-17T07:18:21.102Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1781680709679,
+      "text": "Resident Evil Requiem",
+      "completed": true,
+      "createdAt": "2026-06-17T07:18:29.679Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1783520469921,
+      "text": "Spider Man - Miles Morales",
+      "completed": true,
+      "createdAt": "2026-07-08T14:21:09.921Z",
+      "pageId": 1,
+      "priority": "medium",
+      "details": ""
+    }
+  ],
+  "pages": [
+    {
+      "id": 0,
+      "name": "General"
+    },
+    {
+      "id": 1,
+      "name": "Games"
+    }
+  ],
+  "current_page_id": 1,
+  "count": 6,
+  "completedCount": 3,
+  "showCompleted": true,
+  "showBackground": true,
+  "isExpanded": false,
+  "useCustomColors": false,
+  "priorityColors": {
+    "high": "#f85149",
+    "medium": "#58a6ff",
+    "low": "#8b949e"
+  },
+  "exportPath": "~/Documents",
+  "exportFormat": "markdown",
+  "exportEmptySections": false
+}

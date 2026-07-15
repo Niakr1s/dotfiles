@@ -329,6 +329,17 @@ window-rule {
     }
 }
 
+// Maximized
+window-rule {
+    match app-id=r#"qbittorrent"#
+    match app-id=r#"rpcs3"#
+    match app-id=r#"shadps4"#
+    match app-id=r#"pcsx2$"#
+    match app-id=r#"losslesscut"#
+    match app-id=r#"joplin"#
+    open-maximized true
+}
+
 // Music
 window-rule {
     match app-id=r#"^tauonmb$"#

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-IN_DIR="$HOME/.config/Ryujinx/mods/contents"
+# IN_DIR="$HOME/.config/Ryujinx/mods/contents"
+IN_DIR="$HOME/.var/app/io.github.ryubing.Ryujinx/config/Ryujinx/mods/contents"
 OUT_DIR="$HOME/.local/share/eden/load"
 
 usage() {

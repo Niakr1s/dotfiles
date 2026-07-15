@@ -20,7 +20,7 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export PATH="$PATH:$HOME/node_modules/.bin:$HOME/go/bin:$HOME/bin"
+export PATH="$PATH:$HOME/node_modules/.bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/bin"
 
 export EDITOR="nvim"
 export VISUAL="nvim"

@@ -73,7 +73,6 @@ output "Xiaomi Corporation Mi Monitor 2920000136510" {
     position x=2560 y=280
 }
 
-spawn-at-startup "Throne"
 spawn-sh-at-startup "flatpak run com.github.taiko2k.tauonmb"
 spawn-at-startup "firefox" // so it will be focused
 

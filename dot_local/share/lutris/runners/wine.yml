@@ -1,6 +1,7 @@
 system:
   disable_runtime: false
-  env: {}
+  env:
+    UMU_RUNTIME_UPDATE: '0'
   mangohud: true
   terminal_app: /usr/bin/alacritty
 wine:

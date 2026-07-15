@@ -1,0 +1,8 @@
+system:
+  disable_runtime: false
+  env: {}
+  mangohud: true
+  terminal_app: /usr/bin/alacritty
+wine:
+  system_winetricks: true
+  version: Proton - Experimental

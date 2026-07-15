@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+
+usage() {
+  cat << EOF
+# Download and add a desktop entry
+# Usage: appimage-install app <url>
+EOF
+}
+
+APPNAME=$1
+APPURL=$2
+APPDIR=$HOME/Applications
+
+mkdir -p $APPDIR
+
+if [[ "$APPURL" == *.zip ]]; then
+  wget -O- "$APPURL" | zcat > "$APPDIR/$APPNAME"
+else
+  wget -O "$APPDIR/$APPNAME" "$APPURL"
+fi
+
+chmod +x $APPDIR/$APPNAME
+appimage-desktop-entry $APPDIR/$APPNAME

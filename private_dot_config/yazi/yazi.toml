@@ -17,8 +17,8 @@ cache_dir = "~/.cache/yazi"
 
 [opener]
 custom = [
-  { run = "gio open %s1", desc = "open", for = "linux", orphan = true },
-  { run = "xdg-open %s1", desc = "with", for = "linux", orphan = true },
+  # { run = "gio open %s1", desc = "gio-open", for = "linux", orphan = true },
+  { run = "xdg-open %s1", desc = "xdg-open", for = "linux", orphan = true },
   { run = "chezmoi add %s", desc = "chezmoi add", for = "linux" },
   { run = "nautilus --select %s1", desc = "nautilus", for = "linux", orphan = true },
 ]

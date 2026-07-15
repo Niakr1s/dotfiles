@@ -1,0 +1,14 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: ollama:gemma4:e4b
+clients:
+- type: openai-compatible
+  name: ollama
+  api_base: http://127.0.0.1:11434/v1
+  models:
+  - name: gemma4:e4b
+  - name: qwen3-embedding:8b
+    type: embedding
+    default_chunk_size: 1000
+    max_batch_size: 100
+  - name: qwen3.5:9b

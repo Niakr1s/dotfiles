@@ -1,3 +1,6 @@
+binds {
+    Super+Alt+P { spawn-sh "MONITOR=HDMI-A-1 ~/bin/niri-monitor-toggle"; }
+}
 
 input {
     keyboard {

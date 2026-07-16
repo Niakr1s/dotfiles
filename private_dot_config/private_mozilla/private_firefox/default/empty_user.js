@@ -47,3 +47,8 @@ user_pref("browser.gesture.pinch.out.shift", "");
 user_pref("apz.gtk.touchpad_pinch.enabled", false);
 user_pref("apz.gtk.touchpad_pinch.three_fingers.enabled", false);
 user_pref("apz.one_touch_pinch.enabled", false);
+
+user_pref("browser.translations.neverTranslateLanguages", "ru");
+user_pref("distribution.openSUSE.bookmarksProcessed", false);
+
+user_pref("browser.search.region", "RU");

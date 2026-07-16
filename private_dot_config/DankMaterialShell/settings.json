@@ -613,15 +613,17 @@
       ],
       "centerWidgets": [
         {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 3
+        },
+        {
           "id": "clock",
-          "enabled": true
+          "enabled": true,
+          "clockCompactMode": false
         },
         {
           "id": "weather",
-          "enabled": true
-        },
-        {
-          "id": "dankActions:variant_1783664649338",
           "enabled": true
         }
       ],

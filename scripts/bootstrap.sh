@@ -54,6 +54,10 @@ CORE_PKGS=(
   cargo uv
 )
 
+UNNEEDED_PKGS=(
+  mako
+)
+
 CORE_GO_PKGS=(
   github.com/jorgerojas26/lazysql@latest
 )
@@ -93,13 +97,17 @@ enable_packman_repo() {
   fi
 }
 
-postinstall_core_pkgs() {
+postinstall() {
+  echo "Creating user directories..."
   xdg-user-dirs-update --force
+
+  echo "Enabling snapper home snapshots..."
+  sudo snapper -c home create-config /home
 }
 
 cleanup() {
-  # I had a issue that some package installed mako and messed with dms notifications
-  sudo zypper remove -y mako
+  echo "Removing unneeded packages..."
+  sudo zypper remove -y $UNNEEDED_PKGS
 }
 
 # $1 is a associative array in format [AppName]=<url>
@@ -107,18 +115,30 @@ install_appimages() {
   APPS=$1
   for app in "${!APPS[@]}"; do
     url="${APPS[$app]}"
+    echo "Installing appimage $app..."
     appimage-install "$app" "$url"
   done
 }
 
 install_core_packages() {
+  echo "Installing core packages from packman repo..."
   sudo zypper install -y --from packman $CORE_PACKMAN_PKGS
+
+  echo "Installing core packages..."
   sudo zypper install -y $CORE_PKGS
+
+  echo "Installing core golang packages..."
   go install $CORE_GO_PKGS
+
+  echo "Installing core appimages..."
   install_appimages $CORE_APPIMAGE_PKGS
+
+  echo "Installing Zed editor..."
+  curl -f https://zed.dev/install.sh | sh
 }
 
 install_niri_dms() {
+  echo "Installing niri and dankmaterialshell...."
   sudo zypper addrepo https://download.opensuse.org/repositories/home:AvengeMedia:danklinux/openSUSE_Tumbleweed/home:AvengeMedia:danklinux.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/home:/AvengeMedia:/dms/openSUSE_Tumbleweed/home:AvengeMedia:dms.repo
   sudo zypper refresh
@@ -132,13 +152,34 @@ install_niri_dms() {
   systemctl --user add-wants niri.service dms
 }
 
+enable_virtualization() {
+  echo "Enabling virtualizaiton..."
+  sudo zypper install -y libvirt virt-manager python3-libguestfs
+  sudo usermod -aG libvirt $USER
+  sudo systemctl start libvirtd.service
+}
+
+enable_docker() {
+  echo "Enabling docker..."
+  sudo zypper install docker docker-compose docker-compose-switch
+  sudo systemctl enable docker
+  sudo usermod -G docker -a $USER
+  newgrp docker
+  sudo systemctl restart docker
+}
+
 # --------MAIN--------
 install_vpn 
 
 enable_packman_repo
 install_core_packages 
-postinstall_core_pkgs 
 
 install_niri_dms
 
+if [[ $HOSTNAME == "desktop" ]]; then
+  enable_virtualization 
+  enable_docker
+fi
+
+postinstall
 cleanup 

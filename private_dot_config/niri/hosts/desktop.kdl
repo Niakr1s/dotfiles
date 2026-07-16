@@ -1,0 +1,30 @@
+workspace "web" {
+    open-on-output "HDMI-A-1"
+}
+
+spawn-at-startup "firefox"
+spawn-sh-at-startup "niri msg action focus-workspace web; niri msg action focus-monitor-left"
+
+binds {
+    Super+Alt+P { spawn-sh "MONITOR=HDMI-A-1 ~/bin/niri-monitor-toggle"; }
+}
+
+input {
+    keyboard {
+        numlock
+    }
+}
+
+output "GIGA-BYTE TECHNOLOGY CO., LTD. M32QC 24390B004015" {
+    mode "2560x1440@165.001"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+output "Xiaomi Corporation Mi Monitor 2920000136510" {
+    mode "1920x1080@75.002"
+    scale 1
+    transform "normal"
+    position x=2560 y=280
+}

@@ -1,0 +1,64 @@
+// Popups
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match title="^KeePassXC - Browser Access Request$"
+
+    open-floating true
+}
+
+// Large Popups
+window-rule {
+    match app-id="(xdg-desktop-portal)(.*)"
+    match app-id="filepicker"
+    match app-id="org.freedesktop.impl.portal.desktop.kde"
+    match app-id="org.gtk.vfs.*" // Catches some GTK file dialogs
+    match title="Open.*"
+
+    open-floating true
+    default-column-width { proportion 0.7; }  // 50% of screen width
+    default-window-height { proportion 0.8; } // 60% of screen height
+}
+
+// Maximized
+window-rule {
+    match app-id=r#"qbittorrent"#
+    match app-id=r#"rpcs3"#
+    match app-id=r#"shadps4"#
+    match app-id=r#"pcsx2$"#
+    match app-id=r#"losslesscut"#
+    match app-id=r#"joplin"#
+
+    open-maximized true
+}
+
+// Blur
+window-rule {
+    match app-id="^Alacritty$"
+    match app-id="^foot$"
+
+    background-effect {
+        blur true
+    }
+}
+
+// Browsers open on "web" workspace
+window-rule {
+    match app-id="firefox"
+
+    open-maximized true
+    open-on-workspace "web"
+}
+
+// Common
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
+
+  popups {
+    geometry-corner-radius 25
+    opacity 0.7
+    background-effect {
+      blur true
+    }
+  }
+}

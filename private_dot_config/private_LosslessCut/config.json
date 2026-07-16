@@ -3,9 +3,7 @@
 	"lastAppVersion": "3.69.0",
 	"captureFormat": "jpeg",
 	"enableCustomOutDir": false,
-	"recentCustomOutDirs": [
-		"/run/user/1000/doc/yymEPDpgG2glIbcGH_YjDg/tmp"
-	],
+	"recentCustomOutDirs": [],
 	"keyframeCut": true,
 	"autoMerge": true,
 	"autoDeleteMergedSegments": true,

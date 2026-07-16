@@ -293,13 +293,8 @@ install_ai_tools() {
 }
 
 disable_sleep_hybernation() {
-  sudo tee "/etc/systemd/sleep.conf.d/disable-sleep.conf" << EOF
-[Sleep]
-AllowSuspend=no
-AllowHibernation=no
-AllowHybridSleep=no
-AllowSuspendThenHibernate=no
-EOF
+  echo "Disabling sleep and hybernation..."
+  sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
 main() {

@@ -56,7 +56,7 @@ CORE_PKGS=(
   kdeconnect-kde
   bluez libnotify-tools
   xdg-user-dirs
-  go nodejs
+  go nodejs typescript
   cargo uv
 )
 

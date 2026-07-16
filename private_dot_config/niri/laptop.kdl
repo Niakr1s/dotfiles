@@ -41,10 +41,6 @@ output "eDP-1" {
     position x=0 y=0
 }
 
-spawn-at-startup "Throne"
-spawn-at-startup "firefox"
-
-workspace "tray"
 workspace "web"
 
 spawn-sh-at-startup "niri msg action focus-workspace web"

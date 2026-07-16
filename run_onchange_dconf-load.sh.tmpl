@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# ----------------------------------------------------------------------------------------------------------------------------------
+# Reference: https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#install-packages-with-scripts
+#
+# WARNING:
+# Be very accurate with filenames and paths!
+#
+# You can make a full backup before:
+# dconf dump / > .dconf-settings
+# This backup can be restored such as:
+# dconf load / < .dconf-settings
+#
+# USAGE:
+# This is a real usage example for nautilus file browser.
+# First, dump a dconf branch:
+# $ dconf dump /org/gnome/nautilus/preferences/ > ~/.local/share/chezmoi/dconf/org.gnome.nautilus.preferences
+#
+# Afterwards, add two lines:
+# {{ include "dconf/org.gnome.nautilus.preferences" | sha256sum }}
+# dconf load /org/gnome/nautilus/preferences/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.preferences" | quote }}
+#
+# Again, be extra careful with file filenams and paths!
+#
+# ----------------------------------------------------------------------------------------------------------------------------------
+
+# {{ include "dconf/org.gnome.nautilus.preferences" | sha256sum }}
+dconf load /org/gnome/nautilus/preferences/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.preferences" | quote }}
+
+# {{ include "dconf/org.gtk.gtk4.settings.file-chooser" | sha256sum }}
+dconf load /org/gtk/gtk4/settings/file-chooser/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gtk.gtk4.settings.file-chooser" | quote }}
+
+# {{ include "dconf/org.gnome.nautilus.list-view" | sha256sum }}
+dconf load /org/gnome/nautilus/list-view/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.list-view" | quote }}

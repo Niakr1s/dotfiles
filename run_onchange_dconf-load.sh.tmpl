@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# ----------------------------------------------------------------------------------------------------------------------------------
 # Reference: https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#install-packages-with-scripts
 #
 # WARNING:
@@ -12,23 +11,24 @@
 # dconf load / < .dconf-settings
 #
 # USAGE:
-# This is a real usage example for nautilus file browser.
+# This is a real usage example
 # First, dump a dconf branch:
-# $ dconf dump /org/gnome/nautilus/preferences/ > ~/.local/share/chezmoi/dconf/org.gnome.nautilus.preferences
+# $ dconf dump /org/gnome/desktop/interface/ > ~/.local/share/chezmoi/dconf/org.gnome.desktop.interface
 #
-# Afterwards, add two lines:
-# {{ include "dconf/org.gnome.nautilus.preferences" | sha256sum }}
-# dconf load /org/gnome/nautilus/preferences/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.preferences" | quote }}
-#
-# Again, be extra careful with file filenams and paths!
-#
-# ----------------------------------------------------------------------------------------------------------------------------------
+# Afterwards, add these two lines (note: this is a real usage example):
 
+# Dark theme
+# {{ include "dconf/org.gnome.desktop.interface" | sha256sum }}
+dconf load /org/gnome/desktop/interface/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.desktop.interface" | quote }}
+
+# Nautilus config
 # {{ include "dconf/org.gnome.nautilus.preferences" | sha256sum }}
 dconf load /org/gnome/nautilus/preferences/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.preferences" | quote }}
 
-# {{ include "dconf/org.gtk.gtk4.settings.file-chooser" | sha256sum }}
-dconf load /org/gtk/gtk4/settings/file-chooser/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gtk.gtk4.settings.file-chooser" | quote }}
-
+# Nautilus list-view config
 # {{ include "dconf/org.gnome.nautilus.list-view" | sha256sum }}
 dconf load /org/gnome/nautilus/list-view/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gnome.nautilus.list-view" | quote }}
+
+# GTK4 file-choose config
+# {{ include "dconf/org.gtk.gtk4.settings.file-chooser" | sha256sum }}
+dconf load /org/gtk/gtk4/settings/file-chooser/ < {{ joinPath .chezmoi.sourceDir "dconf/org.gtk.gtk4.settings.file-chooser" | quote }}

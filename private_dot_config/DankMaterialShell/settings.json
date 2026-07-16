@@ -615,7 +615,7 @@
         {
           "id": "music",
           "enabled": true,
-          "mediaSize": 3
+          "mediaSize": 1
         },
         {
           "id": "clock",

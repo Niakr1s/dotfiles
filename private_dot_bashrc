@@ -36,6 +36,7 @@ function y() {
 alias zp="sudo zypper"
 alias zpi="sudo zypper install"
 alias zpr="sudo zypper remove -u"
+alias zpu="sudo zypper refresh && sudo zypper dup"
 alias zps="zypper search; echo 'consider search with am tool too: am -q'"
 
 # Chezmoi

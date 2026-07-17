@@ -20,7 +20,15 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export PATH="$PATH:$HOME/node_modules/.bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.asdf/shims:$HOME/Applications:$HOME/bin"
+PATH_ADDITIONS=(
+    "$HOME/node_modules/.bin"
+    "$HOME/go/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/.asdf/shims"
+    "$HOME/Applications"
+    "$HOME/bin"
+)
+export PATH="$PATH:$(IFS=:; echo "${PATH_ADDITIONS[*]}")"
 
 export EDITOR="nvim"
 export VISUAL="nvim"

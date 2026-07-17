@@ -11,6 +11,7 @@ ENABLE_CORRECTION=true
 plugins=(
   colored-man-pages
   colorize # provides ccat cless
+  direnv
   fzf
   git
   zoxide

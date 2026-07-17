@@ -57,6 +57,7 @@ CORE_PKGS=(
   bluez libnotify-tools
   xdg-user-dirs
   python313-Pygments # pygmentize
+  direnv
 
   # programming languages
   asdf

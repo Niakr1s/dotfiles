@@ -56,6 +56,9 @@ CORE_PKGS=(
   kdeconnect-kde
   bluez libnotify-tools
   xdg-user-dirs
+
+  # programming languages
+  asdf
   go nodejs typescript
   cargo uv
 )

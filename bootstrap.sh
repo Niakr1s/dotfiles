@@ -243,6 +243,9 @@ install_playstation_emulators() {
 
   echo "Installing shadPS4..."
   am -i shadps4-qtlauncher
+
+  echo "Installing PKGInstall for shadPS4..."
+  appimage-download "shadPS4-PKGInstall" "https://github.com/Muggle345/PKGInstall/releases/download/Release/PKGInstall-linux-AppImage-2025-10-24-96c7890.zip"
 }
 
 install_microsoft_emulators() {

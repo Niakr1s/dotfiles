@@ -9,9 +9,11 @@ ZSH_THEME="maran"
 ENABLE_CORRECTION=true
 
 plugins=(
+  colored-man-pages
+  colorize # provides ccat cless
+  fzf
   git
   zoxide
-  fzf
 )
 
 source $ZSH/oh-my-zsh.sh

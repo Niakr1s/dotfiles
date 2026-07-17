@@ -56,6 +56,7 @@ CORE_PKGS=(
   kdeconnect-kde
   bluez libnotify-tools
   xdg-user-dirs
+  python313-Pygments # pygmentize
 
   # programming languages
   asdf

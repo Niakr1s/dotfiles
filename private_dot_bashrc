@@ -45,7 +45,16 @@ alias zp="sudo zypper"
 alias zpi="sudo zypper install"
 alias zpr="sudo zypper remove -u"
 alias zpu="sudo zypper refresh && sudo zypper dup"
-alias zps="zypper search; echo 'consider search with am tool too: am -q'"
+function zps() {
+  echo "Searching in zypper..."
+  zypper search "$@"
+
+  echo
+  echo "Searching in am..."
+  for pkg in "$@"; do
+    am -q --all "$pkg"
+  done
+}
 
 # Chezmoi
 alias cz="chezmoi"

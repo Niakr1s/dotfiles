@@ -12,6 +12,7 @@ plugins=(
   colored-man-pages
   colorize # provides ccat cless
   direnv
+  dotenv
   fzf
   git
   zoxide

@@ -3,8 +3,9 @@
 
 usage() {
   cat << EOF
-# Download and add a desktop entry
-# Usage: appimage-install app <url>
+# Download and appimage
+# Works even with an appimage inside an archive, if it a single file
+# Usage: appimage-download app <url>
 EOF
 }
 
@@ -21,4 +22,3 @@ else
 fi
 
 chmod +x $APPDIR/$APPNAME
-appimage-desktop-entry $APPDIR/$APPNAME

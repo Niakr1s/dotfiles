@@ -84,6 +84,13 @@ After clean OpenSUSE installation, consider doing:
 EOF
 }
 
+postinstall_message() {
+  cat << EOF
+PostInstall steps:
+- Install tmux plugins: <prefix>+I
+EOF
+}
+
 # Installs vpn application
 install_vpn() {
   if ! which throne; then
@@ -327,6 +334,8 @@ main() {
   fi
 
   cleanup 
+
+  postinstall_message
 }
 
 main

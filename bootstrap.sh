@@ -189,6 +189,11 @@ install_syncthing() {
   echo "Syncthing installed. Proceed to https://127.0.0.1:8384 to configure"
 }
 
+install_asdf_packages() {
+  asdf plugin add zig
+  asdf install zig "0.16.0"
+}
+
 enable_virtualization() {
   echo "Enabling virtualizaiton..."
   sudo zypper install -y libvirt virt-manager python3-libguestfs
@@ -321,6 +326,7 @@ main() {
   enable_packman_repo
   install_core_packages 
   enable_flatpak
+  install_asdf_packages
 
   install_niri_dms
   install_syncthing 

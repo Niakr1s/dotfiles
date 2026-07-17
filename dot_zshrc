@@ -15,7 +15,6 @@ plugins=(
   dotenv # .env
   extract # extracts any type of archives
   fzf
-  git
   zoxide
 )
 

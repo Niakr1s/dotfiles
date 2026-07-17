@@ -172,12 +172,6 @@ enable_flatpak() {
   flatpak update
 }
 
-configure_tmux() {
-  echo "Installing tmux plugin manager (TPM)..."
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  echo "TPM installed. Use prefix+I to install new plugins and prefix+U to update them"
-}
-
 install_syncthing() {
   echo "Installing syncthing..."
   sudo zypper install syncthing
@@ -320,8 +314,6 @@ main() {
 
   install_niri_dms
   install_syncthing 
-
-  configure_tmux
 
   create_user_directories
   enable_snapper_home_snapshots

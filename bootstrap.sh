@@ -28,7 +28,7 @@ UNNEEDED_PKGS=(
 # These packages will be installed for all hosts
 CORE_PKGS=(
   zsh tmux
-  git-core chezmoi lazygit
+  git-core lazygit chezmoi etckeeper
   alacritty yazi
   fd fzf ripgrep zoxide eza bat
   ffmpegthumbnailer chafa resvg

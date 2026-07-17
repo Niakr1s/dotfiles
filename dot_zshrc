@@ -11,8 +11,9 @@ ENABLE_CORRECTION=true
 plugins=(
   colored-man-pages
   colorize # provides ccat cless
-  direnv
-  dotenv
+  direnv # .envrc
+  dotenv # .env
+  extract # extracts any type of archives
   fzf
   git
   zoxide

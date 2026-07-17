@@ -75,7 +75,7 @@ CORE_PACKMAN_PKGS=(
   ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec
 )
 
-preinstall_warning() {
+preinstall_message() {
   cat << EOF
 After clean OpenSUSE installation, consider doing:
 - If you installed with btrfs, consider add compress=zstd to subvolumes in '/etc/fstab' first.
@@ -304,7 +304,7 @@ disable_sleep_hybernation() {
 }
 
 main() {
-  preinstall_warning
+  preinstall_message
 
   install_vpn 
 

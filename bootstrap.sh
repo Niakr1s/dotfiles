@@ -1,32 +1,38 @@
 #!/usr/bin/env bash
 
-# This script bootstraps new system.
-# It installs and configures all packages needed
-# If a program needed to be handled manually,
-# this script will write a notification.
-#
-# It depends on $HOSTNAME
-# I have 2 computers: desktop and laptop,
-# So it will install core system to laptop
-# and full system to desktop (including gaming packages)
-#
-# First, this chezmoi dotfiles repo should be obtained and applied
-# sudo zypper install git chezmoi
-# git clone <repo> ~/.local/share/chezmoi
-# chezmoi apply
-# Then logout and login again
-#
-# And if the access to internet is blocked in Russia
-# install and configure vpn client
-# sudo zypper install throne
+# USAGE:
+#   source <script>
+#   bootstrap_main
+
+bootstrap_usage () {
+  cat << EOF
+This script contains all scripts that can be useful to bootstrap new OpenSUSE THumbleweed installation.
+You must have chezmoi files afailable at it's default location (~/.local/share/chezmoi), and applied (chezmoi apply).
+
+
+Import it in your shell:
+. bootstrap.sh
+
+All functions are started with bootstrap_<function> and all constants - with BOOTSTTRAP_<constant>.
+
+You can check it contents:
+which bootstrap_<function>
+echo BOOTSTRAP_<constant>
+
+Main script is:
+bootstrap_main # bootstrap a new installation
+
+If you have problems with internet, consider running 'bootstrap_install_vpn'
+EOF
+}
 
 # These packages will be uninstalled in the end
-UNNEEDED_PKGS=(
+BOOTSTRAP_UNNEEDED_PKGS=(
   mako
 )
 
 # These packages will be installed for all hosts
-CORE_PKGS=(
+BOOTSTRAP_CORE_PKGS=(
   zsh tmux
   git-core lazygit chezmoi etckeeper
   alacritty yazi
@@ -66,21 +72,21 @@ CORE_PKGS=(
 )
 
 # These go packages will be installed for all hosts
-CORE_GO_PKGS=(
+BOOTSTRAP_CORE_GO_PKGS=(
   github.com/jorgerojas26/lazysql@latest
 )
 
 # These appimages will be installed for all users
-CORE_APPIMAGE_PKGS=(
+BOOTSTRAP_CORE_APPIMAGE_PKGS=(
   losslesscut joplin mision-center
 )
 
 # These packages from packman repository will be installed for all hosts
-CORE_PACKMAN_PKGS=(
+BOOTSTRAP_CORE_PACKMAN_PKGS=(
   ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec
 )
 
-preinstall_message() {
+bootstrap_fresh_installation_tips() {
   cat << EOF
 After clean OpenSUSE installation, consider doing:
 - If you installed with btrfs, consider add compress=zstd to subvolumes in '/etc/fstab' first.
@@ -89,7 +95,7 @@ After clean OpenSUSE installation, consider doing:
 EOF
 }
 
-postinstall_message() {
+bootstrap_postinstall_tips() {
   cat << EOF
 PostInstall steps:
 - Install tmux plugins: <prefix>+I
@@ -97,7 +103,7 @@ EOF
 }
 
 # Installs vpn application
-install_vpn() {
+bootstrap_install_vpn() {
   if ! which throne; then
     echo "Installing VPN client (throne)..."
 
@@ -110,7 +116,7 @@ install_vpn() {
 }
 
 # Enables packman repo with non-free packages
-enable_packman_repo() {
+bootstrap_enable_packman_repo() {
   if zypper lr | grep pakman &>/dev/null; then
     echo "Enabling packman repo..."
 
@@ -123,33 +129,33 @@ enable_packman_repo() {
   fi
 }
 
-create_user_directories() {
+bootstrap_create_user_directories() {
   echo "Creating user directories..."
   xdg-user-dirs-update --force
 }
 
-enable_snapper_home_snapshots() {
+bootstrap_enable_snapper_home_snapshots() {
   echo "Enabling snapper home snapshots..."
   sudo snapper -c home create-config /home
 }
 
-cleanup() {
+bootstrap_cleanup() {
   echo "Removing unneeded packages..."
-  sudo zypper remove -y $UNNEEDED_PKGS
+  sudo zypper remove -y $BOOTSTRAP_UNNEEDED_PKGS
 }
 
-install_core_packages() {
+bootstrap_install_core_packages() {
   echo "Installing core packages from packman repo..."
-  sudo zypper install -y --from packman $CORE_PACKMAN_PKGS
+  sudo zypper install -y --from packman $BOOTSTRAP_CORE_PACKMAN_PKGS
 
   echo "Installing core packages..."
-  sudo zypper install -y $CORE_PKGS
+  sudo zypper install -y $BOOTSTRAP_CORE_PKGS
 
   echo "Installing core golang packages..."
-  go install $CORE_GO_PKGS
+  go install $BOOTSTRAP_CORE_GO_PKGS
 
   echo "Installing core appimages..."
-  am -i $CORE_APPIMAGE_PKGS
+  am -i $BOOTSTRAP_CORE_APPIMAGE_PKGS
 
   echo "Installing Zed editor..."
   curl -f https://zed.dev/install.sh | sh
@@ -162,7 +168,7 @@ install_core_packages() {
     rm ./AM-INSTALLER
 }
 
-install_niri_dms() {
+bootstrap_install_niri_dms() {
   echo "Installing niri and dankmaterialshell...."
   sudo zypper addrepo https://download.opensuse.org/repositories/home:AvengeMedia:danklinux/openSUSE_Tumbleweed/home:AvengeMedia:danklinux.repo
   sudo zypper addrepo https://download.opensuse.org/repositories/home:/AvengeMedia:/dms/openSUSE_Tumbleweed/home:AvengeMedia:dms.repo
@@ -177,26 +183,28 @@ install_niri_dms() {
   systemctl --user add-wants niri.service dms
 }
 
-enable_flatpak() {
+bootstrap_enable_flatpak() {
   echo "Installing flatpak and flatseal..."
   sudo zypper install -y flatpak flatseal
   flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak update
 }
 
-install_syncthing() {
+bootstrap_install_syncthing() {
   echo "Installing syncthing..."
   sudo zypper install syncthing
   systemctl --user enable --now syncthing
   echo "Syncthing installed. Proceed to https://127.0.0.1:8384 to configure"
 }
 
-install_asdf_packages() {
+bootstrap_install_asdf_packages() {
   asdf plugin add zig
   asdf install zig "0.16.0"
+  asdf plugin add zls
+  asdf install zls "0.16.0"
 }
 
-enable_virtualization() {
+bootstrap_enable_virtualization() {
   echo "Enabling virtualizaiton..."
   sudo zypper install -y libvirt virt-manager python3-libguestfs
 
@@ -206,7 +214,7 @@ enable_virtualization() {
   sudo systemctl start libvirtd.service
 }
 
-enable_docker() {
+bootstrap_enable_docker() {
   echo "Enabling docker..."
   sudo zypper install docker docker-compose docker-compose-switch
   sudo systemctl enable docker
@@ -215,7 +223,7 @@ enable_docker() {
   sudo systemctl restart docker
 }
 
-install_nvidia_drivers() {
+bootstrap_install_nvidia_drivers() {
   echo "Installing NVIDIA drivers..."
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
   sudo zypper addrepo --refresh https://developer.download.nvidia.com/compute/cuda/repos/suse16/x86_64/ cuda
@@ -224,7 +232,7 @@ install_nvidia_drivers() {
   sudo zypper install -y nvidia-open-driver-G07-signed-kmp-meta
 }
 
-install_switch_emulators() {
+bootstrap_install_switch_emulators() {
   echo "Installing Ryujinx..."
   am -i ryujinx
   echo "Downloading and install keys..."
@@ -246,7 +254,7 @@ install_switch_emulators() {
   echo "Switch firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
 }
 
-install_playstation_emulators() {
+bootstrap_install_playstation_emulators() {
   echo "Installing pcsx2"
   sudo zypper -y install pcsx2
 
@@ -271,14 +279,14 @@ install_playstation_emulators() {
   appimage-download "shadPS4-PKGInstall" "https://github.com/Muggle345/PKGInstall/releases/download/Release/PKGInstall-linux-AppImage-2025-10-24-96c7890.zip"
 }
 
-install_microsoft_emulators() {
+bootstrap_install_microsoft_emulators() {
   echo "Installing xemu..."
   am -i xemu
   wget -O- "https://archive.org/download/xemustarter/XEMU FILES.zip" | bsdtar -xf- -C "$HOME/.local/share/xemu"
   echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
 }
 
-install_gaming_software() {
+bootstrap_install_gaming_software() {
   echo "Installing steam..."
   sudo zypper install -y steam
 
@@ -289,12 +297,12 @@ install_gaming_software() {
   echo "Refer to docs/retroarch.md for further configuration"
   sudo zypper install -y retroarch
   
-  install_switch_emulators
-  install_playstation_emulators
-  install_microsoft_emulators
+  bootstrap_install_switch_emulators
+  bootstrap_install_playstation_emulators
+  bootstrap_install_microsoft_emulators
 }
 
-install_ai_tools() {
+bootstrap_install_ai_tools() {
   echo "Installing oterm (tui aichat)..."
   uv tool install oterm
 
@@ -315,38 +323,38 @@ install_ai_tools() {
   for model in 'gemma4:e4b' 'qwen3.5:9b' 'qwen3-embedding:8b'; do ollama pull "$model"; done
 }
 
-disable_sleep_hybernation() {
+bootstrap_disable_sleep_hybernation() {
   echo "Disabling sleep and hybernation..."
   sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
 main() {
-  preinstall_message
+  bootstrap_fresh_installation_tips
 
-  install_vpn 
+  bootstrap_install_vpn 
 
-  enable_packman_repo
-  install_core_packages 
-  enable_flatpak
-  install_asdf_packages
+  bootstrap_enable_packman_repo
+  bootstrap_install_core_packages 
+  bootstrap_enable_flatpak
+  bootstrap_install_asdf_packages
 
-  install_niri_dms
-  install_syncthing 
+  bootstrap_install_niri_dms
+  bootstrap_install_syncthing 
 
-  create_user_directories
-  enable_snapper_home_snapshots
+  bootstrap_create_user_directories
+  bootstrap_enable_snapper_home_snapshots
 
   if [[ $HOSTNAME == "desktop" ]]; then
-    enable_virtualization 
-    enable_docker
-    install_nvidia_drivers
-    install_gaming_software
-    disable_sleep_hybernation
+    bootstrap_enable_virtualization 
+    bootstrap_enable_docker
+    bootstrap_install_nvidia_drivers
+    bootstrap_install_gaming_software
+    bootstrap_disable_sleep_hybernation
   fi
 
-  cleanup 
+  bootstrap_cleanup 
 
-  postinstall_message
+  bootstrap_postinstall_tips
 }
 
-main
+bootstrap_usage

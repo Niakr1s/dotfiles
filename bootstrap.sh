@@ -75,6 +75,15 @@ CORE_PACKMAN_PKGS=(
   ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec
 )
 
+preinstall_warning() {
+  cat << EOF
+After clean OpenSUSE installation, consider doing:
+- If you installed with btrfs, consider add compress=zstd to subvolumes in '/etc/fstab' first.
+- Remove 'splash=silent', add 'clearcpuid=514' and 'split_lock_detect=off' params:
+    sudo yast -> System -> Boot Loader -> Kernel Parameters -> Optional Kernel Command Line Parameter
+EOF
+}
+
 # Installs vpn application
 install_vpn() {
   if ! which throne; then
@@ -179,7 +188,10 @@ install_syncthing() {
 enable_virtualization() {
   echo "Enabling virtualizaiton..."
   sudo zypper install -y libvirt virt-manager python3-libguestfs
+
+  echo "Adding a user to libvirt group..."
   sudo usermod -aG libvirt $USER
+  echo "Starting libvirtd service..."
   sudo systemctl start libvirtd.service
 }
 
@@ -278,13 +290,15 @@ install_ai_tools() {
   echo "Installing and configuring ollama..."
   curl -fsSL https://ollama.com/install.sh | sh
 
-  echo "Setting up directories for ollama..."
-  sudo mkdir -p /var/lib/ollama
-  sudo chown -R ollama:ollama /var/lib/ollama
-  sudo chmod 755 /var/lib/ollama
+  # probably it will enabled by default
+  # echo "Setting up directories for ollama..."
+  # sudo mkdir -p /var/lib/ollama
+  # sudo chown -R ollama:ollama /var/lib/ollama
+  # sudo chmod 755 /var/lib/ollama
 
-  echo "Enabling ollama service..."
-  sudo systemctl enable --now ollama
+  # probably it will be enabled by default
+  # echo "Enabling ollama service..."
+  # sudo systemctl enable --now ollama
 
   echo "Pulling models for ollama..."
   for model in 'gemma4:e4b' 'qwen3.5:9b' 'qwen3-embedding:8b'; do ollama pull "$model"; done
@@ -296,6 +310,8 @@ disable_sleep_hybernation() {
 }
 
 main() {
+  preinstall_warning
+
   install_vpn 
 
   enable_packman_repo

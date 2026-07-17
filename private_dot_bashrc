@@ -33,10 +33,6 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
-alias vim="nvim"
-
-alias myip="curl ipinfo.io"
-
 alias zp="sudo zypper"
 alias zpi="sudo zypper install"
 alias zpr="sudo zypper remove -u"

@@ -66,10 +66,8 @@ CORE_GO_PKGS=(
 )
 
 # These appimages will be installed for all users
-declare -A CORE_APPIMAGE_PKGS=(
-  ["LosslessCut"]="https://github.com/mifi/lossless-cut/releases/download/v3.69.0/LosslessCut-linux-x86_64.AppImage"
-  ["Joplin"]="https://github.com/laurent22/joplin/releases/download/v3.6.15/Joplin-3.6.15.AppImage"
-  ["MissionCenter"]="https://gitlab.com/mission-center-devs/mission-center/-/jobs/12045090460/artifacts/raw/MissionCenter_v1.1.0-x86_64.AppImage"
+CORE_APPIMAGE_PKGS=(
+  losslesscut joplin mision-center
 )
 
 # These packages from packman repository will be installed for all hosts
@@ -119,16 +117,6 @@ cleanup() {
   sudo zypper remove -y $UNNEEDED_PKGS
 }
 
-# $1 is a associative array in format [AppName]=<url>
-install_appimages() {
-  APPS=$1
-  for app in "${!APPS[@]}"; do
-    url="${APPS[$app]}"
-    echo "Installing appimage $app..."
-    appimage-install "$app" "$url"
-  done
-}
-
 install_core_packages() {
   echo "Installing core packages from packman repo..."
   sudo zypper install -y --from packman $CORE_PACKMAN_PKGS
@@ -140,10 +128,17 @@ install_core_packages() {
   go install $CORE_GO_PKGS
 
   echo "Installing core appimages..."
-  install_appimages $CORE_APPIMAGE_PKGS
+  am -i $CORE_APPIMAGE_PKGS
 
   echo "Installing Zed editor..."
   curl -f https://zed.dev/install.sh | sh
+
+  echo "Installing AM (appimage installer)..."
+  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
+    chmod a+x ./AM-INSTALLER && \
+    # installer asks 1 to install as a system app, so in theory piping "1" should work
+    echo "1" | ./AM-INSTALLER && \
+    rm ./AM-INSTALLER
 }
 
 install_niri_dms() {
@@ -208,14 +203,14 @@ install_nvidia_drivers() {
 
 install_switch_emulators() {
   echo "Installing Ryujinx..."
-  appimage-install Ryujinx "https://git.ryujinx.app/projects/Ryubing/releases/download/1.3.3/ryujinx-1.3.3-x64.AppImage"
+  am -i ryujinx
   echo "Downloading and install keys..."
   wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/system"
   echo "Downloading and installing cheats..."
   mkdir -p $HOME/.config/Ryujinx/mods
   wget -O- "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/2026-04-18/contents_complete.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/mods"
 
-  appimage-install eden https://stable.eden-emu.dev/v0.2.1/Eden-Linux-v0.2.1-amd64-clang-pgo.AppImage
+  echo "1" | am -i eden # choose '1) AMD64 (PGO)' variant
   echo "Downloading and install keys..."
   wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.local/share/eden/keys"
 
@@ -247,12 +242,12 @@ install_playstation_emulators() {
   cargo install --git https://github.com/Redrrx/ps3dec
 
   echo "Installing shadPS4..."
-  appimage-install shadPS4 https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/v224/shadPS4QtLauncher-linux-qt-v224.zip
+  am -i shadps4-qtlauncher
 }
 
 install_microsoft_emulators() {
   echo "Installing xemu..."
-  https://github.com/xemu-project/xemu/releases/download/v0.8.136/xemu-0.8.136-x86_64.AppImage
+  am -i xemu
   wget -O- "https://archive.org/download/xemustarter/XEMU FILES.zip" | bsdtar -xf- -C "$HOME/.local/share/xemu"
   echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
 }

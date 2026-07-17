@@ -23,7 +23,7 @@ fi
 export PATH="$PATH:$HOME/node_modules/.bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/Applications:$HOME/bin"
 
 export EDITOR="nvim"
-export VISUAL="zed"
+export VISUAL="nvim"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

@@ -1,17 +1,7 @@
-#!/usr/bin/env bash
-
-# USAGE:
-#   source <script>
-#   bootstrap_main
-
 bootstrap_usage () {
   cat << EOF
 This script contains all scripts that can be useful to bootstrap new OpenSUSE THumbleweed installation.
 You must have chezmoi files afailable at it's default location (~/.local/share/chezmoi), and applied (chezmoi apply).
-
-
-Import it in your shell:
-. bootstrap.sh
 
 All functions are started with bootstrap_<function> and all constants - with BOOTSTTRAP_<constant>.
 
@@ -356,5 +346,3 @@ main() {
 
   bootstrap_postinstall_tips
 }
-
-bootstrap_usage

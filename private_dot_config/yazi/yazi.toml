@@ -24,7 +24,7 @@ custom = [
 ]
 
 [[opener.bulk-rename]]
-run   = "nvim %s"
+run   = "$EDITOR %s"
 block = true
 
 [[open.prepend_rules]]

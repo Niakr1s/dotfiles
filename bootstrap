@@ -26,6 +26,7 @@ BOOTSTRAP_UNNEEDED_PKGS=(
 BOOTSTRAP_CORE_PKGS=(
   zsh tmux
   git-core lazygit chezmoi etckeeper
+  firefox # this somehow can be removed in cleaning phase, so add it explicitly
   alacritty yazi
   fd fzf ripgrep zoxide eza bat
   ffmpegthumbnailer chafa resvg

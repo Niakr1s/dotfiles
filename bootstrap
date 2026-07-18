@@ -19,6 +19,7 @@ EOF
 # These packages will be uninstalled in the end
 BOOTSTRAP_UNNEEDED_PKGS=(
   mako
+  icewm konsole xterm # remove icewm packages
 )
 
 # These packages will be installed for all hosts

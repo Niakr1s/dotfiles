@@ -133,6 +133,13 @@ bootstrap_enable_snapper_home_snapshots() {
 bootstrap_cleanup() {
   echo "Removing unneeded packages..."
   sudo zypper remove -y $BOOTSTRAP_UNNEEDED_PKGS
+
+  echo "Moving YaST applications shortcuts to /usr/share/applications.bak..."
+  sudo mkdir -p /usr/share/applications.bak
+  sudo mv /usr/share/applications/YaST2 /usr/share/applications.bak/
+  sudo mv /usr/share/applications/org.opensuse.YaST.desktop /usr/share/applications.bak
+  sudo mv /usr/share/applications/org.opensuse.yast.MetapackageHandler.desktop /usr/share/applications.bak
+  sudo mv /usr/share/applications/org.opensuse.yast.Packager.desktop /usr/share/applications.bak
 }
 
 bootstrap_install_core_packages() {

@@ -70,7 +70,7 @@ BOOTSTRAP_CORE_GO_PKGS=(
 
 # These appimages will be installed for all users
 BOOTSTRAP_CORE_APPIMAGE_PKGS=(
-  losslesscut joplin mision-center
+  losslesscut joplin mision-center crossmacro
 )
 
 # These packages from packman repository will be installed for all hosts

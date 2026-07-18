@@ -12,3 +12,8 @@
     type = "git-repo"
     url = "https://github.com/tmux-plugins/tpm"
     refreshPeriod = "168h"
+
+[".config/DankMaterialShell/plugins"]
+    type = "git-repo"
+    url = "https://github.com/AvengeMedia/dms-plugins.git"
+    refreshPeriod = "168h"

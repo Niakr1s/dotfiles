@@ -276,17 +276,45 @@ bootstrap_install_microsoft_emulators() {
   echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
 }
 
-bootstrap_install_gaming_software() {
+bootstrap_install_retroarch() {
+  echo "Installing retroarch..."
+  echo "Refer to docs/retroarch.md for further configuration"
+  sudo zypper install -y retroarch
+}
+
+bootstrap_install_steam() {
   echo "Installing steam..."
   sudo zypper install -y steam
 
   echo "Installing lutris..."
   sudo zypper install -y wine-staging-wow64 winetricks lutris mangohud gamescope mangoapp
+}
 
-  echo "Installing retroarch..."
-  echo "Refer to docs/retroarch.md for further configuration"
-  sudo zypper install -y retroarch
-  
+bootstrap_link_steamruntime_to_lutris() {
+ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime ~/.local/share/umu/steamrt1
+ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime ~/.local/share/umu/steamrt # dunno if it with prefix 1
+ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_soldier ~/.local/share/umu/steamrt2
+ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_sniper ~/.local/share/umu/steamrt3
+ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4 ~/.local/share/umu/steamrt4
+}
+
+bootstrap_install_lutris() {
+  echo "Installing lutris..."
+  sudo zypper install -y wine-staging-wow64 winetricks lutris mangohud gamescope mangoapp
+
+  cat << EOF
+Lutris was installed.
+Consider to download Steam Runtimes from Steam (Library->Tools->SteamRuntime[1,2,3,4]) and run
+bootstrap_link_steamruntime_to_lutris
+EOF
+}
+
+
+bootstrap_install_gaming_software() {
+  bootstrap_install_steam
+  bootstrap_install_lutris
+
+  bootstrap_install_retroarch
   bootstrap_install_switch_emulators
   bootstrap_install_playstation_emulators
   bootstrap_install_microsoft_emulators

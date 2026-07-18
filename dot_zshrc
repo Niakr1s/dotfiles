@@ -16,6 +16,9 @@ plugins=(
   extract # extracts any type of archives
   fzf
   zoxide
+
+  # custom
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh

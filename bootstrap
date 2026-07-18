@@ -137,6 +137,12 @@ bootstrap_enable_zram() {
   sudo zramswapon
 }
 
+bootstarp_install_lisgd() {
+  echo "Installing lisgd (for touchscreens)..."
+  echo "Prefer 'home:smolsheep' repo"
+  opi lisgd
+}
+
 bootstrap_cleanup() {
   echo "Removing unneeded packages..."
   sudo zypper remove -y $BOOTSTRAP_UNNEEDED_PKGS
@@ -384,6 +390,10 @@ main() {
     bootstrap_install_nvidia_drivers
     bootstrap_install_gaming_software
     bootstrap_disable_sleep_hybernation
+  fi
+
+  if [[ $HOSTNAME == "laptop" ]]; then
+    bootstarp_install_lisgd
   fi
 
   bootstrap_cleanup 

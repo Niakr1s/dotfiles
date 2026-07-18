@@ -168,12 +168,12 @@
       "width": 50
     },
     {
-      "id": "colorPicker",
+      "id": "idleInhibitor",
       "enabled": true,
       "width": 50
     },
     {
-      "id": "idleInhibitor",
+      "id": "plugin_dankKDEConnect",
       "enabled": true,
       "width": 50
     }

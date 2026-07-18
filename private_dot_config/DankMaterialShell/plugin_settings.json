@@ -18,5 +18,10 @@
         "name": "keyboard"
       }
     ]
+  },
+  "dankKDEConnect": {
+    "enabled": true,
+    "selectedDeviceId": "4a018fb364c1482eadcf3f9a76615c1e",
+    "showOngoingMedia": false
   }
 }

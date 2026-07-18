@@ -131,6 +131,12 @@ bootstrap_enable_snapper_home_snapshots() {
   sudo snapper -c home create-config /home
 }
 
+bootstrap_enable_zram() {
+  echo "Enabling zram..."
+  sudo zypper install -y systemd-zram-service
+  sudo zramswapon
+}
+
 bootstrap_cleanup() {
   echo "Removing unneeded packages..."
   sudo zypper remove -y $BOOTSTRAP_UNNEEDED_PKGS
@@ -370,6 +376,7 @@ main() {
 
   bootstrap_create_user_directories
   bootstrap_enable_snapper_home_snapshots
+  bootstrap_enable_zram
 
   if [[ $HOSTNAME == "desktop" ]]; then
     bootstrap_enable_virtualization 

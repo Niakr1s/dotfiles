@@ -246,21 +246,25 @@ bootstrap_install_nvidia_drivers() {
 bootstrap_install_switch_emulators() {
   echo "Installing Ryujinx..."
   am -i ryujinx
+
   echo "Downloading and install keys..."
+  mkdir -p "$HOME/.config/Ryujinx/system"
   wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/system"
+
   echo "Downloading and installing cheats..."
   mkdir -p $HOME/.config/Ryujinx/mods
   wget -O- "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/2026-04-18/contents_complete.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/mods"
 
   echo "1" | am -i eden # choose '1) AMD64 (PGO)' variant
   echo "Downloading and install keys..."
+  mkdir -p "$HOME/.local/share/eden/keys"
   wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.local/share/eden/keys"
 
 
-  local SWITCH_FIRMWARE_PATH="$HOME/Downloads/SwitchFirmware.20.0.1"
-  if [[ ! -z "SWITCH_FIRMWARE_PATH" ]]; then
-    echo "Downloading firmware to ~/Downloads..."
-    wget -O "~/Downloads/SwitchFirmware.20.0.1" "https://github.com/THZoria/NX_Firmware/releases/download/20.0.1/Firmware.20.0.1.zip"
+  local SWITCH_FIRMWARE_PATH="$HOME/.cache/SwitchFirmware.zip"
+  if [[ ! -e "$SWITCH_FIRMWARE_PATH" ]]; then
+    echo "Downloading firmware to ~/.cache..."
+    wget -O "$SWITCH_FIRMWARE_PATH" "https://github.com/THZoria/NX_Firmware/releases/download/20.0.1/Firmware.20.0.1.zip"
   fi
   echo "Switch firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
 }

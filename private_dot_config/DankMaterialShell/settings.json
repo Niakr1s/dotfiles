@@ -485,7 +485,7 @@
   "dockShowTrash": false,
   "dockTrashFileManager": "default",
   "dockTrashCustomCommand": "",
-  "notificationOverlayEnabled": false,
+  "notificationOverlayEnabled": true,
   "notificationPopupShadowEnabled": true,
   "notificationPopupPrivacyMode": false,
   "modalDarkenBackground": true,

@@ -126,6 +126,11 @@ bootstrap_create_user_directories() {
   xdg-user-dirs-update --force
 }
 
+bootstrap_enable_kvantum() {
+  sudo zypper install -y kvantum-manager kvantum-qt6 kvantum-themes
+  kvantummanager --set KvGnomeDark
+}
+
 bootstrap_enable_snapper_home_snapshots() {
   echo "Enabling snapper home snapshots..."
   sudo snapper -c home create-config /home
@@ -378,6 +383,7 @@ main() {
 
   bootstrap_enable_packman_repo
   bootstrap_install_core_packages 
+  bootstrap_enable_kvantum
   bootstrap_enable_flatpak
   bootstrap_install_asdf_packages
 

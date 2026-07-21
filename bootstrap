@@ -39,7 +39,8 @@ BOOTSTRAP_CORE_PKGS=(
   decibels clementine playerctl
   btm duf gdu scc
   aria2 qbittorrent
-  watchexec gnu_parallel lazysql
+  watchexec gnu_parallel
+  lazysql sqlitebrowser
   fastfetch cmatrix fortune cowsay
   ffmpeg yt-dlp mediainfo audacity kdenlive gpu-screen-recorder-gtk
   gimp inkscape ImageMagick gthumb jp2a

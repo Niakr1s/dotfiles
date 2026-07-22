@@ -98,15 +98,13 @@ EOF
 
 # Installs vpn application
 bootstrap_install_vpn() {
-  if ! which throne; then
-    echo "Installing VPN client (throne)..."
+  echo "Installing VPN client (throne)..."
 
-    # https://parhelia512.github.io/
-    sudo zypper addrepo -fc "https://parhelia512.github.io/throne-sle.repo"
-    sudo zypper install -y throne
-  else
-    echo "VPN client (throne) was found, skipping"
-  fi
+  # https://parhelia512.github.io/
+  sudo zypper addrepo -fc "https://parhelia512.github.io/throne-sle.repo"
+  sudo zypper install -y throne
+
+  sudo chmod u+s /usr/lib64/Throne/ThroneCore
 }
 
 # Enables packman repo with non-free packages

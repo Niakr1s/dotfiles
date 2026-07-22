@@ -140,7 +140,7 @@ bootstrap_enable_zram() {
   sudo zramswapon
 }
 
-bootstarp_install_lisgd() {
+bootstrap_install_lisgd() {
   echo "Installing lisgd (for touchscreens)..."
   echo "Prefer 'home:smolsheep' repo"
   opi lisgd
@@ -410,7 +410,7 @@ bootstrap_main() {
   fi
 
   if [[ $HOSTNAME == "laptop" ]]; then
-    bootstarp_install_lisgd
+    bootstrap_install_lisgd
   fi
 
   bootstrap_cleanup 

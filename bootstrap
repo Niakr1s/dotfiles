@@ -58,6 +58,7 @@ BOOTSTRAP_CORE_PKGS=(
   xdg-user-dirs
   python313-Pygments # pygmentize
   direnv
+  keepassxc
 
   # programming languages
   asdf

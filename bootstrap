@@ -24,6 +24,7 @@ BOOTSTRAP_UNNEEDED_PKGS=(
 
 # These packages will be installed for all hosts
 BOOTSTRAP_CORE_PKGS=(
+  opi
   zsh tmux
   git-core lazygit chezmoi etckeeper
   firefox # this somehow can be removed in cleaning phase, so add it explicitly

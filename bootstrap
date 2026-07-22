@@ -144,6 +144,7 @@ bootstrap_install_lisgd() {
   echo "Installing lisgd (for touchscreens)..."
   echo "Prefer 'home:smolsheep' repo"
   opi lisgd
+  sudo usermod -a -G input $USER
 }
 
 bootstrap_cleanup() {

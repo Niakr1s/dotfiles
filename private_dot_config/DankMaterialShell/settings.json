@@ -627,6 +627,10 @@
         {
           "id": "weather",
           "enabled": true
+        },
+        {
+          "id": "dankActions:variant_1783664649338",
+          "enabled": true
         }
       ],
       "rightWidgets": [

@@ -377,7 +377,7 @@ bootstrap_disable_sleep_hybernation() {
   sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
-main() {
+bootstrap_main() {
   bootstrap_fresh_installation_tips
 
   bootstrap_install_vpn 

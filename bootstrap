@@ -167,9 +167,6 @@ bootstrap_install_core_packages() {
   echo "Installing core golang packages..."
   go install $BOOTSTRAP_CORE_GO_PKGS
 
-  echo "Installing core appimages..."
-  am -i $BOOTSTRAP_CORE_APPIMAGE_PKGS
-
   echo "Installing Zed editor..."
   curl -f https://zed.dev/install.sh | sh
 
@@ -179,6 +176,9 @@ bootstrap_install_core_packages() {
     # installer asks 1 to install as a system app, so in theory piping "1" should work
     echo "1" | ./AM-INSTALLER && \
     rm ./AM-INSTALLER
+
+  echo "Installing core appimages..."
+  am -i $BOOTSTRAP_CORE_APPIMAGE_PKGS
 }
 
 bootstrap_install_niri_dms() {

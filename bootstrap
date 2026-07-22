@@ -147,7 +147,7 @@ bootstarp_install_lisgd() {
 
 bootstrap_cleanup() {
   echo "Removing unneeded packages..."
-  sudo zypper remove -y $BOOTSTRAP_UNNEEDED_PKGS
+  sudo zypper remove -y "${BOOTSTRAP_UNNEEDED_PKGS[@]}"
 
   echo "Moving YaST applications shortcuts to /usr/share/applications.bak..."
   sudo mkdir -p /usr/share/applications.bak
@@ -159,13 +159,13 @@ bootstrap_cleanup() {
 
 bootstrap_install_core_packages() {
   echo "Installing core packages from packman repo..."
-  sudo zypper install -y --from packman $BOOTSTRAP_CORE_PACKMAN_PKGS
+  sudo zypper install -y --from packman "${BOOTSTRAP_CORE_PACKMAN_PKGS[@]}"
 
   echo "Installing core packages..."
-  sudo zypper install -y $BOOTSTRAP_CORE_PKGS
+  sudo zypper install -y "${BOOTSTRAP_CORE_PKGS[@]}"
 
   echo "Installing core golang packages..."
-  go install $BOOTSTRAP_CORE_GO_PKGS
+  go install "${BOOTSTRAP_CORE_GO_PKGS[@]}"
 
   echo "Installing Zed editor..."
   curl -f https://zed.dev/install.sh | sh
@@ -178,7 +178,7 @@ bootstrap_install_core_packages() {
     rm ./AM-INSTALLER
 
   echo "Installing core appimages..."
-  am -i $BOOTSTRAP_CORE_APPIMAGE_PKGS
+  am -i "${BOOTSTRAP_CORE_APPIMAGE_PKGS[@]}"
 }
 
 bootstrap_install_niri_dms() {

@@ -282,7 +282,7 @@ bootstrap_install_playstation_emulators() {
   sudo zypper -y install pcsx2
 
   echo "Installing bioses..."
-  for region in a e j h; do wget -O- "https://github.com/archtaurus/RetroPieBIOS/raw/refs/heads/master/BIOS/pcsx2/bios/ps2-0230${region}-20080220.bin" > "/home/nea/.config/PCSX2/bios/ps2-0230${region}-20080220.bin"; done
+  for region in a e j h; do wget -O- "https://github.com/archtaurus/RetroPieBIOS/raw/refs/heads/master/BIOS/pcsx2/bios/ps2-0230${region}-20080220.bin" > "$HOME/.config/PCSX2/bios/ps2-0230${region}-20080220.bin"; done
 
   echo "Installing rpcs3"
   sudo zypper -y install rpcs3

@@ -110,16 +110,12 @@ bootstrap_install_vpn() {
 
 # Enables packman repo with non-free packages
 bootstrap_enable_packman_repo() {
-  if zypper lr | grep pakman &>/dev/null; then
-    echo "Enabling packman repo..."
+  echo "Enabling packman repo..."
 
-    # https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories#Solution
-    sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
-    sudo zypper refresh
-    sudo zypper dist-upgrade --from packman --allow-vendor-change
-  else
-    echo "Packman repo already enabled, skipping"
-  fi
+  # https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories#Solution
+  sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
+  sudo zypper refresh
+  sudo zypper dist-upgrade --from packman --allow-vendor-change
 }
 
 bootstrap_create_user_directories() {

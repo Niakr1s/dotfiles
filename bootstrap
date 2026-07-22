@@ -424,3 +424,5 @@ bootstrap_main() {
 
   bootstrap_postinstall_tips
 }
+
+# TODO: sudo zypper in -y MozillaFirefox-branding-upstream

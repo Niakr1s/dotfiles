@@ -146,6 +146,12 @@ bootstrap_install_lisgd() {
   sudo usermod -a -G input $USER
 }
 
+bootstrap_install_iio_niri() {
+  echo "Installing iio-niri..."
+  sudo zypper -y install iio-sensor-proxy dbus-1-devel
+  cargo install --git https://github.com/Zhaith-Izaliel/iio-niri.git
+}
+
 bootstrap_cleanup() {
   echo "Removing unneeded packages..."
   sudo zypper remove -y "${BOOTSTRAP_UNNEEDED_PKGS[@]}"
@@ -411,6 +417,7 @@ bootstrap_main() {
 
   if [[ $HOSTNAME == "laptop" ]]; then
     bootstrap_install_lisgd
+    bootstrap_install_iio_niri
   fi
 
   bootstrap_cleanup 

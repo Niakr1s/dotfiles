@@ -162,6 +162,9 @@ bootstrap_cleanup() {
   sudo mv /usr/share/applications/org.opensuse.YaST.desktop /usr/share/applications.bak
   sudo mv /usr/share/applications/org.opensuse.yast.MetapackageHandler.desktop /usr/share/applications.bak
   sudo mv /usr/share/applications/org.opensuse.yast.Packager.desktop /usr/share/applications.bak
+
+  echo "Remove firefox's opensuse branding..."
+  sudo zypper in -y MozillaFirefox-branding-upstream
 }
 
 bootstrap_enable_appimage_manager() {
@@ -424,5 +427,3 @@ bootstrap_main() {
 
   bootstrap_postinstall_tips
 }
-
-# TODO: sudo zypper in -y MozillaFirefox-branding-upstream

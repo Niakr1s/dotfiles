@@ -354,8 +354,28 @@ EOF
 bootstrap_install_sunshine() {
   echo "Installing sunshine..."
   am -i sunshine
+
+  echo "Fixing desktop icon..."
   sudo sed -i 's/Terminal=true/Terminal=false/g' /usr/local/share/applications/sunshine-AM.desktop
-  echo "Sunshine installed. Don't forget to open ports."
+
+  echo "Adding firewall service..."
+  sudo tee /etc/firewalld/services/sunshine.xml << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Sunshine</short>
+  <description>Sunshine Game Stream Server</description>
+  <port protocol="tcp" port="47984"/>
+  <port protocol="tcp" port="47989"/>
+  <port protocol="tcp" port="48010"/>
+  <port protocol="udp" port="47998-48010"/>
+</service>
+EOF
+  sudo firewall-cmd --reload
+
+  sudo firewall-cmd --add-service=sunshine --permanent
+  sudo firewall-cmd --reload
+
+  echo "Sunshine installed"
 }
 
 bootstrap_install_gaming_software() {

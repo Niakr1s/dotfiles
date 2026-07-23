@@ -60,6 +60,7 @@ BOOTSTRAP_CORE_PKGS=(
   direnv
   keepassxc
   firewall-config
+  moonlight
 
   # programming languages
   asdf

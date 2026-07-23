@@ -52,7 +52,8 @@ BOOTSTRAP_CORE_PKGS=(
   borgbackup
   librecad libreoffice zeal
   blender
-  zenity dconf-editor
+  zenity dialog
+  dconf-editor
   kdeconnect-kde
   bluez libnotify-tools
   xdg-user-dirs

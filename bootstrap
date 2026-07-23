@@ -61,6 +61,7 @@ BOOTSTRAP_CORE_PKGS=(
   keepassxc
   firewall-config
   moonlight
+  pavucontrol
 
   # programming languages
   asdf

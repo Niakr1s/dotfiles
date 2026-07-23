@@ -351,6 +351,11 @@ bootstrap_link_steamruntime_to_lutris
 EOF
 }
 
+bootstrap_install_sunshine() {
+  echo "Installing sunshine..."
+  am -i sunshine
+  sudo sed -i 's/Terminal=true/Terminal=false/g' /usr/local/share/applications/sunshine-AM.desktop
+}
 
 bootstrap_install_gaming_software() {
   bootstrap_install_steam
@@ -360,6 +365,8 @@ bootstrap_install_gaming_software() {
   bootstrap_install_switch_emulators
   bootstrap_install_playstation_emulators
   bootstrap_install_microsoft_emulators
+
+  bootstrap_install_sunshine
 }
 
 bootstrap_install_ai_tools() {

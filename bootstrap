@@ -59,6 +59,7 @@ BOOTSTRAP_CORE_PKGS=(
   python313-Pygments # pygmentize
   direnv
   keepassxc
+  firewall-config
 
   # programming languages
   asdf

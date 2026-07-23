@@ -355,6 +355,7 @@ bootstrap_install_sunshine() {
   echo "Installing sunshine..."
   am -i sunshine
   sudo sed -i 's/Terminal=true/Terminal=false/g' /usr/local/share/applications/sunshine-AM.desktop
+  echo "Sunshine installed. Don't forget to open ports."
 }
 
 bootstrap_install_gaming_software() {

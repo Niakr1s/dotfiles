@@ -9,8 +9,8 @@ services:
       USERNAME: "bill"
       PASSWORD: "gates"
 
-      RAM_SIZE: "8G"
-      CPU_CORES: "6"
+      RAM_SIZE: "4G"
+      CPU_CORES: "4"
 
     devices:
       - /dev/kvm

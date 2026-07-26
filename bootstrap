@@ -254,6 +254,19 @@ bootstrap_enable_docker() {
   sudo systemctl restart docker
 }
 
+bootstrap_enable_nvidia_in_docker() {
+  # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+  sudo zypper ar https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo
+  NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.1-1
+  sudo zypper --gpg-auto-import-keys install -y \
+    nvidia-container-toolkit-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+    nvidia-container-toolkit-base-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+    libnvidia-container-tools-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+    libnvidia-container1-${NVIDIA_CONTAINER_TOOLKIT_VERSION}
+  sudo nvidia-ctk runtime configure --runtime=docker
+  sudo systemctl restart docker
+}
+
 bootstrap_install_nvidia_drivers() {
   echo "Installing NVIDIA drivers..."
   sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
@@ -453,7 +466,10 @@ bootstrap_main() {
   if [[ $HOSTNAME == "desktop" ]]; then
     bootstrap_enable_virtualization 
     bootstrap_enable_docker
+
     bootstrap_install_nvidia_drivers
+    bootstrap_enable_nvidia_in_docker
+
     bootstrap_install_gaming_software
     bootstrap_disable_sleep_hybernation
   fi

@@ -393,7 +393,7 @@ bootstrap_install_gaming_software() {
   bootstrap_install_sunshine
 }
 
-bootstrap_install_ai_tools() {
+bootstrap_install_ai_tools_deprecated() {
   echo "Installing oterm (tui aichat)..."
   uv tool install oterm
 
@@ -412,6 +412,14 @@ bootstrap_install_ai_tools() {
 
   echo "Pulling models for ollama..."
   for model in 'gemma4:e4b' 'qwen3.5:9b' 'qwen3-embedding:8b'; do ollama pull "$model"; done
+}
+
+bootstrap_install_ai_tools() {
+  echo "Installing lmstudio..."
+  am -i lmstudio
+
+  echo "Installing and configuring hermes agent..."
+  curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 }
 
 bootstrap_disable_sleep_hybernation() {

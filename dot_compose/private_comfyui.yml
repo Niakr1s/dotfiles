@@ -1,0 +1,44 @@
+# ComfyUI Docker Setup
+# This file defines the docker-compose structure for ComfyUI with persistent storage.
+
+# The following section automatically creates the required directories using a simple shell script.
+# Run this before 'docker compose -f ~/.compose/comfyui.yml up -d':
+# mkdir -p $HOME/.comfyui/storage-cache/dot-cache $HOME/.comfyui/storage-cache/dot-config $HOME/.comfyui/storage-nodes/dot-local $HOME/.comfyui/storage-nodes/custom_nodes $HOME/.comfyui/storage-models/models $HOME/.comfyui/storage-models/hf-hub $HOME/.comfyui/storage-models/torch-hub $HOME/.comfyui/storage-user/input $HOME/.comfyui/storage-user/output $HOME/.comfyui/storage-user/user-profile $HOME/.comfyui/storage-user/user-scripts
+
+services:
+  comfyui:
+    init: true
+    container_name: comfyui-megapak
+    image: "yanwk/comfyui-boot:cu130-megapak-pt211"
+    pull_policy: daily
+    shm_size: 2gb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8188:8188"
+    volumes:
+      - "$HOME/.comfyui/storage-cache/dot-cache:/root/.cache"
+      - "$HOME/.comfyui/storage-cache/dot-config:/root/.config"
+      - "$HOME/.comfyui/storage-nodes/dot-local:/root/.local"
+      - "$HOME/.comfyui/storage-nodes/custom_nodes:/root/ComfyUI/custom_nodes"
+      - "$HOME/.comfyui/storage-models/models:/root/ComfyUI/models"
+      - "$HOME/.comfyui/storage-models/hf-hub:/root/.cache/huggingface/hub"
+      - "$HOME/.comfyui/storage-models/torch-hub:/root/.cache/torch/hub"
+      - "$HOME/.comfyui/storage-user/input:/root/ComfyUI/input"
+      - "$HOME/.comfyui/storage-user/output:/root/ComfyUI/output"
+      - "$HOME/.comfyui/storage-user/user-profile:/root/ComfyUI/user"
+      - "$HOME/.comfyui/storage-user/user-scripts:/root/user-scripts"
+    environment:
+      - CLI_ARGS=
+    security_opt:
+      # - "label=type:nvidia_container_t"
+      - "label=disable"
+      - "seccomp=unconfined"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

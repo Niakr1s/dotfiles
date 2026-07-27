@@ -68,6 +68,7 @@ BOOTSTRAP_CORE_PKGS=(
   asdf
   go nodejs typescript
   cargo uv
+  cmake make ccache
 )
 
 # These go packages will be installed for all hosts

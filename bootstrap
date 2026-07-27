@@ -429,6 +429,7 @@ bootstrap_install_ai_tools_deprecated() {
 
 bootstrap_install_ai_tools() {
   echo "Installing lmstudio..."
+  curl -fsSL https://lmstudio.ai/install.sh | bash
   am -i lmstudio
 
   echo "Installing and configuring hermes agent..."

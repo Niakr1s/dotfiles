@@ -33,6 +33,7 @@ PATH_ADDITIONS=(
     "$HOME/.asdf/shims"
     "$HOME/Applications"
     "$HOME/bin"
+    "/sbin"
 )
 export PATH="$PATH:$(IFS=:; echo "${PATH_ADDITIONS[*]}")"
 

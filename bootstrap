@@ -463,17 +463,17 @@ bootstrap_main() {
   bootstrap_enable_snapper_home_snapshots
   bootstrap_enable_zram
 
-  if [[ $HOSTNAME == "desktop" ]]; then
+  if [[ $HOSTNAME == "server" || $HOSTNAME == "desktop" ]]; then
+    bootstrap_disable_sleep_hybernation
     bootstrap_enable_virtualization 
     bootstrap_enable_docker
-
     bootstrap_install_nvidia_drivers
     bootstrap_enable_nvidia_in_docker
-
-    bootstrap_install_gaming_software
-    bootstrap_disable_sleep_hybernation
-
     bootstrap_install_ai_tools
+  fi
+
+  if [[ $HOSTNAME == "desktop" ]]; then
+    bootstrap_install_gaming_software
   fi
 
   if [[ $HOSTNAME == "laptop" ]]; then

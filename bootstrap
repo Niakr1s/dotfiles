@@ -472,6 +472,8 @@ bootstrap_main() {
 
     bootstrap_install_gaming_software
     bootstrap_disable_sleep_hybernation
+
+    bootstrap_install_ai_tools
   fi
 
   if [[ $HOSTNAME == "laptop" ]]; then

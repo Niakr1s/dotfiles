@@ -11,8 +11,6 @@ echo BOOTSTRAP_<constant>
 
 Main script is:
 bootstrap_main # bootstrap a new installation
-
-If you have problems with internet, consider running 'bootstrap_install_vpn'
 EOF
 }
 
@@ -129,11 +127,9 @@ confirm_yes_no() {
 }
 
 bootstrap_fresh_installation_tips() {
-# - Remove 'splash=silent', add 'clearcpuid=514' and 'split_lock_detect=off' params:
-    # sudo yast -> System -> Boot Loader -> Kernel Parameters -> Optional Kernel Command Line Parameter
-
   cat << EOF
 After clean CachyOS installation, consider doing:
+
 EOF
 }
 
@@ -187,6 +183,76 @@ bootstrap_enable_virtualization() {
   sudo ufw route allow from 192.168.122.0/24
 }
 
+bootstrap_disable_sleep_hybernation() {
+  echo "Disabling sleep and hybernation..."
+  sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+}
+
+bootstrap_install_switch_emulators() {
+  echo "Installing Ryujinx..."
+  am -i ryujinx
+
+  echo "Downloading and install keys..."
+  mkdir -p "$HOME/.config/Ryujinx/system"
+  wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/system"
+
+  echo "Downloading and installing cheats..."
+  mkdir -p $HOME/.config/Ryujinx/mods
+  wget -O- "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/2026-04-18/contents_complete.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/mods"
+
+  echo "1" | am -i eden # choose '1) AMD64 (PGO)' variant
+  echo "Downloading and install keys..."
+  mkdir -p "$HOME/.local/share/eden/keys"
+  wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.local/share/eden/keys"
+
+  local SWITCH_FIRMWARE_PATH="$HOME/.cache/SwitchFirmware.zip"
+  if [[ ! -e "$SWITCH_FIRMWARE_PATH" ]]; then
+    echo "Downloading firmware to ~/.cache..."
+    wget -O "$SWITCH_FIRMWARE_PATH" "https://github.com/THZoria/NX_Firmware/releases/download/20.0.1/Firmware.20.0.1.zip"
+  fi
+  echo "Switch firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
+}
+
+bootstrap_install_playstation_emulators() {
+  echo "Installing pcsx2"
+  am -i pcsx2
+
+  echo "Installing bioses..."
+  mkdir -p "$HOME/.config/PCSX2/bios"
+  for region in a e j h; do wget -O- "https://github.com/archtaurus/RetroPieBIOS/raw/refs/heads/master/BIOS/pcsx2/bios/ps2-0230${region}-20080220.bin" > "$HOME/.config/PCSX2/bios/ps2-0230${region}-20080220.bin"; done
+
+  echo "Installing rpcs3"
+  am -i rpcs3
+
+  local PCS3_FIRMWARE_PATH="$HOME/.cache/PS3UPDAT.PUP"
+  echo "Downloading PS3 firmware to $PCS3_FIRMWARE_PATH"
+  wget -P "$PCS3_FIRMWARE_PATH" "http://dus01.ps3.update.playstation.net/update/ps3/image/us/2026_0318_a2b60b6ac1d2e49e230144345616927c/PS3UPDAT.PUP"
+  echo "PS3 firmware is at $PCS3_FIRMWARE_PATH, don't forget to install it"
+
+  echo "Installing ps3dec (tool for decrypting ps3 iso)..."
+  cargo install --git https://github.com/Redrrx/ps3dec
+
+  echo "Installing shadPS4..."
+  am -i shadps4-qtlauncher
+
+  echo "Installing PKGInstall for shadPS4..."
+  appimage-download "shadPS4-PKGInstall" "https://github.com/Muggle345/PKGInstall/releases/download/Release/PKGInstall-linux-AppImage-2025-10-24-96c7890.zip"
+}
+
+bootstrap_install_xbox_emulators() {
+  echo "Installing xemu..."
+  am -i xemu
+  mkdir -p "$HOME/.local/share/xemu"
+  wget -O- "https://archive.org/download/xemustarter/XEMU FILES.zip" | bsdtar -xf- -C "$HOME/.local/share/xemu"
+  echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
+}
+
+bootstrap_install_retroarch() {
+  echo "Installing retroarch..."
+  echo "Refer to docs/retroarch.md for further configuration"
+  am -i retroarch
+}
+
 bootstrap_main() {
   bootstrap_fresh_installation_tips
 
@@ -210,72 +276,18 @@ bootstrap_main() {
   confirm_yes_no "Install asdf packages?" && bootstrap_install_asdf_packages
 
   confirm_yes_no "Enable virtualization?" && bootstrap_enable_virtualization
+  confirm_yes_no "Disable sleep and hybernation?" && bootstrap_disable_sleep_hybernation
+
+  confirm_yes_no "Install switch emulators?" && bootstrap_install_switch_emulators
+  confirm_yes_no "Install playstation emulators?" && bootstrap_install_playstation_emulators
+  confirm_yes_no "Install xbox emulators?" && bootstrap_install_xbox_emulators
+  confirm_yes_no "Install retroarch?" && bootstrap_install_retroarch
+
+  if [[ "$HOST" == "desktop" ]]; then
+    confirm_yes_no "Install nvidia-container-toolkit?" && install_pkgs nvidia-container-toolkit
+  fi
 
   bootstrap_postinstall_tips
-}
-
-bootstrap_install_switch_emulators() {
-  echo "Installing Ryujinx..."
-  am -i ryujinx
-
-  echo "Downloading and install keys..."
-  mkdir -p "$HOME/.config/Ryujinx/system"
-  wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/system"
-
-  echo "Downloading and installing cheats..."
-  mkdir -p $HOME/.config/Ryujinx/mods
-  wget -O- "https://github.com/HamletDuFromage/switch-cheats-db/releases/download/2026-04-18/contents_complete.zip" | bsdtar -xf- -C "$HOME/.config/Ryujinx/mods"
-
-  echo "1" | am -i eden # choose '1) AMD64 (PGO)' variant
-  echo "Downloading and install keys..."
-  mkdir -p "$HOME/.local/share/eden/keys"
-  wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.local/share/eden/keys"
-
-
-  local SWITCH_FIRMWARE_PATH="$HOME/.cache/SwitchFirmware.zip"
-  if [[ ! -e "$SWITCH_FIRMWARE_PATH" ]]; then
-    echo "Downloading firmware to ~/.cache..."
-    wget -O "$SWITCH_FIRMWARE_PATH" "https://github.com/THZoria/NX_Firmware/releases/download/20.0.1/Firmware.20.0.1.zip"
-  fi
-  echo "Switch firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
-}
-
-bootstrap_install_playstation_emulators() {
-  echo "Installing pcsx2"
-  sudo zypper -y install pcsx2
-
-  echo "Installing bioses..."
-  for region in a e j h; do wget -O- "https://github.com/archtaurus/RetroPieBIOS/raw/refs/heads/master/BIOS/pcsx2/bios/ps2-0230${region}-20080220.bin" > "$HOME/.config/PCSX2/bios/ps2-0230${region}-20080220.bin"; done
-
-  echo "Installing rpcs3"
-  sudo zypper -y install rpcs3
-
-  local PCS3_FIRMWARE_PATH="$HOME/Downloads/PS3UPDAT.PUP"
-  echo "Downloading PS3 firmware to $PCS3_FIRMWARE_PATH"
-  wget -P "$PCS3_FIRMWARE_PATH" "http://dus01.ps3.update.playstation.net/update/ps3/image/us/2026_0318_a2b60b6ac1d2e49e230144345616927c/PS3UPDAT.PUP"
-  echo "PS3 firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
-
-  echo "Installing ps3dec (tool for decrypting ps3 iso)..."
-  cargo install --git https://github.com/Redrrx/ps3dec
-
-  echo "Installing shadPS4..."
-  am -i shadps4-qtlauncher
-
-  echo "Installing PKGInstall for shadPS4..."
-  appimage-download "shadPS4-PKGInstall" "https://github.com/Muggle345/PKGInstall/releases/download/Release/PKGInstall-linux-AppImage-2025-10-24-96c7890.zip"
-}
-
-bootstrap_install_microsoft_emulators() {
-  echo "Installing xemu..."
-  am -i xemu
-  wget -O- "https://archive.org/download/xemustarter/XEMU FILES.zip" | bsdtar -xf- -C "$HOME/.local/share/xemu"
-  echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
-}
-
-bootstrap_install_retroarch() {
-  echo "Installing retroarch..."
-  echo "Refer to docs/retroarch.md for further configuration"
-  sudo zypper install -y retroarch
 }
 
 bootstrap_link_steamruntime_to_lutris() {
@@ -322,53 +334,6 @@ EOF
   sudo firewall-cmd --reload
 
   echo "Sunshine installed"
-}
-
-bootstrap_install_gaming_software() {
-  bootstrap_install_steam
-  bootstrap_install_lutris
-
-  bootstrap_install_retroarch
-  bootstrap_install_switch_emulators
-  bootstrap_install_playstation_emulators
-  bootstrap_install_microsoft_emulators
-
-  bootstrap_install_sunshine
-}
-
-bootstrap_install_ai_tools_deprecated() {
-  echo "Installing oterm (tui aichat)..."
-  uv tool install oterm
-
-  echo "Installing and configuring ollama..."
-  curl -fsSL https://ollama.com/install.sh | sh
-
-  # probably it will enabled by default
-  # echo "Setting up directories for ollama..."
-  # sudo mkdir -p /var/lib/ollama
-  # sudo chown -R ollama:ollama /var/lib/ollama
-  # sudo chmod 755 /var/lib/ollama
-
-  # probably it will be enabled by default
-  # echo "Enabling ollama service..."
-  # sudo systemctl enable --now ollama
-
-  echo "Pulling models for ollama..."
-  for model in 'gemma4:e4b' 'qwen3.5:9b' 'qwen3-embedding:8b'; do ollama pull "$model"; done
-}
-
-bootstrap_install_ai_tools() {
-  echo "Installing lmstudio..."
-  curl -fsSL https://lmstudio.ai/install.sh | bash
-  am -i lmstudio
-
-  echo "Installing and configuring hermes agent..."
-  curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
-}
-
-bootstrap_disable_sleep_hybernation() {
-  echo "Disabling sleep and hybernation..."
-  sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
 bootstrap_main_old() {

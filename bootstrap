@@ -30,6 +30,12 @@ install_pkgs_flatpak() {
   done
 }
 
+install_pkgs_am() {
+  for app in $@; do
+    am -i "$app"
+  done
+}
+
 # These packages will be installed for all hosts
 PKGS=(
   # programming
@@ -101,7 +107,7 @@ PKGS_AUR=(
   asdf-vm
 )
 
-PKGS_FLATPAK=(
+PKGS_AM=(
   losslesscut
   crossmacro
 )
@@ -137,6 +143,14 @@ PostInstall steps:
 - Install tmux plugins: <prefix>+I
 - Enable and configure syncthing: systemctl --user enable --now syncthing
 EOF
+}
+
+bootstrap_install_am() {
+  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
+    chmod a+x ./AM-INSTALLER && \
+    # installer asks 1 to install as a system app, so in theory piping "1" should work
+    echo "1" | ./AM-INSTALLER && \
+    rm ./AM-INSTALLER
 }
 
 bootstrap_enable_kvantum() {
@@ -176,9 +190,11 @@ bootstrap_enable_virtualization() {
 bootstrap_main() {
   bootstrap_fresh_installation_tips
 
+  confirm_yes_no "Install am (appimage manager)?" && bootstrap_install_am
+
   confirm_yes_no "Install packages?" && install_pkgs "${PKGS[@]}"
   confirm_yes_no "Install aur packages?" && install_pkgs_aur "${PKGS_AUR[@]}"
-  confirm_yes_no "Install flatpak packages?" && install_pkgs_flatpak "${PKGS_FLATPAK[@]}"
+  confirm_yes_no "Install am packages?" && install_pkgs_am "${PKGS_AM[@]}"
 
   confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors
   confirm_yes_no "Install gaming packages?" && sudo cachyos-hello fix install-gaming

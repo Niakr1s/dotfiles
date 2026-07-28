@@ -205,6 +205,11 @@ bootstrap_install_switch_emulators() {
   mkdir -p "$HOME/.local/share/eden/keys"
   wget -O- "https://archive.org/download/20.0.1-keys/20.0.1 Keys.zip" | bsdtar -xf- -C "$HOME/.local/share/eden/keys"
 
+  cat << EOF
+Eden configuration:
+  - VULKAN BALANCED DOCKED SCALEFORCE SMAA
+EOF
+
   local SWITCH_FIRMWARE_PATH="$HOME/.cache/SwitchFirmware.zip"
   if [[ ! -e "$SWITCH_FIRMWARE_PATH" ]]; then
     echo "Downloading firmware to ~/.cache..."

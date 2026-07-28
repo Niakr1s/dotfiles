@@ -14,7 +14,7 @@ EOF
 }
 
 # Validate SAVEGAMES_DIR
-SAVEGAMES_DIR="${SAVEGAMES_DIR:-$HOME/.savegames}"
+SAVEGAMES_DIR="${SAVEGAMES_DIR:-$HOME/.savegames/windows}"
 if [[ ! -d "$SAVEGAMES_DIR" ]]; then
   echo "ERROR: directory $SAVEGAMES_DIR doesn't exist" >&2
   exit 1

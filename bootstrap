@@ -258,6 +258,10 @@ bootstrap_install_retroarch() {
   echo "Installing retroarch..."
   echo "Refer to docs/retroarch.md for further configuration"
   am -i retroarch
+
+  echo "Removing portable home for retroarch to use usual directories.."
+  sudo rm -rf /opt/retroarch/retroarch.home
+  mkdir -p ~/.config/retroarch
 }
 
 bootstrap_link_steamruntime_to_umu() {

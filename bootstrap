@@ -37,7 +37,8 @@ install_pkgs_am() {
 # These packages will be installed for all hosts
 PKGS=(
   # programming
-  cargo npm uv go typescript
+  cargo npm go typescript
+  python python-pip python-pipx uv
   cmake make ccache
 
   # browser

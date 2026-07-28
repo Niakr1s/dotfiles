@@ -24,86 +24,103 @@ install_pkgs_aur() {
   shelly aur install "$@"
 }
 
+install_pkgs_flatpak() {
+  for app in $@; do
+    shelly flatpak install "$app"
+  done
+}
+
 # These packages will be installed for all hosts
-BOOTSTRAP_CORE_PKGS=(
-  opi
+PKGS=(
+  # programming
+  cargo npm uv go typescript
+  cmake make ccache
+
+  # browser
+  qutebrowser python-adblock pdfjs-legacy
+  firefox
+  chromium
+
+  # utilites
   zsh tmux
-  git-core lazygit chezmoi etckeeper
-  firefox chromium
-  alacritty yazi
+  chezmoi git
   fd fzf ripgrep zoxide eza bat
-  ffmpegthumbnailer chafa resvg
-  7zip zip unzip unar unrar lz4 bsdtar
-  tealdeer
-  neovim python313-neovim
+  tldr
+  neovim python-pynvim wl-clipboard
+  yazi fzf zoxide resvg chafa
+  lazygit
+  bottom duf gdu
+  watchexec parallel
+  fastfetch cmatrix cowsay
+  wev
+  poppler pandoc
+  borg python-pyfuse3
+  zenity dialog
+  python-pygments
+  direnv
+  syncthing
+  fuse2
+
+  # themes
+  gnome-themes-extra adwaita-qt5 adwaita-qt6 kvantum kvantum-qt5
+
+  # gui apps
+  alacritty
+  flatseal
+  nwg-look
   nautilus
-  fira-code-fonts dejavu-fonts xorg-x11-fonts noto-fonts noto-emoji-fonts google-noto-sans-cjk-fonts symbols-only-nerd-fonts
-  mpv handbrake-gtk obs-studio
-  decibels clementine playerctl
-  bottom duf gdu scc
-  aria2 qbittorrent
-  watchexec gnu_parallel
   sqlitebrowser
-  fastfetch cmatrix fortune cowsay
-  ffmpeg yt-dlp mediainfo audacity kdenlive gpu-screen-recorder-gtk
-  gimp inkscape ImageMagick gthumb jp2a
   foliate
-  wev wvkbd
   telegram-desktop remmina weechat
-  poppler-tools pandoc
-  borgbackup
   librecad libreoffice zeal
   blender
-  zenity dialog
   dconf-editor
-  kdeconnect-kde
-  bluez libnotify-tools
-  xdg-user-dirs
-  python313-Pygments # pygmentize
-  direnv
+  kdeconnect python-nautilus qt6-tools sshfs
   keepassxc
-  firewall-config
-  moonlight
-  pavucontrol
+  moonlight-qt
+  joplin
+  mission-center
+  zed
 
-  # programming languages
-  asdf
-  go nodejs typescript
-  cargo uv
-  cmake make ccache
+  # media
+  ffmpeg yt-dlp mediainfo audacity kdenlive gpu-screen-recorder
+  mpv gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly
+  handbrake obs-studio
+  decibels clementine playerctl
+
+  # images
+  gimp inkscape imagemagick gthumb jp2a libraw libultrahdr libwmf djvulibre
+
+  # internet
+  aria2 qbittorrent
+)
+
+PKGS_AUR=(
+  v2raya-bin xray-bin
+  lazysql-bin
+  asdf-vm
+)
+
+PKGS_FLATPAK=(
+  losslesscut
+  crossmacro
 )
 
 confirm_yes_no() {
   # Usage: confirm_yes_no "Prompt text"
   # Returns: 0 if user types y or Y, 1 otherwise
   local prompt="$1"
+  local suggestion="$2"
   local ans
 
-  printf "$prompt (y): "
+  echo "$prompt (y): "
   read -r ans
-  [[ "$ans" == "y" ]]
+  if [[ "$ans" == "y" ]]; then 
+    [[ ! -z "$suggestion" ]] && echo "Suggestion:\n\t$suggestion"
+    return 0
+  fi
+  return 1
 }
-
-bootstrap_main() {
-  confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors
-  confirm_yes_no "Install gaming packages?" && sudo cachyos-hello fix install-gaming
-  confirm_yes_no "Enable docker and install winboat?" && sudo cachyos-hello fix install-winboat
-}
-
-# These go packages will be installed for all hosts
-BOOTSTRAP_CORE_GO_PKGS=(
-  github.com/jorgerojas26/lazysql@latest
-)
-
-# These appimages will be installed for all users
-BOOTSTRAP_CORE_APPIMAGE_PKGS=(
-  losslesscut joplin mission-center crossmacro
-)
-
-# These packages from packman repository will be installed for all hosts
-BOOTSTRAP_CORE_PACKMAN_PKGS=(
-  ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec
-)
 
 bootstrap_fresh_installation_tips() {
 # - Remove 'splash=silent', add 'clearcpuid=514' and 'split_lock_detect=off' params:
@@ -118,131 +135,16 @@ bootstrap_postinstall_tips() {
   cat << EOF
 PostInstall steps:
 - Install tmux plugins: <prefix>+I
+- Enable and configure syncthing: systemctl --user enable --now syncthing
 EOF
 }
 
-# Installs vpn application
-bootstrap_install_vpn() {
-  echo "Installing VPN client (throne)..."
-
-  # https://parhelia512.github.io/
-  sudo zypper addrepo -fc "https://parhelia512.github.io/throne-sle.repo"
-  sudo zypper install -y throne
-
-  sudo chmod u+s /usr/lib64/Throne/ThroneCore
-}
-
-# Enables packman repo with non-free packages
-bootstrap_enable_packman_repo() {
-  echo "Enabling packman repo..."
-
-  # https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories#Solution
-  sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
-  sudo zypper refresh
-  sudo zypper dist-upgrade --from packman --allow-vendor-change
-}
-
-bootstrap_create_user_directories() {
-  echo "Creating user directories..."
-  xdg-user-dirs-update --force
-}
-
 bootstrap_enable_kvantum() {
-  sudo zypper install -y kvantum-manager kvantum-qt6 kvantum-themes
   kvantummanager --set KvGnomeDark
 }
 
 bootstrap_enable_snapper_home_snapshots() {
-  echo "Enabling snapper home snapshots..."
   sudo snapper -c home create-config /home
-}
-
-bootstrap_enable_zram() {
-  echo "Enabling zram..."
-  sudo zypper install -y systemd-zram-service
-  sudo zramswapon
-}
-
-bootstrap_install_lisgd() {
-  echo "Installing lisgd (for touchscreens)..."
-  echo "Prefer 'home:smolsheep' repo"
-  opi lisgd
-  sudo usermod -a -G input $USER
-}
-
-bootstrap_install_iio_niri() {
-  echo "Installing iio-niri..."
-  sudo zypper -y install iio-sensor-proxy dbus-1-devel
-  cargo install --git https://github.com/Zhaith-Izaliel/iio-niri.git
-}
-
-bootstrap_cleanup() {
-  echo "Moving YaST applications shortcuts to /usr/share/applications.bak..."
-  sudo mkdir -p /usr/share/applications.bak
-  sudo mv /usr/share/applications/YaST2 /usr/share/applications.bak/
-  sudo mv /usr/share/applications/org.opensuse.YaST.desktop /usr/share/applications.bak
-  sudo mv /usr/share/applications/org.opensuse.yast.MetapackageHandler.desktop /usr/share/applications.bak
-  sudo mv /usr/share/applications/org.opensuse.yast.Packager.desktop /usr/share/applications.bak
-
-  echo "Remove firefox's opensuse branding..."
-  sudo zypper in -y MozillaFirefox-branding-upstream
-}
-
-bootstrap_enable_appimage_manager() {
-  echo "Installing AM (appimage installer)..."
-  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
-    chmod a+x ./AM-INSTALLER && \
-    # installer asks 1 to install as a system app, so in theory piping "1" should work
-    echo "1" | ./AM-INSTALLER && \
-    rm ./AM-INSTALLER
-}
-
-bootstrap_install_zed_editor() {
-  echo "Installing Zed editor..."
-  curl -f https://zed.dev/install.sh | sh
-}
-
-bootstrap_install_core_packages() {
-  echo "Installing core packages from packman repo..."
-  sudo zypper install -y --from packman "${BOOTSTRAP_CORE_PACKMAN_PKGS[@]}"
-
-  echo "Installing core packages..."
-  sudo zypper install -y "${BOOTSTRAP_CORE_PKGS[@]}"
-
-  echo "Installing core golang packages..."
-  go install "${BOOTSTRAP_CORE_GO_PKGS[@]}"
-
-  echo "Installing core appimages..."
-  am -i "${BOOTSTRAP_CORE_APPIMAGE_PKGS[@]}"
-}
-
-bootstrap_install_niri_dms() {
-  echo "Installing niri and dankmaterialshell...."
-  sudo zypper addrepo https://download.opensuse.org/repositories/home:AvengeMedia:danklinux/openSUSE_Tumbleweed/home:AvengeMedia:danklinux.repo
-  sudo zypper addrepo https://download.opensuse.org/repositories/home:/AvengeMedia:/dms/openSUSE_Tumbleweed/home:AvengeMedia:dms.repo
-  sudo zypper refresh
-
-  sudo zypper install -y dms dms-greeter niri power-profiles-daemon cups-pk-helper xwayland
-
-  dms greeter install
-  dms greeter sync
-
-  systemctl --user enable dms
-  systemctl --user add-wants niri.service dms
-}
-
-bootstrap_enable_flatpak() {
-  echo "Installing flatpak and flatseal..."
-  sudo zypper install -y flatpak flatseal
-  flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  flatpak update
-}
-
-bootstrap_install_syncthing() {
-  echo "Installing syncthing..."
-  sudo zypper install syncthing
-  systemctl --user enable --now syncthing
-  echo "Syncthing installed. Proceed to https://127.0.0.1:8384 to configure"
 }
 
 bootstrap_install_asdf_packages() {
@@ -253,44 +155,47 @@ bootstrap_install_asdf_packages() {
 }
 
 bootstrap_enable_virtualization() {
-  echo "Enabling virtualizaiton..."
-  sudo zypper install -y libvirt virt-manager python3-libguestfs
+  # https://wiki.cachyos.org/virtualization/qemu_and_vmm_setup/
 
-  echo "Adding a user to libvirt group..."
+  # This will install the needed packages (note the "Windows 11" note below):
+  sudo pacman -S qemu-full virt-manager swtpm
+  # Force libvirt to use iptables
+  echo 'firewall_backend = "iptables"' | sudo tee -a /etc/libvirt/network.conf
+  # This will add the user to the "libvirt" group so they can use it:
   sudo usermod -aG libvirt $USER
-  echo "Starting libvirtd service..."
-  sudo systemctl start libvirtd.service
+  # LXC backend (optional, for linux containers, enabling both backends does not conflict):
+  systemctl enable --now libvirtd.service
+  # QEMU backend (for VMs):
+  systemctl enable --now libvirtd.socket
+  # This will bring Internet up in a VM whenever one starts:
+  sudo virsh net-autostart default
+  # And to enable the entire VM network to have unfettered transit: (You should consider if you need more granular firewall rules based on your use case and security posture)
+  sudo ufw route allow from 192.168.122.0/24
 }
 
-bootstrap_enable_docker() {
-  echo "Enabling docker..."
-  sudo zypper install docker docker-compose docker-compose-switch
-  sudo systemctl enable docker
-  sudo usermod -G docker -a $USER
-  newgrp docker
-  sudo systemctl restart docker
-}
+bootstrap_main() {
+  bootstrap_fresh_installation_tips
 
-bootstrap_enable_nvidia_in_docker() {
-  # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-  sudo zypper ar https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo
-  NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.1-1
-  sudo zypper --gpg-auto-import-keys install -y \
-    nvidia-container-toolkit-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
-    nvidia-container-toolkit-base-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
-    libnvidia-container-tools-${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
-    libnvidia-container1-${NVIDIA_CONTAINER_TOOLKIT_VERSION}
-  sudo nvidia-ctk runtime configure --runtime=docker
-  sudo systemctl restart docker
-}
+  confirm_yes_no "Install packages?" && install_pkgs "${PKGS[@]}"
+  confirm_yes_no "Install aur packages?" && install_pkgs_aur "${PKGS_AUR[@]}"
+  confirm_yes_no "Install flatpak packages?" && install_pkgs_flatpak "${PKGS_FLATPAK[@]}"
 
-bootstrap_install_nvidia_drivers() {
-  echo "Installing NVIDIA drivers..."
-  sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
-  sudo zypper addrepo --refresh https://developer.download.nvidia.com/compute/cuda/repos/suse16/x86_64/ cuda
-  sudo zypper refresh
-  # G07 is for all new RTX cards
-  sudo zypper install -y nvidia-open-driver-G07-signed-kmp-meta
+  confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors
+  confirm_yes_no "Install gaming packages?" && sudo cachyos-hello fix install-gaming
+  confirm_yes_no "Enable docker and install winboat?" && sudo cachyos-hello fix install-winboat
+
+  confirm_yes_no "Enable zsh as default shell?" && chsh -s /bin/zsh
+
+  confirm_yes_no "Install dankmaterialshell?" "Enable niri & alacritty, then enable every package on next screen" && { curl -fsSL https://install.danklinux.com | sh }
+
+  confirm_yes_no "Enable kvantum?" && bootstrap_enable_kvantum
+  confirm_yes_no "Enable home snapper snapshots?" "Don't forget to modify snapshot retention" && bootstrap_enable_snapper_home_snapshots
+
+  confirm_yes_no "Install asdf packages?" && bootstrap_install_asdf_packages
+
+  confirm_yes_no "Enable virtualization?" && bootstrap_enable_virtualization
+
+  bootstrap_postinstall_tips
 }
 
 bootstrap_install_switch_emulators() {
@@ -355,14 +260,6 @@ bootstrap_install_retroarch() {
   echo "Installing retroarch..."
   echo "Refer to docs/retroarch.md for further configuration"
   sudo zypper install -y retroarch
-}
-
-bootstrap_install_steam() {
-  echo "Installing steam..."
-  sudo zypper install -y steam
-
-  echo "Installing lutris..."
-  sudo zypper install -y wine-staging-wow64 winetricks lutris mangohud gamescope mangoapp
 }
 
 bootstrap_link_steamruntime_to_lutris() {

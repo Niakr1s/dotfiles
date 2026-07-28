@@ -129,14 +129,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -260,14 +260,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -381,14 +381,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -502,14 +502,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -623,14 +623,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -744,14 +744,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -865,14 +865,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -986,14 +986,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1107,14 +1107,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1228,14 +1228,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1349,14 +1349,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1470,14 +1470,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1591,14 +1591,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1712,14 +1712,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1846,14 +1846,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -1981,14 +1981,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2116,14 +2116,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2251,14 +2251,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2386,14 +2386,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2521,14 +2521,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2656,14 +2656,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2791,14 +2791,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -2926,14 +2926,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -3061,14 +3061,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -3196,14 +3196,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -3338,14 +3338,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "48",
@@ -3459,14 +3459,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "48",
@@ -3580,14 +3580,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "48",
@@ -3701,14 +3701,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "48",
@@ -3822,14 +3822,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -3943,14 +3943,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4064,14 +4064,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4185,14 +4185,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4306,14 +4306,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4427,14 +4427,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4548,14 +4548,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4677,14 +4677,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4812,14 +4812,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                     "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -4946,14 +4946,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5067,14 +5067,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5188,14 +5188,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5309,14 +5309,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 128,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5430,14 +5430,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 128,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5552,14 +5552,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5687,14 +5687,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5822,14 +5822,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -5957,14 +5957,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6092,14 +6092,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6227,14 +6227,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6362,14 +6362,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6497,14 +6497,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6632,14 +6632,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6767,14 +6767,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -6901,14 +6901,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7022,14 +7022,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7147,14 +7147,14 @@
                         "copy:eac3",
                         "copy:mp3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7282,14 +7282,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7417,14 +7417,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7551,14 +7551,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7672,14 +7672,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -7794,14 +7794,14 @@
                         "copy:aac",
                         "copy:ac3"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8055,14 +8055,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8176,14 +8176,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8297,14 +8297,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8418,14 +8418,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8539,14 +8539,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8660,14 +8660,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8781,14 +8781,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -8902,14 +8902,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -9023,14 +9023,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -9144,14 +9144,14 @@
                     "AudioCopyMask": [
                         "copy:aac"
                     ],
-                    "AudioEncoderFallback": "fdk_aac",
+                    "AudioEncoderFallback": "av_aac",
                     "AudioLanguageList": [],
                     "AudioList": [
                         {
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -9874,7 +9874,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -9995,7 +9995,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10116,7 +10116,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10237,7 +10237,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10358,7 +10358,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10479,7 +10479,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10600,7 +10600,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10721,7 +10721,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10842,7 +10842,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -10963,7 +10963,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11084,7 +11084,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11205,7 +11205,7 @@
                             "AudioBitrate": 160,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11334,7 +11334,7 @@
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11455,7 +11455,7 @@
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11576,7 +11576,7 @@
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",
@@ -11697,7 +11697,7 @@
                             "AudioBitrate": 320,
                             "AudioCompressionLevel": -1.0,
                             "AudioDitherMethod": "auto",
-                            "AudioEncoder": "fdk_aac",
+                            "AudioEncoder": "av_aac",
                             "AudioMixdown": "stereo",
                             "AudioNormalizeMixLevel": false,
                             "AudioSamplerate": "auto",

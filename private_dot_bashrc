@@ -27,6 +27,7 @@ if [ -r "$BOOTSTRAP_FILEPATH" ]; then
 fi
 
 PATH_ADDITIONS=(
+    "$HOME/.local/bin"
     "$HOME/node_modules/.bin"
     "$HOME/go/bin"
     "$HOME/.cargo/bin"

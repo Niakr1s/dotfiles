@@ -41,7 +41,6 @@ PKGS=(
   cmake make ccache
 
   # browser
-  qutebrowser python-adblock pdfjs-legacy
   firefox
   chromium
 

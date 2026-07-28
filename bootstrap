@@ -81,7 +81,7 @@ PKGS=(
   kdeconnect python-nautilus qt6-tools sshfs
   keepassxc
   moonlight-qt
-  joplin
+  joplin-desktop
   mission-center
   zed
 

@@ -128,7 +128,9 @@ confirm_yes_no() {
 bootstrap_fresh_installation_tips() {
   cat << EOF
 After clean CachyOS installation, consider doing:
-
+  - Fix games freezes and crashes:
+    sudo nvim /etc/default/limine, add to the end of KERNEL_CMDLINE[default] line: 'clearcpuid=514 split_lock_detect=off'
+    run sudo limine-mkinitcpio
 EOF
 }
 

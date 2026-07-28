@@ -263,6 +263,12 @@ bootstrap_link_steamruntime_to_umu() {
   ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4 ~/.local/share/umu/steamrt4
 }
 
+bootstrap_install_nvidia_container_toolkit() {
+  install_pkgs nvidia-container-toolkit
+  sudo nvidia-ctk runtime configure --runtime=docker
+  sudo systemctl restart docker
+}
+
 bootstrap_install_sunshine() {
   install_pkgs sunshine
 
@@ -274,6 +280,16 @@ description=Sunshine
 ports=47984,47989,48010/tcp|47998:48010/udp
 EOF
   sudo ufw allow Sunshine
+}
+
+bootstrap_install_ai_tools() {
+  which llama || curl -LsSf https://llama.app/install.sh | sh
+  which pi || curl -fsSL https://pi.dev/install.sh | sh
+  pi install git:github.com/huggingface/pi-llama
+
+  confirm_yes_no "Download models?" && {
+    llama download -hf ggml-org/gemma-4-12B-it-GGUF:Q4_0
+  }
 }
 
 bootstrap_main() {
@@ -307,8 +323,9 @@ bootstrap_main() {
   confirm_yes_no "Install retroarch?" && bootstrap_install_retroarch
 
   if [[ "$HOST" == "desktop" ]]; then
-    confirm_yes_no "Install nvidia-container-toolkit?" && install_pkgs nvidia-container-toolkit
+    confirm_yes_no "Install and enable nvidia-container-toolkit in docker?" && bootstrap_install_nvidia_container_toolkit
     confirm_yes_no "Install sunshine?" && bootstrap_install_sunshine
+    confirm_yes_no "Install ai tools?" && bootstrap_install_ai_tools
   fi
 
   bootstrap_postinstall_tips

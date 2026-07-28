@@ -2,7 +2,7 @@ workspace "web" {
     open-on-output "HDMI-A-1"
 }
 
-spawn-at-startup "qutebrowser"
+spawn-at-startup "firefox"
 spawn-sh-at-startup "niri msg action focus-workspace web; niri msg action focus-monitor-left"
 
 binds {

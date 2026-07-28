@@ -263,6 +263,19 @@ bootstrap_link_steamruntime_to_umu() {
   ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4 ~/.local/share/umu/steamrt4
 }
 
+bootstrap_install_sunshine() {
+  install_pkgs sunshine
+
+  echo "Enabling firewall for sunshine..."
+  sudo tee /etc/ufw/applications.d/sunshine << EOF
+[sunshine]
+title=Sunshine
+description=Sunshine
+ports=47984,47989,48010/tcp|47998:48010/udp
+EOF
+  sudo ufw allow Sunshine
+}
+
 bootstrap_main() {
   bootstrap_fresh_installation_tips
 
@@ -295,36 +308,10 @@ bootstrap_main() {
 
   if [[ "$HOST" == "desktop" ]]; then
     confirm_yes_no "Install nvidia-container-toolkit?" && install_pkgs nvidia-container-toolkit
+    confirm_yes_no "Install sunshine?" && bootstrap_install_sunshine
   fi
 
   bootstrap_postinstall_tips
-}
-
-bootstrap_install_sunshine() {
-  echo "Installing sunshine..."
-  am -i sunshine
-
-  echo "Fixing desktop icon..."
-  sudo sed -i 's/Terminal=true/Terminal=false/g' /usr/local/share/applications/sunshine-AM.desktop
-
-  echo "Adding firewall service..."
-  sudo tee /etc/firewalld/services/sunshine.xml << EOF
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Sunshine</short>
-  <description>Sunshine Game Stream Server</description>
-  <port protocol="tcp" port="47984"/>
-  <port protocol="tcp" port="47989"/>
-  <port protocol="tcp" port="48010"/>
-  <port protocol="udp" port="47998-48010"/>
-</service>
-EOF
-  sudo firewall-cmd --reload
-
-  sudo firewall-cmd --add-service=sunshine --permanent
-  sudo firewall-cmd --reload
-
-  echo "Sunshine installed"
 }
 
 bootstrap_main_old() {

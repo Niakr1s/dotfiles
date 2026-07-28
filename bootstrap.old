@@ -16,13 +16,11 @@ If you have problems with internet, consider running 'bootstrap_install_vpn'
 EOF
 }
 
-install_pkgs() {
-  shelly install "$@"
-}
-
-install_pkgs_aur() {
-  shelly aur install "$@"
-}
+# These packages will be uninstalled in the end
+BOOTSTRAP_UNNEEDED_PKGS=(
+  mako konsole # dunno how they ended up installed
+  icewm xterm xterm-bin # remove icewm packages
+)
 
 # These packages will be installed for all hosts
 BOOTSTRAP_CORE_PKGS=(
@@ -73,23 +71,6 @@ BOOTSTRAP_CORE_PKGS=(
   cmake make ccache
 )
 
-confirm_yes_no() {
-  # Usage: confirm_yes_no "Prompt text"
-  # Returns: 0 if user types y or Y, 1 otherwise
-  local prompt="$1"
-  local ans
-
-  printf "$prompt (y): "
-  read -r ans
-  [[ "$ans" == "y" ]]
-}
-
-bootstrap_main() {
-  confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors
-  confirm_yes_no "Install gaming packages?" && sudo cachyos-hello fix install-gaming
-  confirm_yes_no "Enable docker and install winboat?" && sudo cachyos-hello fix install-winboat
-}
-
 # These go packages will be installed for all hosts
 BOOTSTRAP_CORE_GO_PKGS=(
   github.com/jorgerojas26/lazysql@latest
@@ -106,11 +87,11 @@ BOOTSTRAP_CORE_PACKMAN_PKGS=(
 )
 
 bootstrap_fresh_installation_tips() {
-# - Remove 'splash=silent', add 'clearcpuid=514' and 'split_lock_detect=off' params:
-    # sudo yast -> System -> Boot Loader -> Kernel Parameters -> Optional Kernel Command Line Parameter
-
   cat << EOF
-After clean CachyOS installation, consider doing:
+After clean OpenSUSE installation, consider doing:
+- If you installed with btrfs, consider add compress=zstd to subvolumes in '/etc/fstab' first.
+- Remove 'splash=silent', add 'clearcpuid=514' and 'split_lock_detect=off' params:
+    sudo yast -> System -> Boot Loader -> Kernel Parameters -> Optional Kernel Command Line Parameter
 EOF
 }
 
@@ -177,6 +158,9 @@ bootstrap_install_iio_niri() {
 }
 
 bootstrap_cleanup() {
+  echo "Removing unneeded packages..."
+  sudo zypper remove -y "${BOOTSTRAP_UNNEEDED_PKGS[@]}"
+
   echo "Moving YaST applications shortcuts to /usr/share/applications.bak..."
   sudo mkdir -p /usr/share/applications.bak
   sudo mv /usr/share/applications/YaST2 /usr/share/applications.bak/
@@ -458,7 +442,7 @@ bootstrap_disable_sleep_hybernation() {
   sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
-bootstrap_main_old() {
+bootstrap_main() {
   bootstrap_fresh_installation_tips
 
   bootstrap_install_vpn 

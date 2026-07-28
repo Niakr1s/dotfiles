@@ -271,7 +271,13 @@
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
   "browserPickerViewMode": "grid",
-  "browserUsageHistory": {},
+  "browserUsageHistory": {
+    "org.qutebrowser.qutebrowser": {
+      "count": 1,
+      "lastUsed": 1785207692576,
+      "name": "qutebrowser"
+    }
+  },
   "appPickerViewMode": "grid",
   "filePickerUsageHistory": {},
   "sortAppsAlphabetically": false,

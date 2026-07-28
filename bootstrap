@@ -129,15 +129,6 @@ confirm_yes_no() {
 bootstrap_fresh_installation_tips() {
   cat << EOF
 After clean CachyOS installation, consider doing:
-  - Fix games freezes and crashes:
-    sudo nvim /etc/default/limine, add to the end of KERNEL_CMDLINE[default] line: 'clearcpuid=514 split_lock_detect=off'
-    run sudo limine-mkinitcpio
-  - Fix my wired gamepad:
-    sudo nvim /etc/default/limine, add to the end of KERNEL_CMDLINE[default] line: 'usbcore.quirks="057e:2009:ik'
-    run sudo limine-mkinitcpio
-  > Final line should look like:
-  KERNEL_CMDLINE[default]+="quiet nowatchdog splash rw rootflags=subvol=/@ rd.luks.uuid=c3c8e1d1-c3dd-4f4c-ab96-ee7e6c879ffc root=/dev/mapper/luks-c3c8e1d1-c3dd-4f4c-ab96-ee7e6c879ffc clearcpuid=514 split_lock_detect=off usbcore.quirks="057e:2009:ik""
-  Notice final "", last one is a pair to the whole string and be stripped
 EOF
 }
 
@@ -310,8 +301,60 @@ bootstrap_install_ai_tools() {
   }
 }
 
+bootstrap_manage_limine_kernel_params() {
+  local LIMINE_FILE="/etc/default/limine"
+  local BEGIN_MARKER="# BEGIN MANAGED BLOCK - DO NOT EDIT MANUALLY"
+  local END_MARKER="# END MANAGED BLOCK"
+
+  # local BLOCK_CONTENT='KERNEL_CMDLINE[default]+=clearcpuid=514 split_lock_detect=off usbcore.quirks="057e:2009:ik"'
+  local BLOCK_CONTENT=$(cat << EOF
+# Fixes freezes and crashes in games
+KERNEL_CMDLINE[default]+=clearcpuid=514 split_lock_detect=off
+# Fixes my wired gamepad
+KERNEL_CMDLINE[default]+=usbcore.quirks="057e:2009:ik"
+EOF
+)
+
+  # Check if file exists
+  if [[ ! -f "$LIMINE_FILE" ]]; then
+    echo "❌ Error: $LIMINE_FILE does not exist"
+    return 1
+  fi
+
+  echo "Before:"
+  cat "$LIMINE_FILE"
+  echo ""
+
+  # Check if the managed block exists
+  if grep -q "^${BEGIN_MARKER}" "$LIMINE_FILE" && grep -q "^${END_MARKER}" "$LIMINE_FILE"; then
+    # Get line numbers
+    local START_LINE=$(sudo grep -n "^${BEGIN_MARKER}" "$LIMINE_FILE" | head -1 | cut -d: -f1)
+    local END_LINE=$(sudo grep -n "^${END_MARKER}" "$LIMINE_FILE" | head -1 | cut -d: -f1)
+
+    # Delete everything between BEGIN and END markers (inclusive)
+    sudo sed -i "${START_LINE},${END_LINE}d" "$LIMINE_FILE"
+  fi
+
+  # Add the entire managed block at the end
+  {
+    echo "${BEGIN_MARKER}"
+    echo "${BLOCK_CONTENT}"
+    echo "${END_MARKER}"
+  } | sudo tee -a "$LIMINE_FILE" > /dev/null
+
+  echo "After:"
+  cat "$LIMINE_FILE"
+  echo ""
+
+  # Regenerate bootloader configuration
+  echo "Regenerating Limine configuration with limine-mkinitcpio..."
+  sudo limine-mkinitcpio && echo "Done!" || echo "Error"
+}
+
 bootstrap_main() {
   bootstrap_fresh_installation_tips
+
+  confirm_yes_no "Append essential kernel boot params to limine?" && bootstrap_manage_limine_kernel_params
 
   confirm_yes_no "Install am (appimage manager)?" && bootstrap_install_am
 

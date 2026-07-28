@@ -44,6 +44,7 @@ window-rule {
 // Browsers open on "web" workspace
 window-rule {
     match app-id="firefox"
+    match app-id="qutebrowser"
 
     open-maximized true
     open-on-workspace "web"

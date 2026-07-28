@@ -132,6 +132,12 @@ After clean CachyOS installation, consider doing:
   - Fix games freezes and crashes:
     sudo nvim /etc/default/limine, add to the end of KERNEL_CMDLINE[default] line: 'clearcpuid=514 split_lock_detect=off'
     run sudo limine-mkinitcpio
+  - Fix my wired gamepad:
+    sudo nvim /etc/default/limine, add to the end of KERNEL_CMDLINE[default] line: 'usbcore.quirks="057e:2009:ik'
+    run sudo limine-mkinitcpio
+  > Final line should look like:
+  KERNEL_CMDLINE[default]+="quiet nowatchdog splash rw rootflags=subvol=/@ rd.luks.uuid=c3c8e1d1-c3dd-4f4c-ab96-ee7e6c879ffc root=/dev/mapper/luks-c3c8e1d1-c3dd-4f4c-ab96-ee7e6c879ffc clearcpuid=514 split_lock_detect=off usbcore.quirks="057e:2009:ik""
+  Notice final "", last one is a pair to the whole string and be stripped
 EOF
 }
 

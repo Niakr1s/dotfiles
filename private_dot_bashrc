@@ -46,6 +46,9 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+# package manager
+alias pkg="shelly"
+
 # Chezmoi
 alias cz="chezmoi"
 alias cza="chezmoi apply"

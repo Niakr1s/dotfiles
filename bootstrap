@@ -14,18 +14,18 @@ bootstrap_main # bootstrap a new installation
 EOF
 }
 
+bootstrap_install_yay() {
+  sudo pacman -S yay
+
+  # first use recommendations
+  yay -Y --gendb
+  yay -Syu --devel
+  yay -Y --devel --save
+}
+
 install_pkgs() {
-  shelly install "$@"
-}
-
-install_pkgs_aur() {
-  shelly aur install "$@"
-}
-
-install_pkgs_flatpak() {
-  for app in $@; do
-    shelly flatpak install "$app"
-  done
+  which yay &>/dev/null || bootstrap_install_yay
+  yay -S "$@"
 }
 
 install_pkgs_am() {
@@ -359,7 +359,7 @@ bootstrap_main() {
   confirm_yes_no "Install am (appimage manager)?" && bootstrap_install_am
 
   confirm_yes_no "Install packages?" && install_pkgs "${PKGS[@]}"
-  confirm_yes_no "Install aur packages?" && install_pkgs_aur "${PKGS_AUR[@]}"
+  confirm_yes_no "Install aur packages?" && install_pkgs "${PKGS_AUR[@]}"
   confirm_yes_no "Install am packages?" && install_pkgs_am "${PKGS_AM[@]}"
 
   confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors

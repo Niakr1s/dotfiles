@@ -20,6 +20,7 @@ binds {
 
     Ctrl+Alt+Delete hotkey-overlay-title="Powermenu" { spawn-sh "dms ipc powermenu toggle"; }
     Mod+Delete { power-off-monitors; }
+    Mod+I { spawn-sh "dms ipc inhibit toggle"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

@@ -10,8 +10,6 @@
 # here, since multilingual X sessions would not work properly if LANG is over-
 # ridden in every subshell.
 
-fastfetch
-
 test -s ~/.alias && . ~/.alias || true
 
 # Source global definitions.

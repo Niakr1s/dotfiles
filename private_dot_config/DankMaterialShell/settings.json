@@ -547,6 +547,14 @@
       "matchType": "exact",
       "action": "mute",
       "urgency": "default"
+    },
+    {
+      "enabled": true,
+      "field": "appName",
+      "pattern": "tray-icon",
+      "matchType": "exact",
+      "action": "mute",
+      "urgency": "default"
     }
   ],
   "notificationFocusedMonitor": false,

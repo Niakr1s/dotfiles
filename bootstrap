@@ -64,6 +64,7 @@ PKGS=(
   direnv
   syncthing
   fuse2
+  tree
 
   # themes
   gnome-themes-extra adwaita-qt5 adwaita-qt6 kvantum kvantum-qt5

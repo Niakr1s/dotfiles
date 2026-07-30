@@ -44,16 +44,23 @@ function y() {
 alias pm="shelly"
 
 function pmg() {
-  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    cat << EOF
-Installs a go binary. Cleans modcache afterwards.
+  case "$1" in
+    -h|--help)
+      cat << EOF
+Installs a go binary.
 
 Example usage:
   pmg "github.com/user/package@latest"
+  pmg --clean
 EOF
-    return 0
-  fi
-  go install "$1"; go clean --modcache
+    ;;
+    -c|--clean)
+      go clean --modcache
+    ;;
+    *)
+      go install "$1"
+    ;;
+  esac
 }
 
 # Chezmoi

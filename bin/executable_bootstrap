@@ -114,7 +114,8 @@ PKGS=(
 )
 
 PKGS_AUR=(
-  v2raya-bin xray-bin
+  xray-bin # needed for v2raya-bin
+  v2raya-bin
   lazysql-bin
   asdf-vm
 )

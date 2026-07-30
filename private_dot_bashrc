@@ -43,6 +43,19 @@ function y() {
 # package manager
 alias pm="shelly"
 
+function pmg() {
+  if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    cat << EOF
+Installs a go binary. Cleans modcache afterwards.
+
+Example usage:
+  pmg "github.com/user/package@latest"
+EOF
+    return 0
+  fi
+  go install "$1"; go clean --modcache
+}
+
 # Chezmoi
 alias cz="chezmoi"
 alias cza="chezmoi apply"

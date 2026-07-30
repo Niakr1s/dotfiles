@@ -163,7 +163,6 @@ postinstall_tips() {
 PostInstall steps:
 - Install tmux plugins: <prefix>+I
 - Enable and configure syncthing: systemctl --user enable --now syncthing
-- Download steam runtimes and link them to umu: link_steamruntime_to_umu
 EOF
 }
 

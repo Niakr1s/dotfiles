@@ -339,14 +339,20 @@ main() {
   # Define all tasks with their descriptions and commands
   # Lines starting with '# ' are section headers and won't be selectable
   local tasks=(
-    "# Packages"
-    "Install packages|install_pkgs \"\${PKGS[@]}\""
+    "# Software"
+    "Install core packages|install_pkgs \"\${PKGS[@]}\""
     "Install aur packages|install_pkgs_aur \"\${PKGS_AUR[@]}\""
     "Install am packages|install_pkgs_am \"\${PKGS_AM[@]}\""
     "Install gaming packages|sudo cachyos-hello fix install-gaming"
     "Install asdf packages|install_asdf_packages"
     "Install ai tools|install_ai_tools"
     "Install sunshine|install_sunshine"
+
+    "# Emulators"
+    "Install switch emulators|install_switch_emulators"
+    "Install playstation emulators|install_playstation_emulators"
+    "Install xbox emulators|install_xbox_emulators"
+    "Install retroarch|install_retroarch"
 
     "# System"
     "Rank mirrors|sudo cachyos-hello fix rank-mirrors"
@@ -355,7 +361,7 @@ main() {
     "Enable home snapper snapshots|enable_snapper_home_snapshots"
     
     "# Desktop Environment & Shell"
-    "Install dankmaterialshell (niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
+    "Install dankmaterialshell (choose niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
     "Enable kvantum theme|enable_kvantum"
     "Enable zsh as default shell|chsh -s /bin/zsh"
 
@@ -364,11 +370,8 @@ main() {
     "Enable docker and install winboat|sudo cachyos-hello fix install-winboat"
     "Enable nvidia-container-toolkit for docker|install_nvidia_container_toolkit"
 
-    "# Emulators"
-    "Install switch emulators|install_switch_emulators"
-    "Install playstation emulators|install_playstation_emulators"
-    "Install xbox emulators|install_xbox_emulators"
-    "Install retroarch|install_retroarch"
+    "# Tweaks"
+    "Link steam runtime to umu|link_steamruntime_to_umu"
   )
 
   local selected_indices=()

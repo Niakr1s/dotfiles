@@ -3,6 +3,8 @@ system:
   env:
     UMU_RUNTIME_UPDATE: '0'
   mangohud: true
+  postexit_command: /usr/bin/dms ipc inhibit disable
+  prelaunch_command: /usr/bin/dms ipc inhibit enable
   terminal_app: /usr/bin/alacritty
 wine:
   system_winetricks: true

@@ -24,15 +24,15 @@ install_pkgs_aur() {
   sudo shelly -Ia "$@"
 }
 
-install_pkgs_am() {
-  local install_am() {
-    wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
-      chmod a+x ./AM-INSTALLER && \
-      # installer asks 1 to install as a system app, so in theory piping "1" should work
-      echo "1" | ./AM-INSTALLER && \
-      rm ./AM-INSTALLER
-  }
+install_am() {
+  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
+    chmod a+x ./AM-INSTALLER && \
+    # installer asks 1 to install as a system app, so in theory piping "1" should work
+    echo "1" | ./AM-INSTALLER && \
+    rm ./AM-INSTALLER
+}
 
+install_pkgs_am() {
   which am &>/dev/null || install_am
 
   for app in $@; do

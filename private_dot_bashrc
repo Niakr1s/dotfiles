@@ -17,12 +17,6 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-BOOTSTRAP_FILEPATH="$HOME/.local/share/chezmoi/bootstrap"
-# Source global definitions.
-if [ -r "$BOOTSTRAP_FILEPATH" ]; then
-	. "$BOOTSTRAP_FILEPATH"
-fi
-
 PATH_ADDITIONS=(
     "$HOME/.local/bin"
     "$HOME/node_modules/.bin"

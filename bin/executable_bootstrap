@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 bootstrap_usage () {
   cat << EOF
 This script contains all scripts that can be useful to bootstrap new OpenSUSE THumbleweed installation.

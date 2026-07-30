@@ -20,7 +20,7 @@
       {
         "icon": "terminal",
         "displayText": "",
-        "displayCommand": "systemctl --user is-active tunsub && printf \"\\033[32m\\uf023\\033[0m\\n\" || printf \"\\033[31m\\uf023\\033[0m\\n\"",
+        "displayCommand": "systemctl --user is-active tunsub &>/dev/null && printf \"\\033[32m\\uf023\\033[0m\\n\" || printf \"\\033[31m\\uf023\\033[0m\\n\"",
         "clickCommand": "systemctl --user is-active tunsub && systemctl --user stop tunsub || systemctl --user start tunsub",
         "middleClickCommand": "",
         "rightClickCommand": "",

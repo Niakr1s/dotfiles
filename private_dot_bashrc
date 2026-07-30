@@ -40,6 +40,11 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+function myip() {
+  echo "$(curl -s 2ip.ru) (2ip.ru)"
+  echo "$(curl -s ifconfig.me) (ifconfig.me)"
+}
+
 # package manager
 alias pm="shelly"
 

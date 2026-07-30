@@ -47,7 +47,7 @@ function y() {
 }
 
 # package manager
-alias pkg="shelly"
+alias pm="shelly"
 
 # Chezmoi
 alias cz="chezmoi"

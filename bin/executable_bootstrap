@@ -347,6 +347,10 @@ EOF
   sudo limine-mkinitcpio && echo "Done!" || echo "Error"
 }
 
+#!/usr/bin/env bash
+
+# ... rest of your code ...
+
 bootstrap_main() {
   # Define all tasks with their descriptions and commands
   # Lines starting with '# ' are section headers and won't be selectable
@@ -385,17 +389,14 @@ bootstrap_main() {
 
   local selected_indices=()
   local total_tasks=${#tasks[@]}
-  
+
   while true; do
     clear
-  
-    echo "📋 Select tasks to run (enter numbers separated by spaces, or 'all')"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    
+
     local display_num=0
-    for i in $(seq 1 $total_tasks); do
+    for ((i=0; i<total_tasks; i++)); do
       local item="${tasks[$i]}"
-      
+
       # Check if it's a header
       if [[ "$item" == "# "* ]]; then
         local header="${item#\# }"
@@ -404,11 +405,11 @@ bootstrap_main() {
         echo ""
         continue
       fi
-      
+
       # It's a task, increment display number
       ((display_num++))
       local desc=$(echo "$item" | cut -d'|' -f1)
-      
+
       # Check if index is in selected_indices
       local is_selected=0
       for sel in "${selected_indices[@]}"; do
@@ -417,56 +418,53 @@ bootstrap_main() {
           break
         fi
       done
-      
+
       if [[ $is_selected -eq 1 ]]; then
         echo "[✓] $display_num. $desc"
       else
         echo "[ ] $display_num. $desc"
       fi
     done
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "Options:"
+    echo "Commands:"
     echo "  - Enter numbers: 1 3 5  (toggle selection)"
-    echo "  - Type 'all' to select everything"
-    echo "  - Type 'clear' to clear all selections"
-    echo "  - Type 'done' to execute selected tasks"
-    echo "  - Type 'quit' to exit"
+    echo "  - Type 'a' to select everything"
+    echo "  - Type 'c' to clear all selections"
+    echo "  - Press ENTER to execute selected tasks"
     echo ""
-    read "choice?Enter choice: "
-    
+    read -p "> " choice
+
+    # If empty input, execute selected tasks
+    if [[ -z "$choice" ]]; then
+      break
+    fi
+
     case "$choice" in
-      all)
+      a)
         # Select all non-header items
         selected_indices=()
-        for i in $(seq 1 $total_tasks); do
+        for ((i=0; i<total_tasks; i++)); do
           if [[ ! "${tasks[$i]}" == "# "* ]]; then
             selected_indices+=($i)
           fi
         done
         ;;
-      clear)
+      c)
         selected_indices=()
-        ;;
-      done)
-        break
-        ;;
-      quit|q)
-        echo "❌ Exiting..."
-        return 0
         ;;
       *)
         # Parse space-separated numbers properly
         if [[ -n "$choice" ]]; then
-          # Split by spaces and process each number
-          local nums=(${(s: :)choice})
+          # Convert to array by splitting on spaces
+          local nums=($choice)
           for num in "${nums[@]}"; do
             if [[ "$num" =~ ^[0-9]+$ ]]; then
               # Find the actual index for this display number
-              local actual_index=0
+              local actual_index=-1
               local display_counter=0
-              for i in $(seq 1 $total_tasks); do
+              for ((i=0; i<total_tasks; i++)); do
                 if [[ ! "${tasks[$i]}" == "# "* ]]; then
                   ((display_counter++))
                   if [[ $display_counter -eq $num ]]; then
@@ -475,8 +473,8 @@ bootstrap_main() {
                   fi
                 fi
               done
-              
-              if [[ $actual_index -gt 0 ]]; then
+
+              if [[ $actual_index -ge 0 ]]; then
                 # Toggle selection
                 local found=0
                 local new_selected=()
@@ -490,18 +488,20 @@ bootstrap_main() {
                 if [[ $found -eq 0 ]]; then
                   new_selected+=($actual_index)
                 fi
-                selected_indices=($new_selected)
+                selected_indices=("${new_selected[@]}")
               else
                 echo "⚠️  Invalid number: $num"
                 sleep 1
               fi
             else
-              echo "⚠️  Invalid input: $num (must be a number)"
+              echo "⚠️  Invalid input: $num (must be a number or command)"
               sleep 1
             fi
           done
           # Sort selections
-          selected_indices=($(printf "%s\n" "${selected_indices[@]}" | sort -n 2>/dev/null))
+          if [[ ${#selected_indices[@]} -gt 0 ]]; then
+            selected_indices=($(printf "%s\n" "${selected_indices[@]}" | sort -n))
+          fi
         fi
         ;;
     esac
@@ -516,7 +516,7 @@ bootstrap_main() {
   echo ""
   echo "🚀 Executing ${#selected_indices[@]} selected tasks..."
   echo ""
-  
+
   local task_count=0
   local total_selected=${#selected_indices[@]}
   for idx in "${selected_indices[@]}"; do
@@ -524,26 +524,28 @@ bootstrap_main() {
     local task_info="${tasks[$idx]}"
     local task_desc=$(echo "$task_info" | cut -d'|' -f1)
     local task_cmd=$(echo "$task_info" | cut -d'|' -f2-)
-    
+
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "[$task_count/$total_selected] ▶  Running: $task_desc"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    
+
     # Execute the command
     eval "$task_cmd"
-    
+
     if [[ $? -eq 0 ]]; then
       echo "✅ Completed: $task_desc"
     else
       echo "❌ Failed: $task_desc"
     fi
     echo ""
-    
+
     if [[ $task_count -lt $total_selected ]]; then
-      read "continue?Press Enter to continue to next task..."
+      read -p "Press Enter to continue to next task..."
     fi
   done
 
   # Show postinstall tips
   bootstrap_postinstall_tips
 }
+
+bootstrap_main

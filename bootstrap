@@ -121,12 +121,6 @@ confirm_yes_no() {
   return 1
 }
 
-bootstrap_fresh_installation_tips() {
-  cat << EOF
-After clean CachyOS installation, consider doing:
-EOF
-}
-
 bootstrap_postinstall_tips() {
   cat << EOF
 PostInstall steps:
@@ -349,8 +343,6 @@ EOF
 }
 
 bootstrap_main() {
-  bootstrap_fresh_installation_tips
-
   confirm_yes_no "Append essential kernel boot params to limine?" && bootstrap_manage_limine_kernel_params
 
   confirm_yes_no "Install am (appimage manager)?" && bootstrap_install_am

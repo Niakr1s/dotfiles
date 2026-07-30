@@ -384,7 +384,7 @@
   "soundVolumeChanged": true,
   "soundPluggedIn": true,
   "muteSoundsWhenMediaPlaying": true,
-  "acMonitorTimeout": 300,
+  "acMonitorTimeout": 0,
   "acLockTimeout": 600,
   "acSuspendTimeout": 900,
   "acSuspendBehavior": 0,

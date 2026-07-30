@@ -41,30 +41,6 @@ tasks=(
   "Link steam runtime to umu|link_steamruntime_to_umu"
 )
 
-install_pkgs() {
-  sudo pacman -S --needed "$@"
-}
-
-install_pkgs_aur() {
-  sudo shelly -Ia "$@"
-}
-
-install_am() {
-  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
-    chmod a+x ./AM-INSTALLER && \
-    # installer asks 1 to install as a system app, so in theory piping "1" should work
-    echo "1" | ./AM-INSTALLER && \
-    rm ./AM-INSTALLER
-}
-
-install_pkgs_am() {
-  which am &>/dev/null || install_am
-
-  for app in $@; do
-    am -i "$app"
-  done
-}
-
 # These packages will be installed for all hosts
 PKGS=(
   # programming
@@ -141,6 +117,30 @@ PKGS_AM=(
   losslesscut
   crossmacro
 )
+
+install_pkgs() {
+  sudo pacman -S --needed "$@"
+}
+
+install_pkgs_aur() {
+  sudo shelly -Ia "$@"
+}
+
+install_am() {
+  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
+    chmod a+x ./AM-INSTALLER && \
+    # installer asks 1 to install as a system app, so in theory piping "1" should work
+    echo "1" | ./AM-INSTALLER && \
+    rm ./AM-INSTALLER
+}
+
+install_pkgs_am() {
+  which am &>/dev/null || install_am
+
+  for app in $@; do
+    am -i "$app"
+  done
+}
 
 confirm_yes_no() {
   # Usage: confirm_yes_no "Prompt text"

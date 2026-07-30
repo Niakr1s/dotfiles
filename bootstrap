@@ -23,6 +23,16 @@ install_pkgs_aur() {
 }
 
 install_pkgs_am() {
+  local install_am() {
+    wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
+      chmod a+x ./AM-INSTALLER && \
+      # installer asks 1 to install as a system app, so in theory piping "1" should work
+      echo "1" | ./AM-INSTALLER && \
+      rm ./AM-INSTALLER
+  }
+
+  which am || install_am
+
   for app in $@; do
     am -i "$app"
   done
@@ -61,7 +71,7 @@ PKGS=(
   tree
 
   # themes
-  gnome-themes-extra adwaita-qt5 adwaita-qt6 kvantum kvantum-qt5
+  gnome-themes-extra adwaita-qt5 adwaita-qt6
 
   # gui apps
   alacritty
@@ -130,15 +140,8 @@ PostInstall steps:
 EOF
 }
 
-bootstrap_install_am() {
-  wget -q https://raw.githubusercontent.com/ivan-hc/AM/main/AM-INSTALLER && \
-    chmod a+x ./AM-INSTALLER && \
-    # installer asks 1 to install as a system app, so in theory piping "1" should work
-    echo "1" | ./AM-INSTALLER && \
-    rm ./AM-INSTALLER
-}
-
 bootstrap_enable_kvantum() {
+  install_pkgs kvantum kvantum-qt5
   kvantummanager --set KvGnomeDark
 }
 
@@ -343,40 +346,202 @@ EOF
 }
 
 bootstrap_main() {
-  confirm_yes_no "Append essential kernel boot params to limine?" && bootstrap_manage_limine_kernel_params
+  # Define all tasks with their descriptions and commands
+  # Lines starting with '# ' are section headers and won't be selectable
+  local tasks=(
+    "# Packages"
+    "Install packages|install_pkgs \"\${PKGS[@]}\""
+    "Install aur packages|install_pkgs_aur \"\${PKGS_AUR[@]}\""
+    "Install am packages|install_pkgs_am \"\${PKGS_AM[@]}\""
+    "Install gaming packages|sudo cachyos-hello fix install-gaming"
+    "Install asdf packages|bootstrap_install_asdf_packages"
+    "Install ai tools|bootstrap_install_ai_tools"
+    "Install sunshine|bootstrap_install_sunshine"
 
-  confirm_yes_no "Install am (appimage manager)?" && bootstrap_install_am
+    "# System"
+    "Rank mirrors|sudo cachyos-hello fix rank-mirrors"
+    "Append essential kernel boot params to limine|bootstrap_manage_limine_kernel_params"
+    "Disable sleep and hibernation|bootstrap_disable_sleep_hybernation"
+    "Enable home snapper snapshots|bootstrap_enable_snapper_home_snapshots"
+    
+    "# Desktop Environment & Shell"
+    "Install dankmaterialshell (niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
+    "Enable kvantum theme|bootstrap_enable_kvantum"
+    "Enable zsh as default shell|chsh -s /bin/zsh"
 
-  confirm_yes_no "Install packages?" && install_pkgs "${PKGS[@]}"
-  confirm_yes_no "Install aur packages?" && install_pkgs_aur "${PKGS_AUR[@]}"
-  confirm_yes_no "Install am packages?" && install_pkgs_am "${PKGS_AM[@]}"
+    "# Virtualization"
+    "Enable virtualization|bootstrap_enable_virtualization"
+    "Enable docker and install winboat|sudo cachyos-hello fix install-winboat"
+    "Enable nvidia-container-toolkit for docker|bootstrap_install_nvidia_container_toolkit"
 
-  confirm_yes_no "Rank mirrors?" && sudo cachyos-hello fix rank-mirrors
-  confirm_yes_no "Install gaming packages?" && sudo cachyos-hello fix install-gaming
-  confirm_yes_no "Enable docker and install winboat?" && sudo cachyos-hello fix install-winboat
+    "# Emulators"
+    "Install switch emulators|bootstrap_install_switch_emulators"
+    "Install playstation emulators|bootstrap_install_playstation_emulators"
+    "Install xbox emulators|bootstrap_install_xbox_emulators"
+    "Install retroarch|bootstrap_install_retroarch"
+  )
 
-  confirm_yes_no "Enable zsh as default shell?" && chsh -s /bin/zsh
+  local selected_indices=()
+  local total_tasks=${#tasks[@]}
+  
+  while true; do
+    clear
+  
+    echo "📋 Select tasks to run (enter numbers separated by spaces, or 'all')"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    
+    local display_num=0
+    for i in $(seq 1 $total_tasks); do
+      local item="${tasks[$i]}"
+      
+      # Check if it's a header
+      if [[ "$item" == "# "* ]]; then
+        local header="${item#\# }"
+        echo ""
+        echo "━━━ $header ━━━"
+        echo ""
+        continue
+      fi
+      
+      # It's a task, increment display number
+      ((display_num++))
+      local desc=$(echo "$item" | cut -d'|' -f1)
+      
+      # Check if index is in selected_indices
+      local is_selected=0
+      for sel in "${selected_indices[@]}"; do
+        if [[ $sel -eq $i ]]; then
+          is_selected=1
+          break
+        fi
+      done
+      
+      if [[ $is_selected -eq 1 ]]; then
+        echo "[✓] $display_num. $desc"
+      else
+        echo "[ ] $display_num. $desc"
+      fi
+    done
+    
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "Options:"
+    echo "  - Enter numbers: 1 3 5  (toggle selection)"
+    echo "  - Type 'all' to select everything"
+    echo "  - Type 'clear' to clear all selections"
+    echo "  - Type 'done' to execute selected tasks"
+    echo "  - Type 'quit' to exit"
+    echo ""
+    read "choice?Enter choice: "
+    
+    case "$choice" in
+      all)
+        # Select all non-header items
+        selected_indices=()
+        for i in $(seq 1 $total_tasks); do
+          if [[ ! "${tasks[$i]}" == "# "* ]]; then
+            selected_indices+=($i)
+          fi
+        done
+        ;;
+      clear)
+        selected_indices=()
+        ;;
+      done)
+        break
+        ;;
+      quit|q)
+        echo "❌ Exiting..."
+        return 0
+        ;;
+      *)
+        # Parse space-separated numbers properly
+        if [[ -n "$choice" ]]; then
+          # Split by spaces and process each number
+          local nums=(${(s: :)choice})
+          for num in "${nums[@]}"; do
+            if [[ "$num" =~ ^[0-9]+$ ]]; then
+              # Find the actual index for this display number
+              local actual_index=0
+              local display_counter=0
+              for i in $(seq 1 $total_tasks); do
+                if [[ ! "${tasks[$i]}" == "# "* ]]; then
+                  ((display_counter++))
+                  if [[ $display_counter -eq $num ]]; then
+                    actual_index=$i
+                    break
+                  fi
+                fi
+              done
+              
+              if [[ $actual_index -gt 0 ]]; then
+                # Toggle selection
+                local found=0
+                local new_selected=()
+                for sel in "${selected_indices[@]}"; do
+                  if [[ $sel -eq $actual_index ]]; then
+                    found=1
+                  else
+                    new_selected+=($sel)
+                  fi
+                done
+                if [[ $found -eq 0 ]]; then
+                  new_selected+=($actual_index)
+                fi
+                selected_indices=($new_selected)
+              else
+                echo "⚠️  Invalid number: $num"
+                sleep 1
+              fi
+            else
+              echo "⚠️  Invalid input: $num (must be a number)"
+              sleep 1
+            fi
+          done
+          # Sort selections
+          selected_indices=($(printf "%s\n" "${selected_indices[@]}" | sort -n 2>/dev/null))
+        fi
+        ;;
+    esac
+  done
 
-  confirm_yes_no "Install dankmaterialshell?" "Enable niri & alacritty, then enable every package on next screen" && { curl -fsSL https://install.danklinux.com | sh }
-
-  confirm_yes_no "Enable kvantum?" && bootstrap_enable_kvantum
-  confirm_yes_no "Enable home snapper snapshots?" "Don't forget to modify snapshot retention" && bootstrap_enable_snapper_home_snapshots
-
-  confirm_yes_no "Install asdf packages?" && bootstrap_install_asdf_packages
-
-  confirm_yes_no "Enable virtualization?" && bootstrap_enable_virtualization
-  confirm_yes_no "Disable sleep and hybernation?" && bootstrap_disable_sleep_hybernation
-
-  confirm_yes_no "Install switch emulators?" && bootstrap_install_switch_emulators
-  confirm_yes_no "Install playstation emulators?" && bootstrap_install_playstation_emulators
-  confirm_yes_no "Install xbox emulators?" && bootstrap_install_xbox_emulators
-  confirm_yes_no "Install retroarch?" && bootstrap_install_retroarch
-
-  if [[ "$HOST" == "desktop" ]]; then
-    confirm_yes_no "Install and enable nvidia-container-toolkit in docker?" && bootstrap_install_nvidia_container_toolkit
-    confirm_yes_no "Install sunshine?" && bootstrap_install_sunshine
-    confirm_yes_no "Install ai tools?" && bootstrap_install_ai_tools
+  # If nothing selected, exit
+  if [[ ${#selected_indices[@]} -eq 0 ]]; then
+    echo "❌ No tasks selected. Exiting."
+    return 0
   fi
 
+  echo ""
+  echo "🚀 Executing ${#selected_indices[@]} selected tasks..."
+  echo ""
+  
+  local task_count=0
+  local total_selected=${#selected_indices[@]}
+  for idx in "${selected_indices[@]}"; do
+    ((task_count++))
+    local task_info="${tasks[$idx]}"
+    local task_desc=$(echo "$task_info" | cut -d'|' -f1)
+    local task_cmd=$(echo "$task_info" | cut -d'|' -f2-)
+    
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "[$task_count/$total_selected] ▶  Running: $task_desc"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    
+    # Execute the command
+    eval "$task_cmd"
+    
+    if [[ $? -eq 0 ]]; then
+      echo "✅ Completed: $task_desc"
+    else
+      echo "❌ Failed: $task_desc"
+    fi
+    echo ""
+    
+    if [[ $task_count -lt $total_selected ]]; then
+      read "continue?Press Enter to continue to next task..."
+    fi
+  done
+
+  # Show postinstall tips
   bootstrap_postinstall_tips
 }

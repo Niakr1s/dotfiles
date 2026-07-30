@@ -15,11 +15,11 @@ EOF
 }
 
 install_pkgs() {
-  pacman -S --needed "$@"
+  sudo pacman -S --needed "$@"
 }
 
 install_pkgs_aur() {
-  shelly -Ia "$@"
+  sudo shelly -Ia "$@"
 }
 
 install_pkgs_am() {
@@ -31,7 +31,7 @@ install_pkgs_am() {
       rm ./AM-INSTALLER
   }
 
-  which am || install_am
+  which am &>/dev/null || install_am
 
   for app in $@; do
     am -i "$app"

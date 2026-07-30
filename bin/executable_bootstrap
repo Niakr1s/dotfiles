@@ -13,6 +13,7 @@ tasks=(
   "Install gaming packages|sudo cachyos-hello fix install-gaming"
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
+  "Init tunsub service|init_tunsub"
 
   "# Emulators"
   "Install switch emulators|install_switch_emulators"
@@ -114,8 +115,6 @@ PKGS=(
 )
 
 PKGS_AUR=(
-  xray-bin # needed for v2raya-bin
-  v2raya-bin
   lazysql-bin
   asdf-vm
 )
@@ -378,6 +377,15 @@ EOF
   # Regenerate bootloader configuration
   echo "Regenerating Limine configuration with limine-mkinitcpio..."
   sudo limine-mkinitcpio && echo "Done!" || echo "Error"
+}
+
+init_tunsub() {
+  tunsub --install_tun
+  cat << EOF
+
+Run this each time you want to change subscription file path or the line number in it:
+SUB=/path/to/sub.txt tunsub --install_service <LINE NUMBER>
+EOF
 }
 
 main() {

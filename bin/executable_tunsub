@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+SUB=${SUB:-"$HOME/sub.txt"}
+GOBIN=${GOBIN:-"$HOME/go/bin"}
+TUN="$GOBIN/tun"
+TUN_VERSION="v0.0.8"
+
+usage() {
+  cat << EOF
+Tunnels the sustem through selected subscription.
+Uses github.com/goxray/tun
+
+Env variables:
+  SUB (default: ${SUB})
+
+Arguments:
+  --install_tun: installs tun executable using go
+  --install_service <N>: installs as a user service named 'tunsub'
+
+Usage:
+  SUB=/path/to/my/sub.txt tunsub <number of server in SUB>
+EOF
+}
+
+install_tun() {
+  which "$TUN" &>/dev/null || {
+    echo "Installing tun ${TUN_VERSION} under ${GOBIN}..."
+    go install "github.com/goxray/tun@${TUN_VERSION}"
+  }
+
+  echo "Going to give needed permissions..."
+  sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip "$TUN"
+}
+
+run_tun() {
+  local line="$1"
+
+  which "$TUN" &>/dev/null || {
+    echo "tun not found at $TUN, try to run '$0 --install_tun'"
+    exit 1
+  }
+    echo "inside which true"
+
+  selected=$(cat "$SUB" | sed -n "${line}p")
+  if [[ "$selected" == "" ]]; then
+    echo "Wrong line selected"
+    exit 1
+  fi
+
+  echo "Starting tun for sub N${line} in '$SUB'."
+  echo ""
+
+  "$TUN" "$selected"
+}
+
+install_service() {
+  local line="$1"
+
+  systemctl --user stop tunsub
+
+  echo "I will run tun with provided arguments. Feel free to test it and press Ctrl+C when you are done."
+  run_tun "$line"
+  read -p "Press Ctrl+C if quit: "
+
+  cat << EOF >"$HOME/.config/systemd/user/tunsub.service"
+[Unit]
+Description=A simple vpn tunnel
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$HOME/bin/tunsub $line
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=${HOME}
+StandardOutput=journal
+StandardError=journal
+Environment="SUB=${SUB}"
+
+[Install]
+WantedBy=default.target
+EOF
+
+  systemctl --user daemon-reload
+  systemctl --user enable tunsub
+  systemctl --user restart tunsub
+}
+
+main() {
+  case "$1" in
+    -h|--help)
+      usage
+      ;;
+    --install_tun)
+      install_tun
+      ;;
+    --install_service)
+      shift
+      install_service "$1"
+      ;;
+    *)
+      run_tun "$1"
+      ;;
+  esac
+}
+
+main "$@"

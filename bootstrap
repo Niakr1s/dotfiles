@@ -15,11 +15,11 @@ EOF
 }
 
 install_pkgs() {
-  shelly install standard "$@"
+  pacman -S --needed "$@"
 }
 
 install_pkgs_aur() {
-  shelly install aur "$@"
+  shelly -Ia "$@"
 }
 
 install_pkgs_am() {

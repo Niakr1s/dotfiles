@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 
-usage () {
-  cat << EOF
-This script contains all scripts that can be useful to bootstrap new OpenSUSE THumbleweed installation.
-You must have chezmoi files afailable at it's default location (~/.local/share/chezmoi), and applied (chezmoi apply).
-
-All functions are started with <function> and all constants - with BOOTSTTRAP_<constant>.
-
-You can check it contents:
-which <function>
-echo <constant>
-
-Main script is:
-main # bootstrap a new installation
-EOF
-}
-
 install_pkgs() {
   sudo pacman -S --needed "$@"
 }

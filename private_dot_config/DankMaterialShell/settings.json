@@ -656,6 +656,10 @@
       ],
       "rightWidgets": [
         {
+          "id": "dankActions:variant_1785430484878",
+          "enabled": true
+        },
+        {
           "id": "network_speed_monitor",
           "enabled": true
         },

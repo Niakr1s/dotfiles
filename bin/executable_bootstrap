@@ -13,7 +13,6 @@ tasks=(
   "Install gaming packages|sudo cachyos-hello fix install-gaming"
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
-  "Install sunshine|install_sunshine"
 
   "# Emulators"
   "Install switch emulators|install_switch_emulators"

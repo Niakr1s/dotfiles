@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-bootstrap_usage () {
+usage () {
   cat << EOF
 This script contains all scripts that can be useful to bootstrap new OpenSUSE THumbleweed installation.
 You must have chezmoi files afailable at it's default location (~/.local/share/chezmoi), and applied (chezmoi apply).
 
-All functions are started with bootstrap_<function> and all constants - with BOOTSTTRAP_<constant>.
+All functions are started with <function> and all constants - with BOOTSTTRAP_<constant>.
 
 You can check it contents:
-which bootstrap_<function>
-echo BOOTSTRAP_<constant>
+which <function>
+echo <constant>
 
 Main script is:
-bootstrap_main # bootstrap a new installation
+main # bootstrap a new installation
 EOF
 }
 
@@ -133,32 +133,32 @@ confirm_yes_no() {
   return 1
 }
 
-bootstrap_postinstall_tips() {
+postinstall_tips() {
   cat << EOF
 PostInstall steps:
 - Install tmux plugins: <prefix>+I
 - Enable and configure syncthing: systemctl --user enable --now syncthing
-- Download steam runtimes and link them to umu: bootstrap_link_steamruntime_to_umu
+- Download steam runtimes and link them to umu: link_steamruntime_to_umu
 EOF
 }
 
-bootstrap_enable_kvantum() {
+enable_kvantum() {
   install_pkgs kvantum kvantum-qt5
   kvantummanager --set KvGnomeDark
 }
 
-bootstrap_enable_snapper_home_snapshots() {
+enable_snapper_home_snapshots() {
   sudo snapper -c home create-config /home
 }
 
-bootstrap_install_asdf_packages() {
+install_asdf_packages() {
   asdf plugin add zig
   asdf install zig "0.16.0"
   asdf plugin add zls
   asdf install zls "0.16.0"
 }
 
-bootstrap_enable_virtualization() {
+enable_virtualization() {
   # https://wiki.cachyos.org/virtualization/qemu_and_vmm_setup/
 
   # This will install the needed packages (note the "Windows 11" note below):
@@ -177,12 +177,12 @@ bootstrap_enable_virtualization() {
   sudo ufw route allow from 192.168.122.0/24
 }
 
-bootstrap_disable_sleep_hybernation() {
+disable_sleep_hybernation() {
   echo "Disabling sleep and hybernation..."
   sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 }
 
-bootstrap_install_switch_emulators() {
+install_switch_emulators() {
   echo "Installing Ryujinx..."
   am -i ryujinx
 
@@ -212,7 +212,7 @@ EOF
   echo "Switch firmware is at $SWITCH_FIRMWARE_PATH, don't forget to install it"
 }
 
-bootstrap_install_playstation_emulators() {
+install_playstation_emulators() {
   echo "Installing pcsx2"
   am -i pcsx2
 
@@ -240,7 +240,7 @@ bootstrap_install_playstation_emulators() {
   am -i azaharplus-pkg-extractor
 }
 
-bootstrap_install_xbox_emulators() {
+install_xbox_emulators() {
   echo "Installing xemu..."
   am -i xemu
   mkdir -p "$HOME/.local/share/xemu"
@@ -248,7 +248,7 @@ bootstrap_install_xbox_emulators() {
   echo "Needed xemu fiiles are under $HOME/.local/share/xemu, provide it to emulator them manually"
 }
 
-bootstrap_install_retroarch() {
+install_retroarch() {
   echo "Installing retroarch..."
   echo "Refer to docs/retroarch.md for further configuration"
   am -i retroarch
@@ -258,7 +258,7 @@ bootstrap_install_retroarch() {
   mkdir -p ~/.config/retroarch
 }
 
-bootstrap_link_steamruntime_to_umu() {
+link_steamruntime_to_umu() {
   confirm_yes_no "Make sure you've downloaded all 4 steam linux runtimes first (under tools section)."
   rm -rf ~/.local/share/umu/steamrt*
   ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime ~/.local/share/umu/steamrt1
@@ -268,13 +268,13 @@ bootstrap_link_steamruntime_to_umu() {
   ln -s ~/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4 ~/.local/share/umu/steamrt4
 }
 
-bootstrap_install_nvidia_container_toolkit() {
+install_nvidia_container_toolkit() {
   install_pkgs nvidia-container-toolkit
   sudo nvidia-ctk runtime configure --runtime=docker
   sudo systemctl restart docker
 }
 
-bootstrap_install_sunshine() {
+install_sunshine() {
   install_pkgs sunshine
 
   echo "Enabling firewall for sunshine..."
@@ -287,7 +287,7 @@ EOF
   sudo ufw allow Sunshine
 }
 
-bootstrap_install_ai_tools() {
+install_ai_tools() {
   which llama || curl -LsSf https://llama.app/install.sh | sh
   which pi || curl -fsSL https://pi.dev/install.sh | sh
   pi install git:github.com/huggingface/pi-llama
@@ -297,7 +297,7 @@ bootstrap_install_ai_tools() {
   }
 }
 
-bootstrap_manage_limine_kernel_params() {
+manage_limine_kernel_params() {
   local LIMINE_FILE="/etc/default/limine"
   local BEGIN_MARKER="# BEGIN MANAGED BLOCK - DO NOT EDIT MANUALLY"
   local END_MARKER="# END MANAGED BLOCK"
@@ -351,7 +351,7 @@ EOF
 
 # ... rest of your code ...
 
-bootstrap_main() {
+main() {
   # Define all tasks with their descriptions and commands
   # Lines starting with '# ' are section headers and won't be selectable
   local tasks=(
@@ -360,31 +360,31 @@ bootstrap_main() {
     "Install aur packages|install_pkgs_aur \"\${PKGS_AUR[@]}\""
     "Install am packages|install_pkgs_am \"\${PKGS_AM[@]}\""
     "Install gaming packages|sudo cachyos-hello fix install-gaming"
-    "Install asdf packages|bootstrap_install_asdf_packages"
-    "Install ai tools|bootstrap_install_ai_tools"
-    "Install sunshine|bootstrap_install_sunshine"
+    "Install asdf packages|install_asdf_packages"
+    "Install ai tools|install_ai_tools"
+    "Install sunshine|install_sunshine"
 
     "# System"
     "Rank mirrors|sudo cachyos-hello fix rank-mirrors"
-    "Append essential kernel boot params to limine|bootstrap_manage_limine_kernel_params"
-    "Disable sleep and hibernation|bootstrap_disable_sleep_hybernation"
-    "Enable home snapper snapshots|bootstrap_enable_snapper_home_snapshots"
+    "Append essential kernel boot params to limine|manage_limine_kernel_params"
+    "Disable sleep and hibernation|disable_sleep_hybernation"
+    "Enable home snapper snapshots|enable_snapper_home_snapshots"
     
     "# Desktop Environment & Shell"
     "Install dankmaterialshell (niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
-    "Enable kvantum theme|bootstrap_enable_kvantum"
+    "Enable kvantum theme|enable_kvantum"
     "Enable zsh as default shell|chsh -s /bin/zsh"
 
     "# Virtualization"
-    "Enable virtualization|bootstrap_enable_virtualization"
+    "Enable virtualization|enable_virtualization"
     "Enable docker and install winboat|sudo cachyos-hello fix install-winboat"
-    "Enable nvidia-container-toolkit for docker|bootstrap_install_nvidia_container_toolkit"
+    "Enable nvidia-container-toolkit for docker|install_nvidia_container_toolkit"
 
     "# Emulators"
-    "Install switch emulators|bootstrap_install_switch_emulators"
-    "Install playstation emulators|bootstrap_install_playstation_emulators"
-    "Install xbox emulators|bootstrap_install_xbox_emulators"
-    "Install retroarch|bootstrap_install_retroarch"
+    "Install switch emulators|install_switch_emulators"
+    "Install playstation emulators|install_playstation_emulators"
+    "Install xbox emulators|install_xbox_emulators"
+    "Install retroarch|install_retroarch"
   )
 
   local selected_indices=()
@@ -545,7 +545,7 @@ bootstrap_main() {
   done
 
   # Show postinstall tips
-  bootstrap_postinstall_tips
+  postinstall_tips
 }
 
-bootstrap_main
+main

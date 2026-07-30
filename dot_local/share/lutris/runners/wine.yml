@@ -3,8 +3,6 @@ system:
   env:
     UMU_RUNTIME_UPDATE: '0'
   mangohud: true
-  prefix_command: 'systemd-inhibit --what=idle --who="Lutris" --why="Prevent display
-    sleep" '
   terminal_app: /usr/bin/alacritty
 wine:
   system_winetricks: true

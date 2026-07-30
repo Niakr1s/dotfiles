@@ -1,5 +1,46 @@
 #!/usr/bin/env bash
 
+# Usage tips:
+# after add new feature don't forget to add it to tasks array
+
+# Define all tasks with their descriptions and commands
+# Lines starting with '# ' are section headers and won't be selectable
+tasks=(
+  "# Software"
+  "Install core packages|install_pkgs \"\${PKGS[@]}\""
+  "Install aur packages|install_pkgs_aur \"\${PKGS_AUR[@]}\""
+  "Install am packages|install_pkgs_am \"\${PKGS_AM[@]}\""
+  "Install gaming packages|sudo cachyos-hello fix install-gaming"
+  "Install asdf packages|install_asdf_packages"
+  "Install ai tools|install_ai_tools"
+  "Install sunshine|install_sunshine"
+
+  "# Emulators"
+  "Install switch emulators|install_switch_emulators"
+  "Install playstation emulators|install_playstation_emulators"
+  "Install xbox emulators|install_xbox_emulators"
+  "Install retroarch|install_retroarch"
+
+  "# System"
+  "Rank mirrors|sudo cachyos-hello fix rank-mirrors"
+  "Append essential kernel boot params to limine|manage_limine_kernel_params"
+  "Disable sleep and hibernation|disable_sleep_hybernation"
+  "Enable home snapper snapshots|enable_snapper_home_snapshots"
+  
+  "# Desktop Environment & Shell"
+  "Install dankmaterialshell (choose niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
+  "Enable kvantum theme|enable_kvantum"
+  "Enable zsh as default shell|chsh -s /bin/zsh"
+
+  "# Virtualization"
+  "Enable virtualization|enable_virtualization"
+  "Enable docker and install winboat|sudo cachyos-hello fix install-winboat"
+  "Enable nvidia-container-toolkit for docker|install_nvidia_container_toolkit"
+
+  "# Tweaks"
+  "Link steam runtime to umu|link_steamruntime_to_umu"
+)
+
 install_pkgs() {
   sudo pacman -S --needed "$@"
 }
@@ -331,49 +372,7 @@ EOF
   sudo limine-mkinitcpio && echo "Done!" || echo "Error"
 }
 
-#!/usr/bin/env bash
-
-# ... rest of your code ...
-
 main() {
-  # Define all tasks with their descriptions and commands
-  # Lines starting with '# ' are section headers and won't be selectable
-  local tasks=(
-    "# Software"
-    "Install core packages|install_pkgs \"\${PKGS[@]}\""
-    "Install aur packages|install_pkgs_aur \"\${PKGS_AUR[@]}\""
-    "Install am packages|install_pkgs_am \"\${PKGS_AM[@]}\""
-    "Install gaming packages|sudo cachyos-hello fix install-gaming"
-    "Install asdf packages|install_asdf_packages"
-    "Install ai tools|install_ai_tools"
-    "Install sunshine|install_sunshine"
-
-    "# Emulators"
-    "Install switch emulators|install_switch_emulators"
-    "Install playstation emulators|install_playstation_emulators"
-    "Install xbox emulators|install_xbox_emulators"
-    "Install retroarch|install_retroarch"
-
-    "# System"
-    "Rank mirrors|sudo cachyos-hello fix rank-mirrors"
-    "Append essential kernel boot params to limine|manage_limine_kernel_params"
-    "Disable sleep and hibernation|disable_sleep_hybernation"
-    "Enable home snapper snapshots|enable_snapper_home_snapshots"
-    
-    "# Desktop Environment & Shell"
-    "Install dankmaterialshell (choose niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
-    "Enable kvantum theme|enable_kvantum"
-    "Enable zsh as default shell|chsh -s /bin/zsh"
-
-    "# Virtualization"
-    "Enable virtualization|enable_virtualization"
-    "Enable docker and install winboat|sudo cachyos-hello fix install-winboat"
-    "Enable nvidia-container-toolkit for docker|install_nvidia_container_toolkit"
-
-    "# Tweaks"
-    "Link steam runtime to umu|link_steamruntime_to_umu"
-  )
-
   local selected_indices=()
   local total_tasks=${#tasks[@]}
 

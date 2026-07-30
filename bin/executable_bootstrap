@@ -380,11 +380,13 @@ EOF
 }
 
 init_tunsub() {
-  tunsub --install_tun
+  go install github.com/niakr1s/tunsub/cmd/tunsub@v0.0.1
+  tunsub privileged
   cat << EOF
-
-Run this each time you want to change subscription file path or the line number in it:
-SUB=/path/to/sub.txt tunsub --install_service <LINE NUMBER>
+Tunsub installed.
+Usage:
+  tunsub install -s /path/to/file/with/subscriptions -n <number of the line in subscriptions file>
+  systemctl --user status tunsub
 EOF
 }
 

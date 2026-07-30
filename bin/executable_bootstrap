@@ -26,6 +26,10 @@ tasks=(
   "Append essential kernel boot params to limine|manage_limine_kernel_params"
   "Disable sleep and hibernation|disable_sleep_hybernation"
   "Enable home snapper snapshots|enable_snapper_home_snapshots"
+
+  "# Firewall"
+  "Allow sunshine|firewall_allow_sunshine"
+  "Allow kdeconnect|firewall_allow_kdeconnect"
   
   "# Desktop Environment & Shell"
   "Install dankmaterialshell (choose niri & alacritty)|curl -fsSL https://install.danklinux.com | sh"
@@ -93,6 +97,9 @@ PKGS=(
   joplin-desktop
   mission-center
   zed
+
+  # gaming
+  sunshine
 
   # media
   ffmpeg yt-dlp mediainfo audacity kdenlive gpu-screen-recorder
@@ -298,9 +305,7 @@ install_nvidia_container_toolkit() {
   sudo systemctl restart docker
 }
 
-install_sunshine() {
-  install_pkgs sunshine
-
+firewall_allow_sunshine() {
   echo "Enabling firewall for sunshine..."
   sudo tee /etc/ufw/applications.d/sunshine << EOF
 [sunshine]
@@ -309,6 +314,10 @@ description=Sunshine
 ports=47984,47989,48010/tcp|47998:48010/udp
 EOF
   sudo ufw allow Sunshine
+}
+
+firewall_allow_kdeconnect() {
+  sudo ufw allow KDEConnect
 }
 
 install_ai_tools() {

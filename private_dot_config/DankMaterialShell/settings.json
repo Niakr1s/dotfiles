@@ -389,7 +389,7 @@
   "acSuspendTimeout": 900,
   "acSuspendBehavior": 0,
   "acProfileName": "",
-  "acPostLockMonitorTimeout": 0,
+  "acPostLockMonitorTimeout": 15,
   "batteryMonitorTimeout": 0,
   "batteryLockTimeout": 0,
   "batterySuspendTimeout": 0,

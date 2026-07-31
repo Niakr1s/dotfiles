@@ -97,6 +97,7 @@ PKGS=(
   joplin-desktop
   mission-center
   zed
+  cpu-x vulkan-driver
 
   # gaming
   sunshine

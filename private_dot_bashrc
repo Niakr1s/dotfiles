@@ -45,9 +45,6 @@ function myip() {
   echo "$(curl -s ifconfig.me) (ifconfig.me)"
 }
 
-# package manager
-alias pm="shelly"
-
 function pmg() {
   case "$1" in
     -h|--help)
@@ -67,6 +64,9 @@ EOF
     ;;
   esac
 }
+# package manager
+alias pm="shelly"
+alias ff="fastfetch"
 
 # Chezmoi
 alias cz="chezmoi"

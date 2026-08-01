@@ -60,7 +60,7 @@ PKGS=(
   zsh tmux
   chezmoi git
   fd fzf ripgrep zoxide eza bat
-  tldr
+  tealdeer
   neovim python-pynvim wl-clipboard
   yazi fzf zoxide resvg chafa
   lazygit

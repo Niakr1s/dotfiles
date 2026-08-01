@@ -28,6 +28,4 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-fastfetch
-
 source <(xray-knife completion zsh)

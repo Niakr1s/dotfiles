@@ -91,7 +91,7 @@ PKGS=(
   librecad libreoffice zeal
   blender
   dconf-editor
-  kdeconnect python-nautilus qt6-tools sshfs
+  kdeconnect python-nautilus qt5-tools qt6-tools sshfs
   keepassxc
   moonlight-qt
   joplin-desktop

@@ -136,3 +136,12 @@ luksMountUmount "fabfb454-6de2-412d-8bc7-b56a849c77c7" "hdd24"
 
 alias backup-etc="sudo borg create --progress /data/hdd1/borg/etc::{now} /etc"
 alias backup-home="borg create --progress /data/hdd1/borg/home::{now} $HOME --exclude '*/.config/rpcs3/dev_hdd0/game/*'"
+
+# Set your default proxy
+PROXY_URL="${PROXY_URL:-http://127.0.0.1:9999}"
+proxy-shell() {
+    local p="${1:-$PROXY_URL}"
+    echo "On: $p"
+    http_proxy="$p" https_proxy="$p" HTTP_PROXY="$p" HTTPS_PROXY="$p" $SHELL
+    echo "Off: $p"
+}

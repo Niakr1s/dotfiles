@@ -13,7 +13,7 @@ tasks=(
   "Install gaming packages|sudo cachyos-hello fix install-gaming"
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
-  "Init tunsub service|init_tunsub"
+  "Init xray-knife service|init_xray-knife"
 
   "# Emulators"
   "Install switch emulators|install_switch_emulators"
@@ -380,15 +380,27 @@ EOF
   sudo limine-mkinitcpio && echo "Done!" || echo "Error"
 }
 
-init_tunsub() {
-  go install github.com/niakr1s/tunsub/cmd/tunsub@v0.0.1
-  tunsub privileged
-  cat << EOF
-Tunsub installed.
-Usage:
-  tunsub install -s /path/to/file/with/subscriptions -n <number of the line in subscriptions file>
-  systemctl --user status tunsub
+init_xray-knife() {
+  which "$HOME/go/bin/xray-knife" &>/dev/null || go install github.com/lilendian0x00/xray-knife/v10@latest
+  cat << EOF > "$HOME/.config/systemd/user/xray-knife.service"
+[Unit]
+Description=xray-knife service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$HOME/go/bin/xray-knife proxy system --port 9999 --rotate 300
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=$HOME/.xray-knife
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
 EOF
+  systemctl --user daemon-reload
+  systemctl --user enable --now xray-knife
 }
 
 main() {

@@ -52,3 +52,5 @@ user_pref("browser.translations.neverTranslateLanguages", "ru");
 user_pref("distribution.openSUSE.bookmarksProcessed", false);
 
 user_pref("browser.search.region", "RU");
+
+user_pref("network.proxy.no_proxies_on", ".ru");

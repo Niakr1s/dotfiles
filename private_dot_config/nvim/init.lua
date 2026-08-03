@@ -656,22 +656,31 @@ require('gitsigns').setup {
 
 require("codecompanion").setup({
   strategies = {
-    -- Configure ollama for all strategies
-    chat = { adapter = "ollama" },
-    inline = { adapter = "ollama" },
-    agent = { adapter = "ollama" },
+    chat = {
+      adapter = "llama",
+    },
+    inline = {
+      adapter = "llama",
+    },
+    agent = {
+      adapter = "llama",
+    },
   },
   adapters = {
     http = {
-      -- Optional: Customize ollama adapter with your settings
-      ollama = function()
-        return require("codecompanion.adapters").extend("ollama", {
+      llama = function()
+        return require("codecompanion.adapters").extend("openai_compatible", {
+          env = {
+            url = "http://127.0.0.1:8080",
+            api_key = "TERM",
+            chat_url = "/v1/chat/completions",
+          },
           schema = {
             model = {
-              default = "gemma4:e4b", -- or your preferred model
+              default = "gemma4:12B",
             },
             num_ctx = {
-              default = 16384, -- Context window size
+              default = 90000,
             },
           },
         })

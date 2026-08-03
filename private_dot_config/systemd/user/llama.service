@@ -1,0 +1,16 @@
+[Unit]
+Description=Llama Serve Service
+After=network.target
+
+[Service]
+Type=simple
+Environment="LOG_LEVEL=info"
+ExecStart=/home/nea/.local/bin/llama serve --models-preset /home/nea/models/models.ini
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=llama-serve
+
+[Install]
+WantedBy=default.target

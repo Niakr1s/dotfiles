@@ -52,6 +52,9 @@ PKGS=(
   python python-pip python-pipx uv
   cmake make ccache
 
+  # python libs
+  python-pillow
+
   # browser
   firefox
   chromium

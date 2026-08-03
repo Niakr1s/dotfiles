@@ -97,8 +97,11 @@ PKGS=(
   joplin-desktop
   mission-center
   zed
+
+  # hardware
   cpu-x vulkan-driver
   hardinfo2 apcupsd fwupd
+  occt
 
   # gaming
   sunshine

@@ -13,6 +13,7 @@ tasks=(
   "Install gaming packages|sudo cachyos-hello fix install-gaming"
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
+  "Install comfy|install_comfy"
   "Init xray-knife service|init_xray-knife"
 
   "# Emulators"
@@ -339,6 +340,42 @@ install_ai_tools() {
   confirm_yes_no "Download models?" && {
     llama download -hf ggml-org/gemma-4-12B-it-GGUF:Q4_0
   }
+}
+
+install_comfy() {
+  local comfy_dir="$HOME/comfy"
+  git clone https://github.com/Comfy-Org/ComfyUI.git "$comfy_dir"
+
+  (
+    cd "$comfy_dir"
+    python -m venv .venv
+    source "$comfy_dir/.venv/bin/activate"
+
+    # nvidia
+    pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+
+    pip install -r requirements.txt
+    pip install -r manager_requirements.txt
+  )
+
+  cat << EOF > "$HOME/.config/systemd/user/comfy.service"
+[Unit]
+Description=ComfyUI Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/nea/comfy/.venv/bin/python /home/nea/comfy/main.py --enable-manager --enable-manager-legacy-ui
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=/home/nea/comfy
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+EOF
+  systemctl --user daemon-reload
 }
 
 manage_limine_kernel_params() {

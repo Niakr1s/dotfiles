@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 Environment="LOG_LEVEL=info"
-ExecStart=/home/nea/.local/bin/llama serve --models-preset /home/nea/models/models.ini
+ExecStart=/home/nea/.local/bin/llama serve --models-preset /home/nea/models/llama/models.ini
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal

@@ -1,0 +1,44 @@
+# ComfyUI Docker Setup
+# This file defines the docker-compose structure for ComfyUI with persistent storage.
+
+# The following section automatically creates the required directories using a simple shell script.
+# Run this before 'docker compose -f ~/.compose/comfyui.yml up -d':
+# mkdir -p $HOME/comfy/storage-cache/dot-cache $HOME/comfy/storage-cache/dot-config $HOME/comfy/storage-nodes/dot-local $HOME/comfy/storage-nodes/custom_nodes $HOME/comfy/storage-models/models $HOME/comfy/storage-models/hf-hub $HOME/comfy/storage-models/torch-hub $HOME/comfy/storage-user/input $HOME/comfy/storage-user/output $HOME/comfy/storage-user/user-profile $HOME/comfy/storage-user/user-scripts
+
+services:
+  comfyui:
+    init: true
+    container_name: comfyui-megapak
+    image: "yanwk/comfyui-boot:cu130-slim-v2-20260803"
+    pull_policy: daily
+    shm_size: 2gb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8188:8188"
+    volumes:
+      - "$HOME/comfy/storage-cache/dot-cache:/root/.cache"
+      - "$HOME/comfy/storage-cache/dot-config:/root/.config"
+      - "$HOME/comfy/storage-nodes/dot-local:/root/.local"
+      - "$HOME/comfy/storage-nodes/custom_nodes:/root/ComfyUI/custom_nodes"
+      - "$HOME/comfy/storage-models/models:/root/ComfyUI/models"
+      - "$HOME/comfy/storage-models/hf-hub:/root/.cache/huggingface/hub"
+      - "$HOME/comfy/storage-models/torch-hub:/root/.cache/torch/hub"
+      - "$HOME/comfy/storage-user/input:/root/ComfyUI/input"
+      - "$HOME/comfy/storage-user/output:/root/ComfyUI/output"
+      - "$HOME/comfy/storage-user/user-profile:/root/ComfyUI/user"
+      - "$HOME/comfy/storage-user/user-scripts:/root/user-scripts"
+    environment:
+      - CLI_ARGS=
+    security_opt:
+      # - "label=type:nvidia_container_t"
+      - "label=disable"
+      - "seccomp=unconfined"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

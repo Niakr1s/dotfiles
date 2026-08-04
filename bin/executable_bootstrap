@@ -13,6 +13,7 @@ tasks=(
   "Install gaming packages|sudo cachyos-hello fix install-gaming"
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
+  "Install comfy|install_comfy"
   "Init xray-knife service|init_xray-knife"
 
   "# Emulators"
@@ -409,6 +410,43 @@ WantedBy=default.target
 EOF
   systemctl --user daemon-reload
   systemctl --user enable --now xray-knife
+}
+
+install_comfy() {
+  local comfy_dir="$HOME/comfy"
+  git clone https://github.com/Comfy-Org/ComfyUI.git "$comfy_dir"
+  (
+    cd "$comfy_dir" 
+    uv venv -p 3.13 && source .venv/bin/activate
+
+    # NVIDIA dependencies
+    uv pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+
+    uv pip install -r requirements.txt
+    uv pip install -U --pre comfyui-manager
+  )
+
+  # Create systemd user service for ComfyUI
+  cat << EOF > "$HOME/.config/systemd/user/comfy.service"
+[Unit]
+Description=ComfyUI Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/nea/comfy/.venv/bin/python /home/nea/comfy/main.py --enable-manager
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=/home/nea/comfy
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+EOF
+
+# Reload systemd daemon and enable/start the service
+systemctl --user daemon-reload
 }
 
 main() {

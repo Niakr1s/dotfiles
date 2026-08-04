@@ -9,7 +9,7 @@ services:
   comfyui:
     init: true
     container_name: comfyui-megapak
-    image: "yanwk/comfyui-boot:cu130-megapak-pt211"
+    image: "yanwk/comfyui-boot:cu130-megapak-pt211-20260803"
     pull_policy: daily
     shm_size: 2gb
     build:

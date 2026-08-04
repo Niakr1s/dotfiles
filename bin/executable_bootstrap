@@ -117,7 +117,10 @@ PKGS=(
   decibels clementine playerctl
 
   # images
-  gimp inkscape imagemagick gthumb jp2a libraw libultrahdr libwmf djvulibre
+  libraw libultrahdr libwmf djvulibre
+  gthumb
+  gimp inkscape krita
+  imagemagick jp2a
 
   # internet
   aria2 qbittorrent

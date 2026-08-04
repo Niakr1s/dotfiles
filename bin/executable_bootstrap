@@ -66,7 +66,8 @@ PKGS=(
   tealdeer
   neovim python-pynvim wl-clipboard
   yazi fzf zoxide resvg chafa
-  lazygit
+  lazygit lazydocker
+  calc
   bottom duf gdu
   watchexec parallel
   fastfetch cmatrix cowsay

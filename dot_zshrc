@@ -29,3 +29,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 source <(xray-knife completion zsh)
+source <(niri completions zsh)

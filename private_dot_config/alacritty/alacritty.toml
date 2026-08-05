@@ -7,10 +7,10 @@ dynamic_padding = false
 opacity = 0.90
 
 [font]
-size = 10.0
+size = 11.0
 
 [font.normal]
-family = "Adwaita Mono"
+family = "Inconsolata"
 
 [scrolling]
 history = 100000

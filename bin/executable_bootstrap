@@ -85,6 +85,9 @@ PKGS=(
   # themes
   gnome-themes-extra adwaita-qt5 adwaita-qt6
 
+  # fonts
+  ttf-inconsolata ttf-fira-code
+
   # gui apps
   alacritty
   flatseal

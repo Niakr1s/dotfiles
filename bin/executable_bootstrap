@@ -82,6 +82,10 @@ PKGS=(
   fuse2
   tree
 
+  # archives
+  zip 7zip
+  unarchiver # unar lsar
+
   # themes
   gnome-themes-extra adwaita-qt5 adwaita-qt6
 

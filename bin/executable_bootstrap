@@ -81,6 +81,8 @@ PKGS=(
   syncthing
   fuse2
   tree
+  htop
+  nvtop # htop, but for GPU
 
   # archives
   zip 7zip

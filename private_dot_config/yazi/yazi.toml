@@ -37,3 +37,48 @@ rules = [
 	{ url = "*/", use = "custom" },
 	{ url = "*", use = "custom" },
 ]
+
+[plugin]
+  prepend_preloaders = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    # .srt subtitle, adobe illustrator, adobe photoshop file
+    { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps}", run = "mediainfo" },
+
+    # Sometimes AI file is recognized as "application/pdf". Lmao.
+    # In this case use file extension instead:
+    { url = "*.{ai,eps,ait}", run = "mediainfo" },
+
+    # Hide metadata by default.
+    # Example for image mimetype:
+    { mime = "{image}/*", run = "mediainfo --no-metadata" },
+
+    # Hide image preview by default.
+    # Example for video mimetype:
+    { mime = "{video}/*", run = "mediainfo --no-preview" },
+
+    # NOTE: Use both --no-metadata and --no-preview will display nothing. :)
+    # Make sure both of your previewers and preloaders has the same arguments (--no-metadata and --no-preview)
+  ]
+
+  prepend_previewers = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo"},
+    # .srt subtitle, adobe illustrator, adobe photoshop file
+    { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps}", run = "mediainfo" },
+
+    # Sometimes AI file is recognized as "application/pdf". Lmao.
+    # In this case use file extension instead:
+    { url = "*.{ai,eps,ait}", run = "mediainfo" },
+
+    # Hide metadata by default.
+    # Example for image mimetype:
+    { mime = "{image}/*", run = "mediainfo --no-metadata" },
+
+    # Hide image preview by default.
+    # Example for video mimetype:
+    { mime = "{video}/*", run = "mediainfo --no-preview" },
+
+    # NOTE: Use both --no-metadata and --no-preview will display nothing. :)
+    # Make sure both of your previewers and preloaders has the same arguments (--no-metadata and --no-preview)
+  ]

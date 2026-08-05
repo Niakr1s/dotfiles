@@ -86,7 +86,8 @@ PKGS=(
   gnome-themes-extra adwaita-qt5 adwaita-qt6
 
   # fonts
-  ttf-inconsolata ttf-fira-code
+  ttf-firacode-nerd
+  ttf-inconsolata-lgc-nerd
 
   # gui apps
   alacritty

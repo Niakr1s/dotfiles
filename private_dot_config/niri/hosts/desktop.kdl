@@ -2,7 +2,7 @@ workspace "web" {
     open-on-output "HDMI-A-3"
 }
 
-spawn-at-startup "firefox"
+spawn-sh-at-startup "sleep 3 && firefox" // sleep is to give time for vpn service to start
 spawn-sh-at-startup "niri msg action focus-workspace web; niri msg action focus-monitor-left"
 
 binds {

@@ -47,6 +47,13 @@ toggle() {
   fi
 }
 
+proxy-shell() {
+    local p="http://127.0.0.1:$PORT"
+    echo "On: $p"
+    http_proxy="$p" https_proxy="$p" HTTP_PROXY="$p" HTTPS_PROXY="$p" $SHELL
+    echo "Off: $p"
+}
+
 case "$1" in
   on)
     start_vpn
@@ -66,6 +73,9 @@ case "$1" in
     ;;
   toggle)
     toggle
+    ;;
+  shell)
+    proxy-shell
     ;;
   *)
     echo "Usage: $0 {on|off|status}"

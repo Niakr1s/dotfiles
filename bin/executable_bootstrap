@@ -14,7 +14,7 @@ tasks=(
   "Install asdf packages|install_asdf_packages"
   "Install ai tools|install_ai_tools"
   "Install comfy|install_comfy"
-  "Init xray-knife service|init_xray-knife"
+  "Init vpn|init_vpn"
 
   "# Emulators"
   "Install switch emulators|install_switch_emulators"
@@ -83,6 +83,7 @@ PKGS=(
   tree
   htop
   nvtop # htop, but for GPU
+  mitmproxy
 
   # archives
   zip 7zip
@@ -441,27 +442,10 @@ EOF
   sudo limine-mkinitcpio && echo "Done!" || echo "Error"
 }
 
-init_xray-knife() {
+init_vpn() {
   which "$HOME/go/bin/xray-knife" &>/dev/null || go install github.com/lilendian0x00/xray-knife/v10@latest
-  cat << EOF > "$HOME/.config/systemd/user/xray-knife.service"
-[Unit]
-Description=xray-knife service
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=$HOME/go/bin/xray-knife proxy system --port 9999 --rotate 300
-Restart=on-failure
-RestartSec=5
-WorkingDirectory=$HOME/.xray-knife
-StandardOutput=journal
-StandardError=journal
-
-[Install]
-WantedBy=default.target
-EOF
-  systemctl --user daemon-reload
-  systemctl --user enable --now xray-knife
+  which mitmdump || install_pkgs mitmproxy
+  echo "Usage: $HOME/bin/vpn -h"
 }
 
 main() {

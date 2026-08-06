@@ -60,8 +60,8 @@ binds {
     Mod+Ctrl+Shift+Q repeat=false { close-window; }
 
     Mod+H     { focus-column-left; }
-    // Mod+J     { focus-window-down; }
-    // Mod+K     { focus-window-up; }
+    Mod+Shift+J     { focus-window-down; }
+    Mod+Shift+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
     Mod+Ctrl+H     { move-column-left; }

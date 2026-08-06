@@ -53,7 +53,7 @@ user_pref("distribution.openSUSE.bookmarksProcessed", false);
 
 user_pref("browser.search.region", "RU");
 
-user_pref("network.proxy.no_proxies_on", ".ru");
+user_pref("network.proxy.no_proxies_on", "deepseek.com,.ru");
 
 user_pref("browser.download.dir", "/home/nea/Downloads");
 user_pref("browser.download.dir", "/home/nea/Downloads");

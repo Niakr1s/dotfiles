@@ -30,3 +30,8 @@ fi
 
 source <(xray-knife completion zsh)
 source <(niri completions zsh)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/nea/.lmstudio/bin"
+# End of LM Studio CLI section
+

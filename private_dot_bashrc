@@ -136,3 +136,8 @@ luksMountUmount "fabfb454-6de2-412d-8bc7-b56a849c77c7" "hdd24"
 
 alias backup-etc="sudo borg create --progress /data/hdd1/borg/etc::{now} /etc"
 alias backup-home="borg create --progress /data/hdd1/borg/home::{now} $HOME --exclude '*/.config/rpcs3/dev_hdd0/game/*'"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/nea/.lmstudio/bin"
+# End of LM Studio CLI section
+

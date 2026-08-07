@@ -306,5 +306,6 @@
 	"keyframesEnabled": true,
 	"reducedMotion": "user",
 	"ffmpegHwaccel": "none",
-	"enableAskForImportChapters": true
+	"enableAskForImportChapters": true,
+	"mergedFilesTemplate": "${FILENAME}-merged-${EPOCH_MS}${EXT}"
 }

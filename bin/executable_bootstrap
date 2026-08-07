@@ -44,6 +44,7 @@ tasks=(
 
   "# Tweaks"
   "Link steam runtime to umu|link_steamruntime_to_umu"
+  "Enable nvidia-pstated (limit nvidia GPU power on idle)|install_nvidia_pstated"
 )
 
 # These packages will be installed for all hosts
@@ -446,6 +447,51 @@ init_vpn() {
   which "$HOME/go/bin/xray-knife" &>/dev/null || go install github.com/lilendian0x00/xray-knife/v10@latest
   which mitmdump || install_pkgs mitmproxy
   echo "Usage: $HOME/bin/vpn -h"
+}
+
+install_nvidia_pstated() {
+    # Download the executable to /tmp (no sudo needed)
+    echo "Downloading nvidia-pstated..."
+    curl -L -o /tmp/nvidia-pstated \
+        https://github.com/sasha0552/nvidia-pstated/releases/download/v1.0.9/nvidia-pstated
+
+    # Check if download was successful
+    if [[ $? -ne 0 ]]; then
+        echo "Failed to download nvidia-pstated" >&2
+        return 1
+    fi
+
+    # Make it executable using sudo
+    sudo chmod +x /tmp/nvidia-pstated
+
+    # Move to /usr/local/bin using sudo
+    echo "Installing to /usr/local/bin..."
+    sudo mv /tmp/nvidia-pstated /usr/local/bin/nvidia-pstated
+
+    # Create systemd service file using sudo
+    echo "Creating systemd service..."
+    sudo tee /etc/systemd/system/nvidia-pstated.service > /dev/null << 'EOF'
+[Unit]
+Description=A daemon that automatically manages the performance states of NVIDIA GPUs
+StartLimitInterval=0
+
+[Service]
+DynamicUser=yes
+ExecStart=/usr/local/bin/nvidia-pstated
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    # Reload systemd and enable/start the service using sudo
+    echo "Reloading systemd and enabling/starting service..."
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now nvidia-pstated.service
+
+    echo "Installation complete!"
+    echo "Check status with: sudo systemctl status nvidia-pstated"
 }
 
 main() {

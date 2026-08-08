@@ -1,0 +1,17 @@
+services:
+  docs-mcp-server:
+    image: ghcr.io/arabold/docs-mcp-server:latest
+    container_name: docs-mcp-server
+    restart: unless-stopped
+    ports:
+      - "6280:6280"
+    volumes:
+      - ~/.docs-mcp/data:/data
+      - ~/.docs-mcp/config:/config
+    command: |
+      --protocol http
+      --host 0.0.0.0
+      --port 6280
+    # Optional: If you want to run in the background without --rm
+    # remove the container automatically when stopped
+    # auto_remove: true

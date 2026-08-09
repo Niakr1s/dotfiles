@@ -1,19 +1,5 @@
 #!/usr/bin/env bash
 
-# Kill all child processes on exit
-cleanup() {
-    echo "Shutting down services..."
-    kill $PID1 $PID2 2>/dev/null
-    wait $PID1 $PID2 2>/dev/null
-    exit
-}
-
-trap cleanup SIGINT SIGTERM
-
-llama-server --models-preset ~/.llama/models.ini --ui-mcp-proxy &
-PID1=$!
-mcp-proxy --named-server-config ~/.llama/mcp.json --allow-origin "*" --port 8001 --stateless &
-PID2=$!
-
-# Wait for either to exit
-wait $PID1 $PID2
+parallel --ungroup ::: \
+  'llama-server --models-preset ~/.llama/models.ini --ui-mcp-proxy' \
+  'mcp-proxy --named-server-config ~/.llama/mcp.json --allow-origin "*" --port 8001 --stateless'

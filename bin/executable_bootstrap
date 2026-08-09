@@ -355,7 +355,8 @@ install_ai_tools() {
   uv tool install mcp-proxy --with "mcp<2.0.0" --force
 
   cat << EOF
-Usage: ~/.llama/llama
+Usage: ~/bin/llama
+Tips: Don't forget to import settings from ~/.llama/llama_settings.json into webui at localhost:8080
 EOF
 }
 

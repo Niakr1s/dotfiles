@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 parallel --ungroup ::: \
-  'llama-server --models-preset ~/.llama/models.ini --ui-mcp-proxy' \
-  'mcp-proxy --named-server-config ~/.llama/mcp.json --allow-origin "*" --port 8001 --stateless'
+  'docker run --rm -v ~/.docs-mcp/data:/data -v ~/.docs-mcp/config:/config -p 6280:6280 ghcr.io/arabold/docs-mcp-server:latest --protocol http --host 0.0.0.0 --port 6280' \
+  'mcp-proxy --named-server-config ~/.llama/mcp.json --allow-origin "*" --port 8001 --stateless' \
+  'llama-server --models-preset ~/.llama/models.ini --ui-mcp-proxy'

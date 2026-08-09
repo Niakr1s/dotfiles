@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1786277476113,
+  "timestamp": 1786292383442,
   "config": {
     "theme": "system",
     "apiKey": "",
@@ -41,7 +41,7 @@
     "customJson": "",
     "customCss": "",
     "showSystemMessage": true,
-    "mcpServers": "[{\"id\":\"cdebcfde-3ef7-4d01-84d6-0725c02f8b82\",\"enabled\":true,\"url\":\"https://mcp.context7.com/mcp\",\"useProxy\":false},{\"id\":\"e028c8d6-11ce-450a-ac06-96e58b10e405\",\"enabled\":true,\"url\":\"http://127.0.0.1:8001/servers/ddg-search/mcp\",\"useProxy\":false},{\"id\":\"12807cb8-fc69-4260-8480-4111c18b6f00\",\"enabled\":true,\"url\":\"http://127.0.0.1:8001/servers/fetch/mcp\",\"useProxy\":false},{\"id\":\"fe495e71-cddb-44d1-95ca-903faf4999ee\",\"enabled\":true,\"url\":\"https://date-time-tools.iabhishek.workers.dev/mcp\",\"displayName\":\"date-time-tools\",\"useProxy\":true},{\"id\":\"43131256-a1de-43e5-b9eb-9fe717cbe3dd\",\"enabled\":true,\"url\":\"https://mcp.deepwiki.com/mcp\",\"displayName\":\"deepwiki\",\"useProxy\":true}]",
+    "mcpServers": "[{\"id\":\"cdebcfde-3ef7-4d01-84d6-0725c02f8b82\",\"enabled\":false,\"url\":\"https://mcp.context7.com/mcp\",\"useProxy\":false},{\"id\":\"e028c8d6-11ce-450a-ac06-96e58b10e405\",\"enabled\":false,\"url\":\"http://127.0.0.1:8001/servers/ddg-search/mcp\",\"useProxy\":false},{\"id\":\"12807cb8-fc69-4260-8480-4111c18b6f00\",\"enabled\":false,\"url\":\"http://127.0.0.1:8001/servers/fetch/mcp\",\"useProxy\":false},{\"id\":\"fe495e71-cddb-44d1-95ca-903faf4999ee\",\"enabled\":false,\"url\":\"https://date-time-tools.iabhishek.workers.dev/mcp\",\"displayName\":\"date-time-tools\",\"useProxy\":true},{\"id\":\"2299c9d3-56a2-46d8-9b71-059e31e6afc6\",\"enabled\":true,\"url\":\"http://127.0.0.1:8001/servers/basic-memory/mcp\",\"displayName\":\"basic-memory\",\"useProxy\":true},{\"id\":\"4c13ac0a-e105-4d5e-87b2-2a7ac1672cd2\",\"enabled\":false,\"url\":\"http://localhost:6280/sse\",\"displayName\":\"docs-mcp-server\",\"useProxy\":true}]",
     "titleGenerationUseLLM": true
   },
   "userOverrides": []

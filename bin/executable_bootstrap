@@ -348,13 +348,15 @@ firewall_allow_kdeconnect() {
 }
 
 install_ai_tools() {
-  which llama || curl -LsSf https://llama.app/install.sh | sh
-  which pi || curl -fsSL https://pi.dev/install.sh | sh
-  pi install git:github.com/huggingface/pi-llama
+  echo "Installing llama-cpp with dependencies..."
+  install_pkgs ggml cuda llama-cpp
 
-  confirm_yes_no "Download models?" && {
-    llama download -hf ggml-org/gemma-4-12B-it-GGUF:Q4_0
-  }
+  echo "Installing mcp-proxy..."
+  uv tool install mcp-proxy --with "mcp<2.0.0" --force
+
+  cat << EOF
+Usage: ~/.llama/llama
+EOF
 }
 
 install_comfy() {

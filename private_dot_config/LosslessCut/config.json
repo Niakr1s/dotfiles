@@ -33,6 +33,7 @@
 	"simpleMode": false,
 	"outSegTemplate": "(cut)${FILENAME}${EXT}",
 	"mergedFileTemplate": "(cut)${FILENAME}${EXT}",
+	"mergedFilesTemplate": "${FILENAME}-merged-${EPOCH_MS}${EXT}",
 	"keyboardSeekAccFactor": 1.03,
 	"keyboardNormalSeekSpeed": 1,
 	"keyboardSeekSpeed2": 10,
@@ -306,6 +307,5 @@
 	"keyframesEnabled": true,
 	"reducedMotion": "user",
 	"ffmpegHwaccel": "none",
-	"enableAskForImportChapters": true,
-	"mergedFilesTemplate": "${FILENAME}-merged-${EPOCH_MS}${EXT}"
+	"enableAskForImportChapters": true
 }

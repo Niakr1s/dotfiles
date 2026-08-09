@@ -18,6 +18,10 @@
     "fetch": {
       "command": "docker",
       "args": ["run", "-i", "--rm", "mcp/fetch", "--ignore-robots-txt"]
+    },
+    "basic-memory": {
+      "command": "uvx",
+      "args": ["basic-memory", "mcp"]
     }
   }
 }

@@ -122,6 +122,7 @@ PKGS=(
 
   # gaming
   sunshine
+  gamemode
 
   # media
   ffmpeg yt-dlp mediainfo audacity kdenlive gpu-screen-recorder

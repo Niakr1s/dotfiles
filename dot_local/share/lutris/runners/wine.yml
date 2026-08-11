@@ -1,7 +1,6 @@
 system:
   disable_runtime: false
   env:
-    DRI_PRIME: '1'
     UMU_RUNTIME_UPDATE: '0'
   mangohud: true
   postexit_command: /usr/bin/dms ipc inhibit disable
